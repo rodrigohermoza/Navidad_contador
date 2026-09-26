@@ -54,4 +54,5 @@
   const video = document.getElementById("bg-video");
   video.addEventListener("canplay", () => document.body.classList.add("has-video"), { once: true });
   video.querySelector("source").addEventListener("error", () => video.remove());
+  video.play().catch(() => {}); // por si el navegador ignora `autoplay`
 })();

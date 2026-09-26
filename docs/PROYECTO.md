@@ -22,8 +22,9 @@ Hecho:
 - Paisaje SVG en capas (`index.html`) + estrellas/pinos generados con semilla (`js/landscape.js`).
   En móvil vertical cambia el `viewBox` para encuadrar cabaña y luna.
 - Nieve en canvas (`js/snow.js`): 3 capas, viento, pausa con pestaña oculta, respeta reduced-motion.
-- Fondo en video OPCIONAL: si existe `assets/fondo.mp4` se muestra (con velo oscuro) y se oculta el SVG;
-  si no existe, queda el SVG. El usuario debe aprobar/descargar el video él mismo (ver abajo).
+- Fondo en video: `assets/fondo.mp4` = Mixkit #35040 "Snowing in a foggy forest, slow motion" (720p, 9.2 MB,
+  30 s en bucle, licencia gratuita Mixkit). Aprobado por el usuario. Si el video falla, se muestra el paisaje SVG.
+  La nieve del canvas sigue encima del video.
 - Caja de regalo (`js/gift.js`): al hacer clic la tapa sale volando y aparece Santa (SVG) con la actividad del día.
   Antes del 1/12 → "Tu primer regalo se abre el 1 de diciembre". Después del 28/12 → mensaje de fin.
 - Actividades: **1 al 28 de diciembre** (confirmado). Textos en `js/activities.js` (aún marcadores).
@@ -32,9 +33,7 @@ Hecho:
 
 Pendiente:
 1. Textos reales de las 28 actividades → `js/activities.js`.
-2. Elegir video de fondo (candidatos Mixkit, licencia gratis): 3350 "Moon in the sky a snowy forest",
-   35040 "Snowing in a foggy forest", 3352 "Snow falling in a pine forest". Guardarlo como `assets/fondo.mp4`
-   (versión 720p, 3–9 MB). NO descargar sin aprobación del usuario.
+2. (Regla) No descargar nada sin que el usuario vea el link y lo apruebe.
 3. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
 4. Reno que cruza el paisaje de vez en cuando.
 5. Subir a GitHub (el usuario usa GitHub Desktop) y hostear (Cloudflare Pages / Netlify).

@@ -20,6 +20,7 @@ js/landscape.js     Genera estrellas y filas de pinos; reencuadre en móvil
 js/snow.js          Nieve animada en <canvas> (3 capas de profundidad)
 js/countdown.js     Cuenta atrás al 25 de diciembre (hora local)
 js/activities.js    28 actividades (1–28 de diciembre) + helpers de fecha
+js/lights.js        Guirnalda de luces del borde superior
 js/gift.js          Caja de regalo, Santa con la actividad del día, video de fondo
 assets/fondo.mp4    (opcional) video de fondo; si no está, se usa el paisaje SVG
 docs/PROYECTO.md    Contexto completo: objetivo, decisiones, limitaciones, pendientes

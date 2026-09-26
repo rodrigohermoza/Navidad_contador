@@ -61,6 +61,17 @@ body {
   100% { opacity: 0; transform: translate(14px, -30px) scale(1.4); }
 }
 
+/* ===== Luces navideñas ===== */
+.lights { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 3; pointer-events: none; }
+.lights svg { display: block; overflow: visible; }
+.lights .wire { fill: none; stroke: #1d2a24; stroke-width: 2; }
+.lights .cap { fill: #3a4a40; }
+.lights .glass { fill: currentColor; filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor); }
+.lights .bulb { animation: glow 2.4s ease-in-out infinite; }
+.lights .b1 { animation-delay: -0.8s; }
+.lights .b2 { animation-delay: -1.6s; }
+@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
 /* ===== Contenido ===== */
 .content {
   position: relative;
@@ -70,7 +81,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: clamp(20px, 5vh, 48px);
-  padding: clamp(40px, 12vh, 120px) 16px 16px;
+  padding: clamp(72px, 12vh, 120px) 16px 16px;
 }
 
 .card {
@@ -261,5 +272,5 @@ body {
 .modal-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .star, .window, .cabin-glow, .smoke circle, .gift-svg { animation: none; }
+  .star, .window, .cabin-glow, .smoke circle, .gift-svg, .lights .bulb { animation: none; }
 }

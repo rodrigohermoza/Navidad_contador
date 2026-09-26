@@ -27,6 +27,8 @@ Hecho:
   La nieve del canvas sigue encima del video.
 - Caja de regalo (`js/gift.js`): al hacer clic la tapa sale volando y aparece Santa (SVG) con la actividad del día.
   Antes del 1/12 → "Tu primer regalo se abre el 1 de diciembre". Después del 28/12 → mensaje de fin.
+- Luces navideñas colgando del borde superior (`js/lights.js`): SVG generado según el ancho de pantalla,
+  bombillas roja/verde/dorada/blanca que titilan en 3 grupos. Se regenera al redimensionar.
 - Actividades: **1 al 28 de diciembre** (confirmado). Textos en `js/activities.js` (aún marcadores).
 - Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y regalo).
 - `<meta name="robots" content="noindex">`.

@@ -16,7 +16,7 @@
   }
 
   function render() {
-    const now = new Date();
+    const now = window.getNow();
     const { t, isChristmas } = target(now);
     merryEl.hidden = !isChristmas;
 

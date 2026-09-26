@@ -15,6 +15,11 @@
 <body>
   <!-- ===== Paisaje (capas SVG, de atrás hacia adelante) ===== -->
   <div class="scene" aria-hidden="true">
+    <!-- Si existe assets/fondo.mp4 se usa como fondo; si no, queda el paisaje SVG -->
+    <video class="bg-video" id="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="assets/fondo.mp4" type="video/mp4" />
+    </video>
+    <div class="scene-shade"></div>
     <svg class="landscape" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -126,11 +131,61 @@
       <p class="date" id="target-date"></p>
       <p class="merry" id="merry" hidden>🎄 ¡Feliz Navidad! 🎄</p>
     </section>
+
+    <button class="gift" id="gift" type="button" aria-haspopup="dialog">
+      <svg class="gift-svg" viewBox="0 0 120 120" aria-hidden="true">
+        <ellipse cx="60" cy="112" rx="42" ry="6" fill="rgba(0,0,0,0.25)" />
+        <g class="gift-box">
+          <rect x="18" y="52" width="84" height="58" rx="4" fill="#c8102e" />
+          <rect x="18" y="52" width="84" height="10" fill="#a50d26" />
+          <rect x="53" y="52" width="14" height="58" fill="#ffffff" />
+        </g>
+        <g class="gift-lid">
+          <rect x="12" y="38" width="96" height="18" rx="4" fill="#e0213f" />
+          <rect x="53" y="38" width="14" height="18" fill="#ffffff" />
+          <path d="M60 38 C44 18 26 24 36 36 C40 40 52 39 60 38 Z" fill="#1f6b45" />
+          <path d="M60 38 C76 18 94 24 84 36 C80 40 68 39 60 38 Z" fill="#1f6b45" />
+          <circle cx="60" cy="37" r="6" fill="#2a8a5a" />
+        </g>
+      </svg>
+      <span class="gift-hint" id="gift-hint">Abre tu regalo</span>
+    </button>
   </main>
+
+  <!-- Santa entrega la actividad del día -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <svg class="santa" viewBox="0 0 200 210" aria-hidden="true">
+        <!-- Gorro -->
+        <path d="M44 86 C50 36 100 14 138 34 C160 46 170 70 176 96 L156 92 C150 70 140 58 128 54 Z" fill="#c8102e" />
+        <path d="M44 86 C60 40 110 26 140 56 L130 70 C110 52 76 58 60 92 Z" fill="#a50d26" opacity="0.5" />
+        <circle cx="174" cy="102" r="14" fill="#ffffff" />
+        <!-- Cara -->
+        <circle cx="100" cy="112" r="46" fill="#f6c9a8" />
+        <circle cx="72" cy="120" r="9" fill="#f29c9c" opacity="0.6" />
+        <circle cx="128" cy="120" r="9" fill="#f29c9c" opacity="0.6" />
+        <path d="M78 106 q6 -7 12 0" stroke="#3b2a20" stroke-width="4" fill="none" stroke-linecap="round" />
+        <path d="M110 106 q6 -7 12 0" stroke="#3b2a20" stroke-width="4" fill="none" stroke-linecap="round" />
+        <!-- Barba -->
+        <path d="M52 118 C52 170 76 204 100 204 C124 204 148 170 148 118 C140 132 126 140 100 140 C74 140 60 132 52 118 Z" fill="#ffffff" />
+        <path d="M100 132 C88 124 70 128 66 138 C80 142 92 140 100 136 C108 140 120 142 134 138 C130 128 112 124 100 132 Z" fill="#f1f4f8" />
+        <circle cx="100" cy="124" r="9" fill="#e88b7a" />
+        <path d="M90 158 q10 8 20 0" stroke="#d7dde6" stroke-width="3" fill="none" stroke-linecap="round" />
+        <!-- Borde del gorro -->
+        <rect x="42" y="78" width="118" height="22" rx="11" fill="#ffffff" />
+      </svg>
+      <p class="modal-eyebrow" id="modal-eyebrow"></p>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <p class="modal-text" id="modal-text"></p>
+      <button class="modal-close" type="button" data-close>¡Hecho!</button>
+    </div>
+  </div>
 
   <script src="js/activities.js"></script>
   <script src="js/landscape.js"></script>
   <script src="js/snow.js"></script>
   <script src="js/countdown.js"></script>
+  <script src="js/gift.js"></script>
 </body>
 </html>

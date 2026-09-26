@@ -18,21 +18,26 @@ Página web de cuenta atrás para Navidad, para compartir con una persona median
 
 ## Estado actual (2026-09-26)
 Hecho:
-- Contador funcionando (`js/countdown.js`). El 25/12 muestra "¡Feliz Navidad!"; desde el 26/12 cuenta al año siguiente.
-- Paisaje SVG en capas (`index.html`): cielo degradado, estrellas titilantes, luna, 2 filas de montañas,
-  colinas, filas de pinos (generadas con semilla fija en `js/landscape.js`), cabaña roja con ventana encendida
-  y humo, pinos grandes de primer plano.
-- Nieve en canvas (`js/snow.js`): 3 capas, viento suave, se pausa si la pestaña está oculta, menos copos con
-  `prefers-reduced-motion`.
-- Móvil: en orientación vertical el SVG cambia su `viewBox` para encuadrar la cabaña y la luna.
-- `<meta name="robots" content="noindex">` para que no lo indexen buscadores.
+- Contador (`js/countdown.js`). El 25/12 muestra "¡Feliz Navidad!"; desde el 26/12 cuenta al año siguiente.
+- Paisaje SVG en capas (`index.html`) + estrellas/pinos generados con semilla (`js/landscape.js`).
+  En móvil vertical cambia el `viewBox` para encuadrar cabaña y luna.
+- Nieve en canvas (`js/snow.js`): 3 capas, viento, pausa con pestaña oculta, respeta reduced-motion.
+- Fondo en video OPCIONAL: si existe `assets/fondo.mp4` se muestra (con velo oscuro) y se oculta el SVG;
+  si no existe, queda el SVG. El usuario debe aprobar/descargar el video él mismo (ver abajo).
+- Caja de regalo (`js/gift.js`): al hacer clic la tapa sale volando y aparece Santa (SVG) con la actividad del día.
+  Antes del 1/12 → "Tu primer regalo se abre el 1 de diciembre". Después del 28/12 → mensaje de fin.
+- Actividades: **1 al 28 de diciembre** (confirmado). Textos en `js/activities.js` (aún marcadores).
+- Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y regalo).
+- `<meta name="robots" content="noindex">`.
 
 Pendiente:
-1. Textos reales de las 28 actividades (el usuario los enviará) → `js/activities.js`.
-2. Confirmar rango de fechas. Asumido: **27 nov → 24 dic** (28 días). Configurable en `ACTIVITIES_START`.
-3. Caja de regalo clicable + animación de Santa entregando la actividad del día.
-4. Reno que cruza el paisaje de vez en cuando (capa SVG entre montañas y colinas).
-5. Decidir si antes del 27 nov / después del 24 dic la caja se muestra bloqueada.
+1. Textos reales de las 28 actividades → `js/activities.js`.
+2. Elegir video de fondo (candidatos Mixkit, licencia gratis): 3350 "Moon in the sky a snowy forest",
+   35040 "Snowing in a foggy forest", 3352 "Snow falling in a pine forest". Guardarlo como `assets/fondo.mp4`
+   (versión 720p, 3–9 MB). NO descargar sin aprobación del usuario.
+3. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
+4. Reno que cruza el paisaje de vez en cuando.
+5. Subir a GitHub (el usuario usa GitHub Desktop) y hostear (Cloudflare Pages / Netlify).
 
 ## Decisiones técnicas
 - HTML/CSS/JS puro, sin frameworks ni build → se puede hostear en cualquier hosting estático.
@@ -53,5 +58,6 @@ redeployan solos con cada `git push`. Build command: vacío. Output directory: `
 - GitHub Pages también sirve, pero en plan gratis exige que el repo sea **público**.
 
 ## Probar en local
-`python3 -m http.server 5173` desde esta carpeta → http://localhost:5173
+`python3 -m http.server 5173` desde esta carpeta → http://localhost:5173 (Ctrl+C para pararlo).
+No dejar servidores corriendo en segundo plano: el usuario lo arranca solo cuando quiere.
 (`.claude/launch.json` es solo config local del preview, está en .gitignore.)

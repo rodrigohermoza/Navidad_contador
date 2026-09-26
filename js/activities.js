@@ -1,10 +1,21 @@
-// 28 actividades navideñas, una por día.
+// 28 actividades navideñas: del 1 al 28 de diciembre (una por día).
 // Pendiente: el usuario enviará los textos reales. Por ahora son marcadores.
-// Rango asumido: del 27 de noviembre al 24 de diciembre (28 días).
-// (Aún no se usan en la UI: la caja de regalo + Santa vendrán después.)
-window.ACTIVITIES_START = { month: 10, day: 27 }; // month es 0-indexado (10 = noviembre)
+window.ACTIVITIES = Array.from({ length: 28 }, (_, i) => `Actividad ${i + 1} (pendiente)`);
 
-window.ACTIVITIES = Array.from({ length: 28 }, (_, i) => ({
-  day: i + 1,
-  text: `Actividad ${i + 1} (pendiente)`,
-}));
+// Fecha "de hoy". Para probar otro día: ?fecha=2026-12-05 en la URL.
+window.getNow = function () {
+  const m = new URLSearchParams(location.search).get("fecha");
+  const now = new Date();
+  if (!m || !/^\d{4}-\d{2}-\d{2}$/.test(m)) return now;
+  const [y, mo, d] = m.split("-").map(Number);
+  return new Date(y, mo - 1, d, now.getHours(), now.getMinutes(), now.getSeconds());
+};
+
+// Devuelve { day, text } si hoy toca actividad, o { status: "before" | "after" }.
+window.todayActivity = function (now = window.getNow()) {
+  const dec = now.getMonth() === 11;
+  if (dec && now.getDate() <= window.ACTIVITIES.length) {
+    return { day: now.getDate(), text: window.ACTIVITIES[now.getDate() - 1] };
+  }
+  return { status: dec ? "after" : "before" };
+};

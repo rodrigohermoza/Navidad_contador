@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link privado: evita que los buscadores indexen la página -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Cuenta atrás a Navidad</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ===== Paisaje (capas SVG, de atrás hacia adelante) ===== -->
+  <div class="scene" aria-hidden="true">
+    <svg class="landscape" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#07112a" />
+          <stop offset="0.45" stop-color="#15305e" />
+          <stop offset="0.75" stop-color="#3d6397" />
+          <stop offset="1" stop-color="#9fb6d6" />
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#fff8e1" stop-opacity="0.55" />
+          <stop offset="0.4" stop-color="#fff8e1" stop-opacity="0.12" />
+          <stop offset="1" stop-color="#fff8e1" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="snowFar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#dfe9f6" />
+          <stop offset="1" stop-color="#b9cbe3" />
+        </linearGradient>
+        <linearGradient id="snowNear" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffffff" />
+          <stop offset="1" stop-color="#dce7f4" />
+        </linearGradient>
+        <radialGradient id="windowGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#ffd27a" stop-opacity="0.7" />
+          <stop offset="1" stop-color="#ffd27a" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- Pino reutilizable: el color del follaje sale de `color` en <use> -->
+        <symbol id="pine" viewBox="0 0 100 200">
+          <rect x="44" y="160" width="12" height="40" fill="#3b2a20" />
+          <path fill="currentColor" d="M50 0 L70 42 L60 40 L80 82 L66 79 L88 124 L72 121 L96 168 L4 168 L28 121 L12 124 L34 79 L20 82 L40 40 L30 42 Z" />
+          <path fill="#f4f8fd" d="M50 0 L60 21 L53 18 L47 22 L40 21 Z M30 42 L40 40 L46 44 L54 41 L60 40 L70 42 L62 47 L50 44 L38 47 Z M20 82 L34 79 L44 84 L56 80 L66 79 L80 82 L68 88 L52 84 L34 88 Z M12 124 L28 121 L42 127 L58 122 L72 121 L88 124 L72 131 L52 126 L30 131 Z M4 168 L96 168 L80 174 L50 170 L20 174 Z" />
+        </symbol>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#sky)" />
+      <g id="stars"></g>
+
+      <!-- Luna -->
+      <circle cx="1270" cy="170" r="160" fill="url(#moonGlow)" />
+      <circle cx="1270" cy="170" r="46" fill="#fdf6e3" />
+      <circle cx="1255" cy="160" r="8" fill="#ece3c9" opacity="0.7" />
+      <circle cx="1285" cy="185" r="5" fill="#ece3c9" opacity="0.6" />
+
+      <!-- Montañas lejanas -->
+      <path fill="#6f8db8" d="M0 560 L140 430 L230 490 L380 340 L520 470 L640 400 L780 500 L900 380 L1050 480 L1180 360 L1330 470 L1460 400 L1600 480 L1600 900 L0 900 Z" />
+      <path fill="#e7eef8" opacity="0.85" d="M380 340 L420 377 L400 372 L385 390 L365 375 L345 373 Z M900 380 L935 412 L915 408 L900 422 L885 408 L868 410 Z M1180 360 L1215 392 L1195 389 L1180 404 L1163 390 L1146 392 Z M140 430 L168 456 L150 452 L136 464 L122 452 Z" />
+
+      <!-- Montañas medias -->
+      <path fill="#4b6c9a" d="M0 620 L180 500 L300 560 L460 450 L610 570 L760 490 L900 590 L1060 470 L1220 580 L1380 500 L1600 600 L1600 900 L0 900 Z" />
+      <path fill="#dbe6f4" opacity="0.8" d="M460 450 L505 487 L482 483 L462 500 L444 484 L418 488 Z M1060 470 L1105 506 L1082 502 L1062 518 L1042 503 L1016 507 Z M180 500 L214 526 L196 523 L180 536 L164 523 L146 526 Z" />
+
+      <!-- Colinas nevadas lejanas + fila de pinos (generada en JS) -->
+      <path fill="url(#snowFar)" d="M0 680 C200 630 380 650 560 670 C760 690 900 640 1100 650 C1300 660 1450 630 1600 650 L1600 900 L0 900 Z" />
+      <g id="treeline-far"></g>
+
+      <!-- Cabaña -->
+      <g class="cabin" transform="translate(1090 612)">
+        <ellipse cx="60" cy="40" rx="130" ry="70" fill="url(#windowGlow)" class="cabin-glow" />
+        <rect x="0" y="0" width="120" height="70" fill="#8e1b24" />
+        <path d="M-14 4 L60 -52 L134 4 Z" fill="#5a1117" />
+        <path d="M-18 6 L60 -58 L138 6 L128 10 L60 -44 L-8 10 Z" fill="#ffffff" />
+        <rect x="84" y="-50" width="14" height="30" fill="#4a3a33" />
+        <rect x="82" y="-54" width="18" height="6" fill="#ffffff" />
+        <rect x="16" y="22" width="26" height="24" fill="#ffd27a" class="window" />
+        <path d="M29 22 V46 M16 34 H42" stroke="#5a1117" stroke-width="3" />
+        <rect x="70" y="30" width="26" height="40" fill="#3d0c10" />
+        <circle cx="90" cy="51" r="2" fill="#ffd27a" />
+        <!-- Corona en la puerta -->
+        <circle cx="83" cy="42" r="6" fill="none" stroke="#1f6b45" stroke-width="3" />
+        <circle cx="83" cy="47" r="1.8" fill="#e23b3b" />
+        <path d="M-10 70 C30 62 90 62 132 70 L132 76 L-10 76 Z" fill="#ffffff" />
+        <!-- Humo -->
+        <g class="smoke" fill="#dfe7f2">
+          <circle cx="91" cy="-64" r="7" /><circle cx="98" cy="-80" r="9" /><circle cx="92" cy="-100" r="11" />
+        </g>
+      </g>
+
+      <!-- Colinas nevadas cercanas + pinos medios (JS) -->
+      <path fill="url(#snowNear)" d="M0 760 C220 700 420 720 640 745 C860 770 1040 720 1260 730 C1420 738 1520 720 1600 715 L1600 900 L0 900 Z" />
+      <g id="treeline-near"></g>
+
+      <!-- Pinos grandes que enmarcan (primer plano) -->
+      <use href="#pine" x="-70" y="430" width="260" height="520" color="#15503a" />
+      <use href="#pine" x="110" y="560" width="170" height="340" color="#1d6647" />
+      <use href="#pine" x="1400" y="400" width="280" height="560" color="#15503a" />
+      <use href="#pine" x="1300" y="590" width="150" height="300" color="#1d6647" />
+
+      <!-- Nieve del suelo en primer plano -->
+      <path fill="#ffffff" d="M0 850 C300 815 600 835 900 845 C1200 855 1400 825 1600 835 L1600 900 L0 900 Z" />
+    </svg>
+  </div>
+
+  <!-- Nieve animada -->
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <!-- ===== Contenido ===== -->
+  <main class="content">
+    <section class="card" aria-labelledby="title">
+      <p class="eyebrow"><span class="dot dot--red"></span>Cuenta atrás<span class="dot dot--green"></span></p>
+      <h1 id="title" class="title">Faltan para <em>Navidad</em></h1>
+
+      <div class="countdown" id="countdown" role="timer" aria-live="off">
+        <div class="unit"><span class="num" data-unit="days">--</span><span class="label">días</span></div>
+        <div class="unit"><span class="num" data-unit="hours">--</span><span class="label">horas</span></div>
+        <div class="unit"><span class="num" data-unit="minutes">--</span><span class="label">minutos</span></div>
+        <div class="unit"><span class="num" data-unit="seconds">--</span><span class="label">segundos</span></div>
+      </div>
+
+      <p class="date" id="target-date"></p>
+      <p class="merry" id="merry" hidden>🎄 ¡Feliz Navidad! 🎄</p>
+    </section>
+  </main>
+
+  <script src="js/activities.js"></script>
+  <script src="js/landscape.js"></script>
+  <script src="js/snow.js"></script>
+  <script src="js/countdown.js"></script>
+</body>
+</html>

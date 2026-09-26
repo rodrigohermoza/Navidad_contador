@@ -1,0 +1,171 @@
+:root {
+  --red: #c8102e;
+  --red-deep: #8e1b24;
+  --green: #1f6b45;
+  --green-deep: #15503a;
+  --white: #ffffff;
+  --snow: #f4f8fd;
+  --ink: #0b1733;
+  --gold: #ffd27a;
+
+  --card-bg: rgba(10, 22, 48, 0.42);
+  --card-border: rgba(255, 255, 255, 0.22);
+  --unit-bg: rgba(255, 255, 255, 0.1);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Paisaje ===== */
+.scene, #snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene { z-index: 0; }
+.landscape { width: 100%; height: 100%; display: block; }
+#snow { z-index: 1; pointer-events: none; }
+
+.star { animation: twinkle var(--tw, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+@keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.window, .cabin-glow { animation: flicker 5s ease-in-out infinite; }
+@keyframes flicker { 0%, 100% { opacity: 1; } 45% { opacity: 0.85; } 55% { opacity: 0.95; } }
+
+.smoke circle { animation: smoke 6s ease-out infinite; transform-box: fill-box; transform-origin: center; opacity: 0; }
+.smoke circle:nth-child(2) { animation-delay: 2s; }
+.smoke circle:nth-child(3) { animation-delay: 4s; }
+@keyframes smoke {
+  0% { opacity: 0; transform: translate(0, 20px) scale(0.5); }
+  30% { opacity: 0.55; }
+  100% { opacity: 0; transform: translate(14px, -30px) scale(1.4); }
+}
+
+/* ===== Contenido ===== */
+.content {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(40px, 12vh, 120px) 16px 16px;
+}
+
+.card {
+  width: min(640px, 100%);
+  text-align: center;
+  padding: clamp(24px, 4vw, 40px) clamp(18px, 4vw, 44px);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  box-shadow: 0 24px 60px rgba(3, 10, 28, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cinta de regalo rojo/blanco/verde arriba de la tarjeta */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: repeating-linear-gradient(135deg, var(--red) 0 14px, var(--white) 14px 22px, var(--green) 22px 36px, var(--white) 36px 44px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.dot--red { background: var(--red); box-shadow: 0 0 8px var(--red); }
+.dot--green { background: #2fa36b; box-shadow: 0 0 8px #2fa36b; }
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1.05;
+  margin: 10px 0 clamp(20px, 3vw, 30px);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+.title em {
+  font-style: italic;
+  font-weight: 500;
+  color: #ff5a6e;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.unit {
+  background: var(--unit-bg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: clamp(12px, 2.4vw, 20px) 4px clamp(10px, 2vw, 14px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.unit:first-child {
+  background: linear-gradient(180deg, rgba(200, 16, 46, 0.55), rgba(142, 27, 36, 0.55));
+  border-color: rgba(255, 120, 130, 0.4);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 7vw, 3.3rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: clamp(0.62rem, 1.6vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.date {
+  margin-top: clamp(18px, 3vw, 24px);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.merry {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star, .window, .cabin-glow, .smoke circle { animation: none; }
+}

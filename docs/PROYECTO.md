@@ -4,7 +4,7 @@
 Página web de cuenta atrás para Navidad, para compartir con una persona mediante un único link.
 - Contador (días / horas / minutos / segundos) hasta el 25 de diciembre.
 - Fondo: paisaje nevado bonito (lo más importante visualmente).
-- 28 actividades navideñas, una por día. Se desbloquean con una **caja de regalo** que al hacer clic
+- 25 actividades navideñas, una por día (1–25 de diciembre). Se desbloquean con una **caja de regalo** que al hacer clic
   hace aparecer a **Santa** entregando la actividad del día.
 - De vez en cuando pasa un **reno** por detrás del paisaje.
 - Colores navideños: rojo, blanco y verde. UI limpia.
@@ -31,7 +31,7 @@ Hecho:
   (máx. 300px de alto, mín. 120px) para que siempre quepa con su etiqueta. Respira y saluda en reposo; al tocarlo se infla con un bamboleo,
   hace "¡puf!" en confeti/estrellas/copos (animación alegre, no violenta) y aparece la tarjeta con la actividad
   del día. Al cerrar, Santa vuelve rebotando.
-  Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 28/12 → mensaje de fin.
+  Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 25/12 → mensaje de fin.
 - [Rama `decoraciones`, a prueba] Decoraciones extra con interruptores en `js/config.js`
   (`js/decorations.js`): bolas colgantes que esquivan la tarjeta, colinas nevadas con pinos iluminados
   (estrella en la punta) a los costados; regalos desactivados (`gifts: false`) (el centro queda libre para Santa), destellos dorados,
@@ -39,12 +39,12 @@ Hecho:
 - [Rama `decoraciones`] Renos volando (`js/reindeer.js`, config `DECOR.reindeer` en `js/config.js`): cada
   18–35 s cruzan los 9 renos: Rudolph (nariz roja brillante) adelante y 8 detrás en parejas, unidos por
   riendas doradas; la fila de atrás es más pequeña y oscura para dar profundidad. Vuelan detrás de la tarjeta y de Santa. No salen si la pestaña está oculta o con reduced-motion.
-- Actividades: **1 al 28 de diciembre**. Textos en `js/activities.js` (aún marcadores).
+- Actividades: **1 al 25 de diciembre** (25 textos reales del usuario en `js/activities.js`). La cantidad
+  sale del largo de la lista: si se agregan o quitan, el rango de días se ajusta solo.
 - Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y Santa).
 - `<meta name="robots" content="noindex">`.
 
 Pendiente:
-1. Textos reales de las 28 actividades → `js/activities.js`.
 2. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
 4. Hostear (Cloudflare Pages / Netlify). El usuario sube con GitHub Desktop.
 - Regla: no descargar nada sin que el usuario vea el link y lo apruebe.

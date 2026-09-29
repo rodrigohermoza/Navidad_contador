@@ -1,6 +1,32 @@
-// 28 actividades navideñas: del 1 al 28 de diciembre (una por día).
-// Pendiente: el usuario enviará los textos reales. Por ahora son marcadores.
-window.ACTIVITIES = Array.from({ length: 28 }, (_, i) => `Actividad ${i + 1} (pendiente)`);
+// 25 actividades navideñas: una por día, del 1 al 25 de diciembre.
+// La posición en la lista = el día de diciembre (la primera es el 1, la última el 25).
+window.ACTIVITIES = [
+  "Decorar la casa full navidad",
+  "Ver Una Navidad de locos",
+  "Leer Los fantasmas de Scrooge",
+  "Decorar galletas de jengibre + la casita de jengibre",
+  "Hacer chocolatada navideña (full canela, nuez moscada, azúcar)",
+  "Ver Santa Cláusula 1",
+  "Organizar intercambio de regalos",
+  "Hacer cócteles navideños",
+  "Jugar bingo navideño",
+  "Ver Las crónicas de Navidad 1",
+  "Blastear playlist navideña",
+  "Organizar fiesta navideña",
+  "Ver Klaus",
+  "Hacer cartita a Santa",
+  "Ver Arthur Christmas",
+  "Preparar galletas y chocolatada para Santa, zanahorias para los renos",
+  "Jugar tutifrutti navideño",
+  "Intercambio de regalos",
+  "Jugar charadas navideñas",
+  "Día de sweater navideño",
+  "Fiesta navideña con amigos",
+  "Ver El Grinch",
+  "Compras navideñas de último minuto",
+  "Cena navideña familiar",
+  "Mañana navideña de películas y recalentado",
+];
 
 // Fecha "de hoy". Para probar otro día: ?fecha=2026-12-05 en la URL.
 window.getNow = function () {

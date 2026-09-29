@@ -1,6 +1,6 @@
 # 🎄 Navidad Contador
 
-Página web estática con un countdown navideño sobre fondo rojo con nieve y luces. Un Santa gordito estalla en confeti y te da la actividad navideña del día (1–28 de diciembre).
+Página web estática con un countdown navideño sobre fondo rojo con nieve y luces. Un Santa gordito estalla en confeti y te da la actividad navideña del día (1–25 de diciembre).
 
 ## Ver en local
 
@@ -22,7 +22,7 @@ js/reindeer.js      Renos volando de vez en cuando (Rudolph adelante)
 js/lights.js        Luces del borde superior y parte alta de los costados
 js/snow.js          Nieve animada en <canvas> (3 capas de profundidad)
 js/countdown.js     Cuenta atrás al 25 de diciembre (hora local)
-js/activities.js    28 actividades (1–28 de diciembre) + helpers de fecha
+js/activities.js    25 actividades (1–25 de diciembre) + helpers de fecha
 js/santa.js         Santa se infla, estalla en confeti y muestra la actividad del día
 docs/PROYECTO.md    Contexto completo: objetivo, decisiones, limitaciones, pendientes
 ```

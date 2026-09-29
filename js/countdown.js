@@ -2,7 +2,6 @@
 (function () {
   const els = {};
   document.querySelectorAll("[data-unit]").forEach((el) => (els[el.dataset.unit] = el));
-  const dateEl = document.getElementById("target-date");
   const merryEl = document.getElementById("merry");
   const pad = (n) => String(n).padStart(2, "0");
 
@@ -26,8 +25,6 @@
     els.hours.textContent = pad(Math.floor((s % 86400) / 3600));
     els.minutes.textContent = pad(Math.floor((s % 3600) / 60));
     els.seconds.textContent = pad(s % 60);
-
-    dateEl.textContent = t.toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   }
 
   render();

@@ -35,6 +35,9 @@ Hecho:
   (`js/decorations.js`): bolas colgantes que esquivan la tarjeta, colinas nevadas con pinos iluminados
   (estrella en la punta) y regalos a los costados (el centro queda libre para Santa), destellos dorados,
   copos grandes girando, y más luces en la guirnalda (4 por curva, bajan 50% por los costados).
+- [Rama `decoraciones`] Renos volando (`js/reindeer.js`, config `DECOR.reindeer` en `js/config.js`): cada
+  18–35 s cruza una fila de 4 renos unidos por riendas doradas; el de adelante es Rudolph (nariz roja
+  brillante). Vuelan detrás de la tarjeta y de Santa. No salen si la pestaña está oculta o con reduced-motion.
 - Actividades: **1 al 28 de diciembre**. Textos en `js/activities.js` (aún marcadores).
 - Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y Santa).
 - `<meta name="robots" content="noindex">`.
@@ -42,7 +45,6 @@ Hecho:
 Pendiente:
 1. Textos reales de las 28 actividades → `js/activities.js`.
 2. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
-3. Reno que cruza la pantalla de vez en cuando (por decidir cómo encaja con el fondo rojo).
 4. Hostear (Cloudflare Pages / Netlify). El usuario sube con GitHub Desktop.
 - Regla: no descargar nada sin que el usuario vea el link y lo apruebe.
 

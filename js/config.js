@@ -15,4 +15,12 @@ window.DECOR = {
   treeLights: true,       // lucecitas de colores en los pinos de abajo (requiere ground)
   stars: true,            // destellos dorados titilando en el fondo
   bigSnowflakes: true,    // copos de nieve grandes y suaves girando en el fondo
+
+  // Renos volando (el de adelante es Rudolph, con la nariz roja)
+  reindeer: {
+    enabled: true,
+    count: 4,             // cuántos renos en la fila
+    everySeconds: [18, 35], // cada cuánto pasan (mínimo, máximo)
+    firstAfter: 4,        // segundos hasta la primera pasada
+  },
 };

@@ -67,6 +67,18 @@ body {
 .ornament-ball { filter: drop-shadow(0 3px 5px rgba(40, 0, 8, 0.35)); }
 @keyframes sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
 
+/* ===== Renos (js/reindeer.js) ===== */
+.reindeer-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.deer-team { position: absolute; left: 0; will-change: transform; }
+.deer-team svg { position: absolute; top: 0; overflow: visible; }
+.reins path { stroke: #ffd27a; stroke-width: 1.5; fill: none; opacity: 0.8; }
+.deer { animation: gallop 0.7s ease-in-out infinite alternate; }
+.deer-legs { transform-box: fill-box; transform-origin: center; animation: legs 0.7s ease-in-out infinite alternate; }
+.rudolph-nose { fill: #ff2a2a; filter: drop-shadow(0 0 4px #ff2a2a) drop-shadow(0 0 10px #ff5a5a); animation: nose 1.2s ease-in-out infinite; }
+@keyframes gallop { from { transform: translateY(-3px); } to { transform: translateY(3px); } }
+@keyframes legs { from { transform: scaleX(0.9); } to { transform: scaleX(1.05); } }
+@keyframes nose { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
 /* ===== Contenido ===== */
 .content {
   position: relative;

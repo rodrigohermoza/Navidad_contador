@@ -71,6 +71,7 @@ body {
 .reindeer-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .deer-team { position: absolute; left: 0; will-change: transform; }
 .deer-team svg { position: absolute; top: 0; overflow: visible; }
+.deer--far { filter: brightness(0.8) saturate(0.9); }
 .reins path { stroke: #ffd27a; stroke-width: 1.5; fill: none; opacity: 0.8; }
 .deer { animation: gallop 0.7s ease-in-out infinite alternate; }
 .deer-legs { transform-box: fill-box; transform-origin: center; animation: legs 0.7s ease-in-out infinite alternate; }
@@ -83,7 +84,7 @@ body {
 .content {
   position: relative;
   z-index: 2;
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,8 +180,14 @@ body {
 .merry { margin-top: 12px; font-family: var(--font-display); font-size: 1.6rem; font-style: italic; }
 
 /* ===== Santa gordito ===== */
-.santa-stage { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+/* Santa ocupa el espacio libre bajo la tarjeta (hasta 300px de alto), así siempre cabe en pantalla */
+.santa-stage { position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-bottom: 12px; }
 .big-santa {
+  flex: 1 1 auto;
+  min-height: 120px;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
   background: none;
   border: 0;
   cursor: pointer;
@@ -190,7 +197,8 @@ body {
 .big-santa:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
 .big-santa-svg {
   display: block;
-  width: clamp(120px, 22vh, 190px);
+  height: 100%;
+  width: auto;
   overflow: visible;
   filter: drop-shadow(0 10px 24px rgba(40, 0, 8, 0.4));
   transform-origin: 50% 100%;
@@ -305,6 +313,13 @@ body {
 }
 .modal-close:hover { background: var(--green-deep); }
 .modal-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* Pantallas bajas (laptops pequeñas): menos espacio para que Santa y su etiqueta quepan */
+@media (max-height: 700px) {
+  .content { padding-top: 60px; gap: 10px; }
+  .card { padding-top: 18px; padding-bottom: 18px; }
+  .title { margin-bottom: 14px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .lights .bulb, .big-santa-svg, .big-santa .arm,

@@ -31,26 +31,50 @@
 
   function fly() {
     const W = window.innerWidth, H = window.innerHeight;
-    const n = cfg.count || 4;
-    const size = W < 600 ? 62 : 92;             // ancho de cada reno en px
-    const gap = size * 1.12;
-    const teamW = gap * (n - 1) + size;
+    const n = Math.max(1, cfg.count || 9);
+    const size = W < 600 ? 50 : 80;             // ancho de cada reno en px
+    const gap = size * 1.05;                    // distancia entre columnas
+    const lift = size * 0.34;                   // separación entre la fila de atrás y la de adelante
+    const deerH = size * (80 / 120);
+    const bodyY = deerH * 0.52;                 // altura del cuerpo dentro de cada reno
+
+    // Formación clásica: Rudolph solo adelante y el resto en parejas detrás de él
+    const pairs = Math.ceil((n - 1) / 2);
+    const cols = pairs + 1;
+    const teamW = gap * (cols - 1) + size;
+    const teamH = deerH + lift;
     const leftToRight = Math.random() < 0.6;
-    const y = H * (0.12 + Math.random() * 0.4);  // altura del vuelo
+    const y = H * (0.12 + Math.random() * 0.36); // altura del vuelo
 
     const team = document.createElement("div");
     team.className = "deer-team";
     team.style.top = `${y}px`;
     team.style.width = `${teamW}px`;
-    team.style.height = `${size * 0.67}px`;
+    team.style.height = `${teamH}px`;
 
-    // Riendas doradas que unen a los renos
-    let html = `<svg class="reins" viewBox="0 0 ${teamW} ${size * 0.67}" width="${teamW}" height="${size * 0.67}">` +
-      `<path d="M${size * 0.5} ${size * 0.33} L${teamW - size * 0.45} ${size * 0.33}" /></svg>`;
-    for (let i = 0; i < n; i++) {
-      const lead = i === n - 1; // el de más adelante
-      html += `<svg class="deer" viewBox="0 0 120 80" width="${size}" style="left:${i * gap}px;animation-delay:${-i * 0.18}s">${deer(lead)}</svg>`;
+    const far = [], near = [];                  // far = fila de atrás (más pequeña y oscura)
+    let left = n - 1;
+    for (let c = 0; c < pairs; c++) {
+      const x = c * gap;
+      near.push({ x: x + size * 0.1, top: lift, scale: 1 });
+      if (--left > 0) { far.push({ x, top: 0, scale: 0.86 }); left--; }
     }
+    const rud = { x: pairs * gap, top: lift / 2, scale: 1 };
+
+    const svgDeer = (d, cls, isRudolph, i) =>
+      `<svg class="deer ${cls}" viewBox="0 0 120 80" width="${size * d.scale}" ` +
+      `style="left:${d.x}px;top:${d.top}px;animation-delay:${-i * 0.15}s">${deer(isRudolph)}</svg>`;
+
+    // Riendas doradas: cada fila termina en Rudolph
+    const rudY = rud.top + bodyY, rudX = rud.x + size * 0.5;
+    const rein = (row, scale) => row.length
+      ? `<path d="M${row[0].x + size * 0.45 * scale} ${row[0].top + bodyY * scale} L${rudX} ${rudY}" />` : "";
+
+    let html = far.map((d, i) => svgDeer(d, "deer--far", false, i)).join("");
+    html += `<svg class="reins" viewBox="0 0 ${teamW} ${teamH}" width="${teamW}" height="${teamH}">` +
+      rein(far, 0.86) + rein(near, 1) + `</svg>`;
+    html += near.map((d, i) => svgDeer(d, "", false, i + 1)).join("");
+    html += svgDeer(rud, "deer--rudolph", true, 0);
     team.innerHTML = html;
     if (!leftToRight) team.style.transform = "scaleX(-1)"; // mirar hacia la izquierda
     layer.appendChild(team);

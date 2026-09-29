@@ -19,7 +19,7 @@ window.DECOR = {
   // Renos volando (el de adelante es Rudolph, con la nariz roja)
   reindeer: {
     enabled: true,
-    count: 4,             // cuántos renos en la fila
+    count: 9,             // cuántos renos (Rudolph adelante + el resto en parejas)
     everySeconds: [18, 35], // cada cuánto pasan (mínimo, máximo)
     firstAfter: 4,        // segundos hasta la primera pasada
   },

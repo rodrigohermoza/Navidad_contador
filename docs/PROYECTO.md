@@ -27,7 +27,8 @@ Hecho:
 - Nieve en canvas (`js/snow.js`) encima del fondo rojo.
 - Luces navideñas (`js/lights.js`): cruzan el borde superior y bajan ~38% de la altura por los costados.
   Colores dorado/verde/blanco/rosa (el rojo no se vería sobre el fondo). Se regeneran al redimensionar.
-- Santa gordito (`index.html` + `js/santa.js`): respira y saluda en reposo; al tocarlo se infla con un bamboleo,
+- Santa gordito (`index.html` + `js/santa.js`): su tamaño se adapta al espacio libre bajo la tarjeta
+  (máx. 300px de alto, mín. 120px) para que siempre quepa con su etiqueta. Respira y saluda en reposo; al tocarlo se infla con un bamboleo,
   hace "¡puf!" en confeti/estrellas/copos (animación alegre, no violenta) y aparece la tarjeta con la actividad
   del día. Al cerrar, Santa vuelve rebotando.
   Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 28/12 → mensaje de fin.
@@ -36,8 +37,8 @@ Hecho:
   (estrella en la punta) y regalos a los costados (el centro queda libre para Santa), destellos dorados,
   copos grandes girando, y más luces en la guirnalda (4 por curva, bajan 50% por los costados).
 - [Rama `decoraciones`] Renos volando (`js/reindeer.js`, config `DECOR.reindeer` en `js/config.js`): cada
-  18–35 s cruza una fila de 4 renos unidos por riendas doradas; el de adelante es Rudolph (nariz roja
-  brillante). Vuelan detrás de la tarjeta y de Santa. No salen si la pestaña está oculta o con reduced-motion.
+  18–35 s cruzan los 9 renos: Rudolph (nariz roja brillante) adelante y 8 detrás en parejas, unidos por
+  riendas doradas; la fila de atrás es más pequeña y oscura para dar profundidad. Vuelan detrás de la tarjeta y de Santa. No salen si la pestaña está oculta o con reduced-motion.
 - Actividades: **1 al 28 de diciembre**. Textos en `js/activities.js` (aún marcadores).
 - Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y Santa).
 - `<meta name="robots" content="noindex">`.

@@ -15,6 +15,7 @@ Página web de cuenta atrás para Navidad, para compartir con una persona median
 - Nunca pedir contraseñas en la terminal; si hace falta autenticarse, que sea vía Google/Chrome en el navegador.
 - Si se usan agentes: gastar pocos tokens y dar un resumen simple (qué hicieron, cuántos fueron).
 - Repo: https://github.com/rodrigohermoza/Navidad_contador.git
+- Textos en español latinoamericano natural (el usuario es de Perú): nada de "vale", "a por ello", "vosotros".
 - Commits solo bajo el nombre del usuario: sin "Co-Authored-By: Claude" ni menciones a Claude.
 
 ## Estado actual (2026-09-29)

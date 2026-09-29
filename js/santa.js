@@ -15,10 +15,10 @@
   function content() {
     const a = window.todayActivity();
     if (a.text) {
-      return { eyebrow: `Día ${a.day} de ${window.ACTIVITIES.length}`, title: "¡Jo, jo, jo!", text: a.text, cta: "¡A por ello!" };
+      return { eyebrow: `Día ${a.day} de ${window.ACTIVITIES.length}`, title: "¡Jo, jo, jo!", text: a.text, cta: "¡Vamos!" };
     }
     if (a.status === "before") {
-      return { eyebrow: "Todavía no", title: "¡Un poco de paciencia!", text: "Tu primera actividad llega el 1 de diciembre.", cta: "Vale" };
+      return { eyebrow: "Todavía no", title: "¡Un poquito de paciencia!", text: "Tu primera actividad llega el 1 de diciembre.", cta: "¡Entendido!" };
     }
     return { eyebrow: "Fin de las actividades", title: "¡Gracias por jugar!", text: "Las actividades de este año terminaron. ¡Nos vemos la próxima Navidad!", cta: "Cerrar" };
   }

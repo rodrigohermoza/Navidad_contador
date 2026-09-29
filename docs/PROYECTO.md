@@ -19,6 +19,7 @@ Página web de cuenta atrás para Navidad, para compartir con una persona median
 
 ## Estado actual (2026-09-29)
 Hecho:
+- Título: "Falta poco para Navidad" (sin mostrar la fecha, solo cuánto falta).
 - Contador (`js/countdown.js`). El 25/12 muestra "¡Feliz Navidad!"; desde el 26/12 cuenta al año siguiente.
 - Fondo: degradado rojo navideño en CSS (`body`). Se quitaron el video y el paisaje SVG por pedido del usuario
   (siguen en el historial de git: commits "Video de fondo..." y "Contador de Navidad con paisaje nevado").
@@ -58,6 +59,7 @@ redeployan solos con cada `git push`. Build command: vacío. Output directory: `
 - GitHub Pages también sirve, pero en plan gratis exige que el repo sea **público**.
 
 ## Probar en local
+Ojo: el navegador cachea los JS/CSS; si no ves un cambio, recarga con Cmd + Shift + R.
 `python3 -m http.server 5173` desde esta carpeta → http://localhost:5173 (Ctrl+C para pararlo).
 No dejar servidores corriendo en segundo plano: el usuario lo arranca solo cuando quiere.
 (`.claude/launch.json` es solo config local del preview, está en .gitignore.)

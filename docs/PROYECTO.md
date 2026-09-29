@@ -34,7 +34,7 @@ Hecho:
   Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 28/12 → mensaje de fin.
 - [Rama `decoraciones`, a prueba] Decoraciones extra con interruptores en `js/config.js`
   (`js/decorations.js`): bolas colgantes que esquivan la tarjeta, colinas nevadas con pinos iluminados
-  (estrella en la punta) y regalos a los costados (el centro queda libre para Santa), destellos dorados,
+  (estrella en la punta) a los costados; regalos desactivados (`gifts: false`) (el centro queda libre para Santa), destellos dorados,
   copos grandes girando, y más luces en la guirnalda (4 por curva, bajan 50% por los costados).
 - [Rama `decoraciones`] Renos volando (`js/reindeer.js`, config `DECOR.reindeer` en `js/config.js`): cada
   18–35 s cruzan los 9 renos: Rudolph (nariz roja brillante) adelante y 8 detrás en parejas, unidos por

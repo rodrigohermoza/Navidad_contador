@@ -95,6 +95,7 @@
     el("path", { fill: "#ffffff", d: `M0 ${top + gh * 0.6} C${W * 0.25} ${top + gh * 0.45} ${W * 0.45} ${top + gh * 0.62} ${W * 0.62} ${top + gh * 0.55} C${W * 0.8} ${top + gh * 0.48} ${W * 0.92} ${top + gh * 0.6} ${W} ${top + gh * 0.52} L${W} ${H} L0 ${H} Z` }, g);
 
     // Regalos sobre la nieve, cerca de los pinos
+    if (!cfg.gifts) return;
     const gifts = [["#1f6b45", "#ffd27a"], ["#ffd27a", "#c8102e"], ["#c8102e", "#ffffff"], ["#0f4a30", "#ffd27a"]];
     spots.forEach((x, i) => {
       if (i % 2) return;

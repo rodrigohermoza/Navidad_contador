@@ -13,6 +13,7 @@ window.DECOR = {
   ornaments: true,        // bolas navideñas colgando desde arriba
   ground: true,           // colinas nevadas abajo con pinos y regalos
   treeLights: true,       // lucecitas de colores en los pinos de abajo (requiere ground)
+  gifts: false,           // regalos sobre la nieve junto a los pinos (requiere ground)
   stars: true,            // destellos dorados titilando en el fondo
   bigSnowflakes: true,    // copos de nieve grandes y suaves girando en el fondo
 

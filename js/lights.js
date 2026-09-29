@@ -9,7 +9,10 @@
   function build() {
     const W = window.innerWidth, H = window.innerHeight;
     const small = W < 600;
-    const sideLen = Math.min(H * 0.38, 340); // cuánto baja por los costados
+    const cfg = (window.DECOR && window.DECOR.lights) || {};
+    const sideLen = Math.min(H * (cfg.sideLength ?? 0.38), 420); // cuánto baja por los costados
+    const per = cfg.bulbsPerSegment ?? 3;
+    const ts = Array.from({ length: per }, (_, i) => (i + 1) / (per + 1));
     const topSpan = small ? 90 : 130, sideSpan = small ? 80 : 110;
     const topSag = 24, sideSag = small ? 8 : 18;
 
@@ -38,7 +41,7 @@
       const c = [(p0[0] + p1[0]) / 2 + nx * sag * 2, (p0[1] + p1[1]) / 2 + ny * sag * 2];
       d += ` Q${c[0]} ${c[1]} ${p1[0]} ${p1[1]}`;
       const base = (Math.atan2(ny, nx) * 180) / Math.PI - 90; // la bombilla apunta hacia dentro
-      [0.25, 0.5, 0.75].forEach((t) => {
+      ts.forEach((t) => {
         const x = (1 - t) ** 2 * p0[0] + 2 * (1 - t) * t * c[0] + t ** 2 * p1[0];
         const y = (1 - t) ** 2 * p0[1] + 2 * (1 - t) * t * c[1] + t ** 2 * p1[1];
         bulbs.push({ x, y, rot: base + (t - 0.5) * -40 });

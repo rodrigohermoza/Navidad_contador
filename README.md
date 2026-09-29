@@ -16,6 +16,8 @@ Para probar otro día: http://localhost:5173/?fecha=2026-12-05
 ```
 index.html          Estructura + Santa gordito (SVG) + tarjeta de actividad
 css/styles.css      Estilos (fondo rojo, luces, animaciones de Santa y confeti)
+js/config.js        Interruptores de decoraciones (true/false) — editar aquí
+js/decorations.js   Bolas colgantes, colinas con pinos y regalos, destellos, copos grandes
 js/lights.js        Luces del borde superior y parte alta de los costados
 js/snow.js          Nieve animada en <canvas> (3 capas de profundidad)
 js/countdown.js     Cuenta atrás al 25 de diciembre (hora local)

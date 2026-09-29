@@ -30,6 +30,10 @@ Hecho:
   hace "¡puf!" en confeti/estrellas/copos (animación alegre, no violenta) y aparece la tarjeta con la actividad
   del día. Al cerrar, Santa vuelve rebotando.
   Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 28/12 → mensaje de fin.
+- [Rama `decoraciones`, a prueba] Decoraciones extra con interruptores en `js/config.js`
+  (`js/decorations.js`): bolas colgantes que esquivan la tarjeta, colinas nevadas con pinos iluminados
+  (estrella en la punta) y regalos a los costados (el centro queda libre para Santa), destellos dorados,
+  copos grandes girando, y más luces en la guirnalda (4 por curva, bajan 50% por los costados).
 - Actividades: **1 al 28 de diciembre**. Textos en `js/activities.js` (aún marcadores).
 - Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y Santa).
 - `<meta name="robots" content="noindex">`.

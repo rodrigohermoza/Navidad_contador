@@ -13,8 +13,14 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- Decoraciones del fondo: copos, destellos, colinas con pinos (js/decorations.js, config en js/config.js) -->
+  <div class="decor decor--back" id="decor-back" aria-hidden="true"></div>
+
   <!-- Luces navideñas: borde superior y parte alta de los costados (js/lights.js) -->
   <div class="lights" id="lights" aria-hidden="true"></div>
+
+  <!-- Bolas navideñas colgantes -->
+  <div class="decor decor--front" id="decor-front" aria-hidden="true"></div>
 
   <!-- Nieve animada -->
   <canvas id="snow" aria-hidden="true"></canvas>
@@ -120,10 +126,12 @@
     </div>
   </div>
 
+  <script src="js/config.js"></script>
   <script src="js/activities.js"></script>
   <script src="js/snow.js"></script>
   <script src="js/countdown.js"></script>
   <script src="js/santa.js"></script>
   <script src="js/lights.js"></script>
+  <script src="js/decorations.js"></script>
 </body>
 </html>

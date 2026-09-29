@@ -17,34 +17,32 @@ Página web de cuenta atrás para Navidad, para compartir con una persona median
 - Repo: https://github.com/rodrigohermoza/Navidad_contador.git
 - Commits solo bajo el nombre del usuario: sin "Co-Authored-By: Claude" ni menciones a Claude.
 
-## Estado actual (2026-09-26)
+## Estado actual (2026-09-29)
 Hecho:
 - Contador (`js/countdown.js`). El 25/12 muestra "¡Feliz Navidad!"; desde el 26/12 cuenta al año siguiente.
-- Paisaje SVG en capas (`index.html`) + estrellas/pinos generados con semilla (`js/landscape.js`).
-  En móvil vertical cambia el `viewBox` para encuadrar cabaña y luna.
-- Nieve en canvas (`js/snow.js`): 3 capas, viento, pausa con pestaña oculta, respeta reduced-motion.
-- Fondo en video: `assets/fondo.mp4` = Mixkit #35040 "Snowing in a foggy forest, slow motion" (720p, 9.2 MB,
-  30 s en bucle, licencia gratuita Mixkit). Aprobado por el usuario. Si el video falla, se muestra el paisaje SVG.
-  La nieve del canvas sigue encima del video.
-- Caja de regalo (`js/gift.js`): al hacer clic la tapa sale volando y aparece Santa (SVG) con la actividad del día.
-  Antes del 1/12 → "Tu primer regalo se abre el 1 de diciembre". Después del 28/12 → mensaje de fin.
-- Luces navideñas colgando del borde superior (`js/lights.js`): SVG generado según el ancho de pantalla,
-  bombillas roja/verde/dorada/blanca que titilan en 3 grupos. Se regenera al redimensionar.
-- Actividades: **1 al 28 de diciembre** (confirmado). Textos en `js/activities.js` (aún marcadores).
-- Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y regalo).
+- Fondo: degradado rojo navideño en CSS (`body`). Se quitaron el video y el paisaje SVG por pedido del usuario
+  (siguen en el historial de git: commits "Video de fondo..." y "Contador de Navidad con paisaje nevado").
+- Nieve en canvas (`js/snow.js`) encima del fondo rojo.
+- Luces navideñas (`js/lights.js`): cruzan el borde superior y bajan ~38% de la altura por los costados.
+  Colores dorado/verde/blanco/rosa (el rojo no se vería sobre el fondo). Se regeneran al redimensionar.
+- Santa gordito (`index.html` + `js/santa.js`): respira y saluda en reposo; al tocarlo se infla con un bamboleo,
+  hace "¡puf!" en confeti/estrellas/copos (animación alegre, no violenta) y aparece la tarjeta con la actividad
+  del día. Al cerrar, Santa vuelve rebotando.
+  Antes del 1/12 → "Tu primera actividad llega el 1 de diciembre". Después del 28/12 → mensaje de fin.
+- Actividades: **1 al 28 de diciembre**. Textos en `js/activities.js` (aún marcadores).
+- Probar otro día: `?fecha=2026-12-05` en la URL (afecta contador y Santa).
 - `<meta name="robots" content="noindex">`.
 
 Pendiente:
 1. Textos reales de las 28 actividades → `js/activities.js`.
-2. (Regla) No descargar nada sin que el usuario vea el link y lo apruebe.
-3. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
-4. Reno que cruza el paisaje de vez en cuando.
-5. Subir a GitHub (el usuario usa GitHub Desktop) y hostear (Cloudflare Pages / Netlify).
+2. Limpiar la UI: quitar textos sobrantes (el usuario lo pedirá cuando esté todo implementado).
+3. Reno que cruza la pantalla de vez en cuando (por decidir cómo encaja con el fondo rojo).
+4. Hostear (Cloudflare Pages / Netlify). El usuario sube con GitHub Desktop.
+- Regla: no descargar nada sin que el usuario vea el link y lo apruebe.
 
 ## Decisiones técnicas
 - HTML/CSS/JS puro, sin frameworks ni build → se puede hostear en cualquier hosting estático.
-- Paisaje en SVG vectorial en vez de video: pesa poco, nítido en cualquier pantalla, sin depender de
-  licencias de videos externos. Los pinos usan un `<symbol id="pine">` reutilizable con `color` variable.
+- Todo es vectorial/CSS (Santa, luces, confeti): pesa poco y se ve nítido en cualquier pantalla.
 - Fuentes: Google Fonts (Fraunces para títulos, Inter para texto).
 - La hora es la local del dispositivo que abre la página.
 

@@ -5,11 +5,11 @@
   --green-deep: #15503a;
   --white: #ffffff;
   --snow: #f4f8fd;
-  --ink: #0b1733;
+  --ink: #2a0610;
   --gold: #ffd27a;
 
-  --card-bg: rgba(10, 22, 48, 0.42);
-  --card-border: rgba(255, 255, 255, 0.22);
+  --card-bg: rgba(60, 4, 16, 0.32);
+  --card-border: rgba(255, 255, 255, 0.28);
   --unit-bg: rgba(255, 255, 255, 0.1);
 
   --font-display: "Fraunces", Georgia, serif;
@@ -20,52 +20,26 @@
 
 html, body { height: 100%; }
 
+/* Fondo rojo navideño: degradado con un leve brillo central y bordes más oscuros */
 body {
-  background: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(255, 90, 100, 0.35), transparent 60%),
+    radial-gradient(ellipse at 50% 120%, rgba(20, 0, 5, 0.55), transparent 60%),
+    linear-gradient(180deg, #a3101f 0%, #8a0c1b 55%, #5e0914 100%);
+  background-attachment: fixed;
   color: var(--white);
   font-family: var(--font-body);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== Paisaje ===== */
-.scene, #snow {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.scene { z-index: 0; }
-.landscape { width: 100%; height: 100%; display: block; }
-
-/* Video de fondo (opcional, assets/fondo.mp4) */
-.bg-video, .scene-shade { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
-.bg-video { object-fit: cover; }
-.scene-shade { background: linear-gradient(180deg, rgba(7, 17, 42, 0.55), rgba(7, 17, 42, 0.1) 55%, rgba(7, 17, 42, 0.35)); }
-.has-video .bg-video, .has-video .scene-shade { display: block; }
-.has-video .landscape { display: none; }
-#snow { z-index: 1; pointer-events: none; }
-
-.star { animation: twinkle var(--tw, 4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
-@keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
-
-.window, .cabin-glow { animation: flicker 5s ease-in-out infinite; }
-@keyframes flicker { 0%, 100% { opacity: 1; } 45% { opacity: 0.85; } 55% { opacity: 0.95; } }
-
-.smoke circle { animation: smoke 6s ease-out infinite; transform-box: fill-box; transform-origin: center; opacity: 0; }
-.smoke circle:nth-child(2) { animation-delay: 2s; }
-.smoke circle:nth-child(3) { animation-delay: 4s; }
-@keyframes smoke {
-  0% { opacity: 0; transform: translate(0, 20px) scale(0.5); }
-  30% { opacity: 0.55; }
-  100% { opacity: 0; transform: translate(14px, -30px) scale(1.4); }
-}
+#snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 
 /* ===== Luces navideñas ===== */
-.lights { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 3; pointer-events: none; }
+.lights { position: fixed; inset: 0; z-index: 3; pointer-events: none; }
 .lights svg { display: block; overflow: visible; }
-.lights .wire { fill: none; stroke: #1d2a24; stroke-width: 2; }
-.lights .cap { fill: #3a4a40; }
+.lights .wire { fill: none; stroke: #0f3b27; stroke-width: 2.2; }
+.lights .cap { fill: #1f4a35; }
 .lights .glass { fill: currentColor; filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor); }
 .lights .bulb { animation: glow 2.4s ease-in-out infinite; }
 .lights .b1 { animation-delay: -0.8s; }
@@ -80,31 +54,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(20px, 5vh, 48px);
-  padding: clamp(72px, 12vh, 120px) 16px 16px;
+  gap: clamp(16px, 4vh, 40px);
+  padding: clamp(72px, 12vh, 120px) clamp(36px, 5vw, 56px) 16px;
 }
 
 .card {
   width: min(640px, 100%);
   text-align: center;
-  padding: clamp(24px, 4vw, 40px) clamp(18px, 4vw, 44px);
+  padding: clamp(22px, 4vw, 40px) clamp(14px, 4vw, 44px);
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 24px;
   backdrop-filter: blur(10px) saturate(120%);
   -webkit-backdrop-filter: blur(10px) saturate(120%);
-  box-shadow: 0 24px 60px rgba(3, 10, 28, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 60px rgba(40, 0, 8, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.18);
   position: relative;
   overflow: hidden;
 }
 
-/* Cinta de regalo rojo/blanco/verde arriba de la tarjeta */
+/* Cinta blanca/verde arriba de la tarjeta */
 .card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 5px;
-  background: repeating-linear-gradient(135deg, var(--red) 0 14px, var(--white) 14px 22px, var(--green) 22px 36px, var(--white) 36px 44px);
+  background: repeating-linear-gradient(135deg, var(--white) 0 12px, var(--green) 12px 24px);
 }
 
 .eyebrow {
@@ -115,118 +89,147 @@ body {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-.dot--red { background: var(--red); box-shadow: 0 0 8px var(--red); }
-.dot--green { background: #2fa36b; box-shadow: 0 0 8px #2fa36b; }
+.dot--white { background: var(--white); box-shadow: 0 0 8px var(--white); }
+.dot--green { background: #3fd47f; box-shadow: 0 0 8px #3fd47f; }
 
 .title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-size: clamp(1.9rem, 6vw, 3.4rem);
   line-height: 1.05;
-  margin: 10px 0 clamp(20px, 3vw, 30px);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  margin: 10px 0 clamp(18px, 3vw, 30px);
+  text-shadow: 0 2px 18px rgba(40, 0, 8, 0.35);
 }
-.title em {
-  font-style: italic;
-  font-weight: 500;
-  color: #ff5a6e;
-}
+.title em { font-style: italic; font-weight: 500; color: var(--gold); }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(8px, 2vw, 16px);
+  gap: clamp(6px, 2vw, 16px);
 }
 
 .unit {
   background: var(--unit-bg);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
-  padding: clamp(12px, 2.4vw, 20px) 4px clamp(10px, 2vw, 14px);
+  padding: clamp(12px, 2.4vw, 20px) 2px clamp(10px, 2vw, 14px);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 .unit:first-child {
-  background: linear-gradient(180deg, rgba(200, 16, 46, 0.55), rgba(142, 27, 36, 0.55));
-  border-color: rgba(255, 120, 130, 0.4);
+  background: linear-gradient(180deg, rgba(31, 107, 69, 0.9), rgba(21, 80, 58, 0.9));
+  border-color: rgba(120, 230, 170, 0.35);
 }
 
 .num {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.9rem, 7vw, 3.3rem);
+  font-size: clamp(1.7rem, 7vw, 3.3rem);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
 .label {
-  font-size: clamp(0.62rem, 1.6vw, 0.78rem);
+  font-size: clamp(0.58rem, 1.6vw, 0.78rem);
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.date {
-  margin-top: clamp(18px, 3vw, 24px);
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.78);
-}
+.date { margin-top: clamp(16px, 3vw, 24px); font-size: 0.95rem; color: rgba(255, 255, 255, 0.82); }
+.merry { margin-top: 12px; font-family: var(--font-display); font-size: 1.6rem; font-style: italic; }
 
-.merry {
-  margin-top: 12px;
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-style: italic;
-}
-
-/* ===== Caja de regalo ===== */
-.gift {
+/* ===== Santa gordito ===== */
+.santa-stage { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.big-santa {
   background: none;
   border: 0;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: var(--white);
-  font: inherit;
   -webkit-tap-highlight-color: transparent;
+  border-radius: 24px;
 }
-.gift:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; border-radius: 16px; }
-.gift-svg {
-  width: clamp(96px, 16vh, 140px);
-  filter: drop-shadow(0 0 22px rgba(255, 210, 122, 0.45));
-  animation: bob 3s ease-in-out infinite;
+.big-santa:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+.big-santa-svg {
+  display: block;
+  width: clamp(120px, 22vh, 190px);
   overflow: visible;
+  filter: drop-shadow(0 10px 24px rgba(40, 0, 8, 0.4));
+  transform-origin: 50% 100%;
+  animation: breathe 2.8s ease-in-out infinite;
 }
-.gift:hover .gift-svg { animation: wiggle 0.6s ease-in-out infinite; }
-.gift-lid { transform-box: fill-box; transform-origin: center bottom; transition: transform 0.55s cubic-bezier(.3,1.6,.5,1), opacity 0.55s; }
-.gift.is-opening .gift-lid { transform: translate(0, -46px) rotate(-18deg); opacity: 0; }
-.gift-hint {
+.big-santa .arm { transform-box: fill-box; }
+.big-santa .arm--left { transform-origin: 90% 10%; animation: wave-l 2.8s ease-in-out infinite; }
+.big-santa .arm--right { transform-origin: 10% 10%; animation: wave-r 2.8s ease-in-out infinite; }
+.big-santa:hover .big-santa-svg { animation: jiggle 0.5s ease-in-out infinite; }
+
+/* Se infla con un bamboleo... */
+.big-santa.is-inflating .big-santa-svg { animation: inflate 0.75s cubic-bezier(.4,0,.6,1) forwards; }
+/* ...¡puf! desaparece... */
+.big-santa.is-popped .big-santa-svg { animation: none; transform: scale(1.5); opacity: 0; transition: transform 0.18s ease-out, opacity 0.18s ease-out; }
+/* ...y vuelve rebotando cuando se cierra la tarjeta */
+.big-santa.is-back .big-santa-svg { animation: come-back 0.7s cubic-bezier(.3,1.6,.5,1); }
+
+@keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.03, 0.97); } }
+@keyframes wave-l { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(8deg); } }
+@keyframes wave-r { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-8deg); } }
+@keyframes jiggle { 0%, 100% { transform: scale(1, 1); } 30% { transform: scale(1.07, 0.93); } 60% { transform: scale(0.96, 1.04); } }
+@keyframes inflate {
+  0%   { transform: scale(1, 1); }
+  20%  { transform: scale(1.1, 0.92); }
+  40%  { transform: scale(1.05, 1.12) rotate(-4deg); }
+  60%  { transform: scale(1.22, 1.1) rotate(4deg); }
+  80%  { transform: scale(1.18, 1.26) rotate(-3deg); }
+  100% { transform: scale(1.34, 1.34); }
+}
+@keyframes come-back { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+.santa-hint {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 999px;
-  background: rgba(10, 22, 48, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(40, 0, 8, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
-@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
 
-/* ===== Modal de Santa ===== */
+/* Confeti de la explosión alegre */
+.confetti { position: absolute; left: 50%; top: 45%; width: 0; height: 0; pointer-events: none; z-index: 5; }
+.confetti span {
+  position: absolute;
+  left: 0; top: 0;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  animation: fly 1.2s cubic-bezier(.2,.7,.3,1) forwards;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+@keyframes fly {
+  0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 60px)) rotate(var(--rot)) scale(1); opacity: 0; }
+}
+.confetti .ring {
+  position: absolute;
+  left: -60px; top: -60px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 230, 170, 0.9);
+  animation: ring 0.6s ease-out forwards;
+}
+@keyframes ring { 0% { transform: scale(0.3); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+
+/* ===== Tarjeta de la actividad ===== */
 .modal { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px; }
 .modal[hidden] { display: none; }
-.modal-backdrop { position: absolute; inset: 0; background: rgba(5, 12, 30, 0.6); opacity: 0; transition: opacity 0.3s; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(40, 0, 8, 0.55); opacity: 0; transition: opacity 0.3s; }
 .modal-panel {
   position: relative;
   width: min(420px, 100%);
@@ -272,5 +275,5 @@ body {
 .modal-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .star, .window, .cabin-glow, .smoke circle, .gift-svg, .lights .bulb { animation: none; }
+  .lights .bulb, .big-santa-svg, .big-santa .arm { animation: none !important; }
 }

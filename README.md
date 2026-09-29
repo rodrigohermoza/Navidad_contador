@@ -5,7 +5,7 @@ Página web estática con un countdown navideño sobre fondo rojo con nieve y lu
 ## Ver en local
 
 ```bash
-cd /Users/rodrigohermoza/Desktop/Proyectos/Fran_automatizacion/Navidad_clock && python3 -m http.server 5173
+cd /Users/rodrigohermoza/Desktop/Proyectos/Fran_automatizacion/Navidad_clock && python3 servir.py
 ```
 
 Entra a http://localhost:5173 y para el servidor con `Ctrl + C`.

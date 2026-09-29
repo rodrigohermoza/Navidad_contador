@@ -67,6 +67,7 @@ redeployan solos con cada `git push`. Build command: vacío. Output directory: `
 
 ## Probar en local
 Ojo: el navegador cachea los JS/CSS; si no ves un cambio, recarga con Cmd + Shift + R.
-`python3 -m http.server 5173` desde esta carpeta → http://localhost:5173 (Ctrl+C para pararlo).
+`python3 servir.py` desde esta carpeta → http://localhost:5173 (Ctrl+C para pararlo). Envía `Cache-Control: no-store`
+para que el navegador no muestre versiones viejas.
 No dejar servidores corriendo en segundo plano: el usuario lo arranca solo cuando quiere.
 (`.claude/launch.json` es solo config local del preview, está en .gitignore.)

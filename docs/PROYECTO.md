@@ -22,7 +22,7 @@ Página web estática para compartir con una persona mediante un único link (si
 - Las decoraciones deben ser fáciles de prender/apagar (`js/config.js`).
 
 ## Estado actual (2026-11-07)
-- Todo está en `main` y subido (la rama `santas-nuevos` ya se fusionó).
+- Todo está en `main`. El último commit (agricultor) puede estar sin subir: revisar con `git status`.
 - Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
   cada push a `main` publica automáticamente. Subir: `git push` desde la terminal (la cuenta de GitHub
   `rodrigohermoza` está conectada con `gh`; si pidiera contraseña, correr `gh auth setup-git`). También sirve

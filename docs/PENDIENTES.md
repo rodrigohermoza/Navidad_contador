@@ -2,6 +2,7 @@
 
 ## Hecho recientemente
 - 22 Santas con animación propia, selector de 4 columnas (ver BITACORA 2026-11-07).
+- Campesino reemplazado por Agricultor (menos estereotípico).
 
 ## Ideas
 - Opcional: que el Santa cambie solo según el día o la actividad (hoy se elige a mano).

@@ -23,7 +23,7 @@ Página web estática para compartir con una persona mediante un único link (si
 
 ## Estado actual (2026-11-06)
 - Todo lo de la rama `decoraciones` ya está fusionado en `main` y subido a GitHub.
-- Desplegado en **Vercel** (proyecto en minúsculas, p. ej. `navidad-contador`), conectado al repo:
+- Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
   cada push a `main` publica automáticamente. El usuario hace commit/push con **GitHub Desktop**.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
 - 9 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,

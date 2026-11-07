@@ -48,3 +48,4 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
   actual → panel 3×3 "Elige tu Santa"). La elección se guarda en `localStorage` (`navidad-santa`) de cada
   navegador; por defecto "clasico". La tarjeta muestra la cabeza del Santa elegido (recortada y con los
   hombros desvanecidos). Probado en computadora y celular.
+- Link oficial confirmado: https://navidad-contador.vercel.app (los links con letras raras son de cada despliegue y piden login).

@@ -26,8 +26,9 @@ Página web estática para compartir con una persona mediante un único link (si
 - Desplegado en **Vercel** (proyecto en minúsculas, p. ej. `navidad-contador`), conectado al repo:
   cada push a `main` publica automáticamente. El usuario hace commit/push con **GitHub Desktop**.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
-- Santa gordito clásico (SVG en `index.html`). **En curso:** Santas temáticos (`js/santas.js`, galería en
-  `preview/santas.html`); el nuevo diseño base ya fue aprobado, falta integrarlo en la página real.
+- 9 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
+  en pijama y chef. Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
+  Galería de todos en `preview/santas.html`.
 - 25 actividades reales cargadas (`js/activities.js`).
 - Probar otro día: `?fecha=2026-12-05` en la URL.
 

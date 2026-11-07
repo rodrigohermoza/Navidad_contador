@@ -44,3 +44,7 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
   clothes) y 9 temas en la galería: futbolero (camiseta de Perú, chimpunes, pelota), DJ (traje verde,
   audífonos con luces, consola), mago (sombrero morado, capa, varita), pijama (cuadros, gorro de dormir,
   pantuflas de reno, vela, almohada, Zzz), chef (gorro con acebo, mandil rojo, cuchara, panetón).
+- Los 9 Santas pasan a la página real. **Selector arriba a la derecha** (botón redondo con la cara del Santa
+  actual → panel 3×3 "Elige tu Santa"). La elección se guarda en `localStorage` (`navidad-santa`) de cada
+  navegador; por defecto "clasico". La tarjeta muestra la cabeza del Santa elegido (recortada y con los
+  hombros desvanecidos). Probado en computadora y celular.

@@ -1,5 +1,7 @@
 // Santas temáticos: una base común (cara, barba, cuerpo) + piezas que cambian por tema.
-// window.santaSVG(id) devuelve el SVG como texto; window.SANTA_THEMES lista los temas.
+// window.santaSVG(id, opciones) devuelve el SVG como texto; window.SANTA_THEMES lista los temas.
+// Opciones: { prefix } ids únicos si el mismo Santa aparece dos veces; { cls } clase extra del <svg>;
+// { head: true } solo cabeza y hombros (para la tarjeta y el selector).
 // Para crear un Santa nuevo: añadir una entrada en THEMES (abajo) combinando las piezas,
 // o crear una pieza nueva en el grupo que corresponda (HATS, EYES, RAISED, REST_PROPS, PROPS, BACKS, FEET).
 (function () {
@@ -280,9 +282,11 @@
       feet: "boots", hat: "toque", eyes: "open", raised: "spoon", rest: "skin", restProp: "panettone" },
   };
 
-  function santaSVG(id) {
-    const t = THEMES[id] || THEMES.clasico;
-    const p = `s-${id}`; // prefijo para que los ids no choquen si hay varios Santas en la página
+  function santaSVG(id, opts = {}) {
+    if (!THEMES[id]) id = "clasico";
+    const t = THEMES[id];
+    const p = `${opts.prefix || "s"}-${id}`; // prefijo para que los ids no choquen si hay varios Santas en la página
+    const head = !!opts.head;
     const hat = t.hatColors || t.coat;
     const sleeve = `url(#${p}-coat)`;
     const arm = (d, which) => t.sleeve === "short"
@@ -319,22 +323,23 @@
     const buckle = t.belt ? `<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
       <rect x="106" y="196" width="10" height="3" rx="1.5" fill="#fff3c4" opacity="0.8" />` : "";
 
-    return `<svg class="santa-svg santa--${id}" viewBox="0 0 240 285" role="img" aria-label="Santa ${t.name}">
+    const viewBox = head ? "50 -12 190 204" : "0 0 240 285";
+    return `<svg class="santa-svg santa--${id} ${opts.cls || ""}" viewBox="${viewBox}" role="img" aria-label="Santa ${t.name}">
       ${defs}
-      <ellipse cx="120" cy="278" rx="84" ry="7" fill="rgba(40,0,8,0.28)" />
+      ${head ? "" : `<ellipse cx="120" cy="278" rx="84" ry="7" fill="rgba(40,0,8,0.28)" />
       ${t.back ? BACKS[t.back]() : ""}
       ${FEET[t.feet](t)}
-      <g class="arm arm--left">${arm("M62 168 C40 150 32 122 40 98", "left")}${RAISED[t.raised](p, t)}</g>
+      <g class="arm arm--left">${arm("M62 168 C40 150 32 122 40 98", "left")}${RAISED[t.raised](p, t)}</g>`}
       <g class="belly">
         <ellipse cx="120" cy="198" rx="80" ry="70" fill="url(#${p}-coat)" />
         <g clip-path="url(#${p}-body)">${clothes(p, t)}</g>
         <ellipse cx="90" cy="168" rx="26" ry="15" fill="#fff" opacity="0.13" transform="rotate(-20 90 168)" />
         ${buckle}
       </g>
-      ${t.prop ? PROPS[t.prop]() : ""}
+      ${head ? "" : `${t.prop ? PROPS[t.prop]() : ""}
       <g class="arm arm--right">${arm("M186 160 C204 184 196 208 168 216", "right")}
         ${t.cuffs ? `<ellipse cx="172" cy="214" rx="9" ry="15" fill="url(#${p}-fur)" transform="rotate(-70 172 214)" />` : ""}
-        ${restProp && restProp.under ? restProp.svg() : ""}${REST_HANDS[t.rest](p, t)}${restProp && !restProp.under ? restProp.svg() : ""}</g>
+        ${restProp && restProp.under ? restProp.svg() : ""}${REST_HANDS[t.rest](p, t)}${restProp && !restProp.under ? restProp.svg() : ""}</g>`}
       <g class="head">
         <g fill="#ffffff"><circle cx="80" cy="110" r="14" /><circle cx="75" cy="126" r="13" /><circle cx="81" cy="140" r="12" />
           <circle cx="160" cy="110" r="14" /><circle cx="165" cy="126" r="13" /><circle cx="159" cy="140" r="12" /></g>

@@ -6,23 +6,23 @@ HTML/CSS/JS puro, sin frameworks ni build. Todo vectorial (SVG/CSS) salvo fuente
 ## Archivos
 | Archivo | Qué hace |
 |---|---|
-| `index.html` | Estructura, Santa gordito (SVG inline), tarjeta/modal de actividad con Santa-cabeza (SVG inline) |
+| `index.html` | Estructura, contenedores vacíos para el Santa (`#big-santa`, `#modal-santa`), selector `#santa-picker`, tarjeta/modal |
 | `css/styles.css` | Todo el estilo: fondo rojo, tarjeta de vidrio, luces, decoraciones, Santa, confeti, modal |
 | `js/config.js` | **Interruptores** `window.DECOR` (true/false) de decoraciones, luces y renos |
 | `js/activities.js` | Lista `ACTIVITIES` (posición = día de diciembre), `getNow()` (soporta `?fecha=`), `todayActivity()` |
 | `js/countdown.js` | Contador al 25/12 00:00 hora local; el 25/12 muestra "¡Feliz Navidad!" |
-| `js/santa.js` | Click en Santa → se infla (0.75s) → "¡puf!" + 46 piezas de confeti + aro → modal (1.15s) → al cerrar vuelve rebotando |
+| `js/santa.js` | Dibuja el Santa elegido (`render(id)`: grande, cabeza en la tarjeta y cara del botón) y maneja el selector (panel 3×3, guarda en `localStorage` `navidad-santa`, cierra con clic afuera o Esc). Click en Santa → se infla (0.75s) → "¡puf!" + 46 piezas de confeti + aro → modal (1.15s) → al cerrar vuelve rebotando |
 | `js/lights.js` | Guirnalda SVG: borde superior + costados (`sideLength`), bombillas que titilan en 3 grupos |
 | `js/decorations.js` | Bolas colgantes (esquivan la tarjeta), colinas con pinos iluminados, destellos, copos grandes, regalos (apagados) |
 | `js/reindeer.js` | Cada 18–35 s cruzan 9 renos: Rudolph (nariz roja) adelante + 8 en parejas |
-| `js/santas.js` | Santas temáticos: `window.santaSVG(id)` y `window.SANTA_THEMES`. Base común + piezas por grupo (HATS, HEAD_EXTRAS, EYES, RAISED, REST_HANDS, REST_PROPS, PROPS, BACKS, FEET, `clothes()`); cada tema en `THEMES` combina piezas. Animables por CSS: `.arm--left` (girar con `transform-box: view-box; transform-origin: 62px 168px`), `.steam`, `.led`, `.neon`, `.flame`, `.glow`, `.sparkles`, `.zzz`. Aún solo lo usa `preview/santas.html` |
+| `js/santas.js` | Santas temáticos: `window.santaSVG(id)` y `window.SANTA_THEMES`. Base común + piezas por grupo (HATS, HEAD_EXTRAS, EYES, RAISED, REST_HANDS, REST_PROPS, PROPS, BACKS, FEET, `clothes()`); cada tema en `THEMES` combina piezas. Animables por CSS: `.arm--left` (girar con `transform-box: view-box; transform-origin: 62px 168px`), `.steam`, `.led`, `.neon`, `.flame`, `.glow`, `.sparkles`, `.zzz`. Opciones: `{prefix}` (ids únicos), `{cls}`, `{head:true}` (solo cabeza: viewBox `50 -12 190 204`, sin brazos/accesorios). Lo usan `js/santa.js` y `preview/santas.html` |
 | `js/snow.js` | Nieve en `<canvas>`, 3 capas de profundidad |
 | `servir.py` | Servidor local sin caché: `python3 servir.py` → http://localhost:5173 |
 | `preview/` | Páginas de vista previa para que el usuario apruebe diseños antes de aplicarlos |
 
 ## Capas (z-index)
 0 `#decor-back` (copos, destellos, colinas, pinos) y `#reindeer` · 1 `#snow` · 2 `.content` (tarjeta + Santa)
-· 3 `#lights` y `#decor-front` (bolas colgantes) · 10 `#modal`.
+· 3 `#lights` y `#decor-front` (bolas colgantes) · 6 `#santa-picker` · 10 `#modal`.
 
 ## Detalles importantes
 - Santa ocupa el espacio libre bajo la tarjeta (`.santa-stage` flex:1; `.big-santa` 120–300px de alto).

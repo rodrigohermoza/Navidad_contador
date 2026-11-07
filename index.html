@@ -25,6 +25,17 @@
   <!-- Bolas navideñas colgantes -->
   <div class="decor decor--front" id="decor-front" aria-hidden="true"></div>
 
+  <!-- Selector de Santa (arriba a la derecha) -->
+  <div class="santa-picker" id="santa-picker">
+    <button class="picker-btn" id="picker-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="picker-panel" aria-label="Elegir Santa">
+      <span class="picker-face" id="picker-face"></span>
+    </button>
+    <div class="picker-panel" id="picker-panel" hidden>
+      <p class="picker-title">Elige tu Santa</p>
+      <div class="picker-grid" id="picker-grid"></div>
+    </div>
+  </div>
+
   <!-- Nieve animada -->
   <canvas id="snow" aria-hidden="true"></canvas>
 
@@ -44,61 +55,10 @@
       <p class="merry" id="merry" hidden>🎄 ¡Feliz Navidad! 🎄</p>
     </section>
 
-    <!-- Santa gordito: al tocarlo se infla y estalla en confeti (js/santa.js) -->
+    <!-- Santa gordito: al tocarlo se infla y estalla en confeti (js/santa.js); el tema se elige arriba a la derecha -->
     <div class="santa-stage">
       <button class="big-santa" id="big-santa" type="button" aria-haspopup="dialog" aria-label="Tocar a Santa para ver la actividad de hoy">
-        <svg class="big-santa-svg" viewBox="0 0 180 210" aria-hidden="true">
-          <defs>
-            <clipPath id="belly-clip"><ellipse cx="90" cy="138" rx="66" ry="60" /></clipPath>
-          </defs>
-          <ellipse cx="90" cy="203" rx="58" ry="6" fill="rgba(0,0,0,0.22)" />
-          <!-- Botas -->
-          <rect x="52" y="182" width="30" height="20" rx="9" fill="#1c1c1c" />
-          <rect x="98" y="182" width="30" height="20" rx="9" fill="#1c1c1c" />
-          <!-- Brazos -->
-          <g class="arm arm--left">
-            <ellipse cx="30" cy="124" rx="16" ry="26" fill="#c8102e" transform="rotate(24 30 124)" />
-            <ellipse cx="22" cy="146" rx="11" ry="6" fill="#ffffff" transform="rotate(24 22 146)" />
-            <circle cx="18" cy="154" r="10" fill="#ffffff" />
-          </g>
-          <g class="arm arm--right">
-            <ellipse cx="150" cy="124" rx="16" ry="26" fill="#c8102e" transform="rotate(-24 150 124)" />
-            <ellipse cx="158" cy="146" rx="11" ry="6" fill="#ffffff" transform="rotate(-24 158 146)" />
-            <circle cx="162" cy="154" r="10" fill="#ffffff" />
-          </g>
-          <!-- Barriga -->
-          <g class="belly">
-            <ellipse cx="90" cy="138" rx="66" ry="60" fill="#d4132f" />
-            <ellipse cx="72" cy="116" rx="30" ry="22" fill="#ffffff" opacity="0.12" />
-            <g clip-path="url(#belly-clip)">
-              <rect x="82" y="70" width="16" height="140" fill="#ffffff" />
-              <rect x="0" y="186" width="180" height="16" fill="#ffffff" />
-              <rect x="0" y="140" width="180" height="16" fill="#1c1c1c" />
-            </g>
-            <rect x="78" y="136" width="24" height="24" rx="4" fill="none" stroke="#ffd27a" stroke-width="5" />
-          </g>
-          <!-- Cabeza -->
-          <g class="head">
-            <circle cx="90" cy="62" r="28" fill="#f6c9a8" />
-            <!-- Pelo blanco a los lados -->
-            <g fill="#ffffff">
-              <circle cx="64" cy="52" r="8" /><circle cx="60" cy="60" r="7.5" /><circle cx="61" cy="68" r="6" />
-              <circle cx="116" cy="52" r="8" /><circle cx="120" cy="60" r="7.5" /><circle cx="119" cy="68" r="6" />
-            </g>
-            <circle cx="72" cy="68" r="6" fill="#f29c9c" opacity="0.7" />
-            <circle cx="108" cy="68" r="6" fill="#f29c9c" opacity="0.7" />
-            <path d="M76 58 q5 -6 10 0 M94 58 q5 -6 10 0" stroke="#3b2a20" stroke-width="3.5" fill="none" stroke-linecap="round" />
-            <path d="M62 66 C60 104 76 118 90 118 C104 118 120 104 118 66 C110 78 102 82 90 82 C78 82 70 78 62 66 Z" fill="#ffffff" />
-            <path d="M90 76 C82 70 70 72 68 80 C78 83 86 82 90 79 C94 82 102 83 112 80 C110 72 98 70 90 76 Z" fill="#eef2f7" />
-            <circle cx="90" cy="71" r="6" fill="#e88b7a" />
-            <path d="M83 92 q7 6 14 0" stroke="#d7dde6" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <!-- Gorro -->
-            <path d="M60 44 C64 14 100 2 124 18 C136 26 142 40 146 56 L132 54 C128 40 120 32 112 30 Z" fill="#c8102e" />
-            <ellipse cx="91" cy="38" rx="31" ry="10" fill="#c8102e" /><!-- base del gorro: tapa la frente -->
-            <circle cx="146" cy="60" r="9" fill="#ffffff" />
-            <rect x="58" y="38" width="66" height="14" rx="7" fill="#ffffff" />
-          </g>
-        </svg>
+        <!-- El Santa elegido se dibuja aquí desde js/santas.js -->
       </button>
       <div class="confetti" id="confetti" aria-hidden="true"></div>
       <span class="santa-hint" id="santa-hint">Toca a Santa</span>
@@ -109,32 +69,7 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
     <div class="modal-backdrop" data-close></div>
     <div class="modal-panel">
-      <svg class="santa" viewBox="0 0 200 210" aria-hidden="true">
-        <!-- Gorro -->
-        <path d="M44 86 C50 36 100 14 138 34 C160 46 170 70 176 96 L156 92 C150 70 140 58 128 54 Z" fill="#c8102e" />
-        <path d="M44 86 C60 40 110 26 140 56 L130 70 C110 52 76 58 60 92 Z" fill="#a50d26" opacity="0.5" />
-        <circle cx="174" cy="102" r="14" fill="#ffffff" />
-        <!-- Cara -->
-        <circle cx="100" cy="112" r="46" fill="#f6c9a8" />
-        <!-- Pelo blanco a los lados -->
-        <g fill="#ffffff">
-          <circle cx="60" cy="100" r="13" /><circle cx="54" cy="112" r="12" /><circle cx="55" cy="124" r="10" />
-          <circle cx="140" cy="100" r="13" /><circle cx="146" cy="112" r="12" /><circle cx="145" cy="124" r="10" />
-        </g>
-        <circle cx="72" cy="120" r="9" fill="#f29c9c" opacity="0.6" />
-        <circle cx="128" cy="120" r="9" fill="#f29c9c" opacity="0.6" />
-        <path d="M78 106 q6 -7 12 0" stroke="#3b2a20" stroke-width="4" fill="none" stroke-linecap="round" />
-        <path d="M110 106 q6 -7 12 0" stroke="#3b2a20" stroke-width="4" fill="none" stroke-linecap="round" />
-        <!-- Barba -->
-        <path d="M52 118 C52 170 76 204 100 204 C124 204 148 170 148 118 C140 132 126 140 100 140 C74 140 60 132 52 118 Z" fill="#ffffff" />
-        <path d="M100 132 C88 124 70 128 66 138 C80 142 92 140 100 136 C108 140 120 142 134 138 C130 128 112 124 100 132 Z" fill="#f1f4f8" />
-        <circle cx="100" cy="124" r="9" fill="#e88b7a" />
-        <path d="M90 158 q10 8 20 0" stroke="#d7dde6" stroke-width="3" fill="none" stroke-linecap="round" />
-        <!-- Base del gorro: cubre la frente para que no se vea calvo -->
-        <path d="M50 84 C56 62 76 54 100 54 C124 54 144 62 152 84 Z" fill="#c8102e" />
-        <!-- Borde del gorro -->
-        <rect x="42" y="78" width="118" height="22" rx="11" fill="#ffffff" />
-      </svg>
+      <div class="santa" id="modal-santa" aria-hidden="true"></div>
       <p class="modal-eyebrow" id="modal-eyebrow"></p>
       <h2 class="modal-title" id="modal-title"></h2>
       <p class="modal-text" id="modal-text"></p>
@@ -146,6 +81,7 @@
   <script src="js/activities.js"></script>
   <script src="js/snow.js"></script>
   <script src="js/countdown.js"></script>
+  <script src="js/santas.js"></script>
   <script src="js/santa.js"></script>
   <script src="js/lights.js"></script>
   <script src="js/decorations.js"></script>

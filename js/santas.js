@@ -108,16 +108,17 @@
         <rect x="100" y="31" width="40" height="9" rx="4.5" fill="url(#${p}-fur)" /><circle cx="135" cy="4" r="5.5" fill="url(#${p}-fur)" /></g>`;
     },
 
-    // Sombrero campesino de fieltro, copa alta y cinta tejida de colores con una florcita
-    felt: () => `
-      <ellipse cx="120" cy="88" rx="66" ry="13" fill="#4a2f1c" /><ellipse cx="120" cy="85" rx="64" ry="11" fill="#5f3d25" />
-      <path d="M89 86 L94 46 C96 36 144 36 146 46 L151 86 Z" fill="#6b4528" />
-      <path d="M100 44 Q120 54 140 44" stroke="#4a2f1c" stroke-width="3" fill="none" stroke-linecap="round" />
-      <path d="M126 42 L131 84 L151 84 L146 46 C145 42 138 40 126 42 Z" fill="#000" opacity="0.12" />
-      <path d="M91 70 L149 70 L150.2 76 L89.8 76 Z" fill="#c8102e" /><path d="M89.8 76 L150.2 76 L150.8 80 L89.2 80 Z" fill="#f2c14e" />
-      <path d="M89.2 80 L150.8 80 L151 84 L89 84 Z" fill="#2a8a5a" />
-      ${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="140" cy="71" rx="2.6" ry="4.6" fill="#ff7aa8" transform="rotate(${a} 140 75)" />`).join("")}
-      <circle cx="140" cy="75" r="2.4" fill="#f2c14e" />`,
+    // Sombrero de paja de ala ancha con cinta de tela y una espiga de trigo
+    farmhat: () => `
+      <ellipse cx="120" cy="86" rx="78" ry="15" fill="#d9a94e" /><ellipse cx="120" cy="84" rx="76" ry="13" fill="#e8c06a" />
+      <path d="M50 86 Q120 96 190 86" stroke="#c4913c" stroke-width="2" fill="none" stroke-dasharray="4 3" />
+      <path d="M90 85 C88 54 100 40 120 40 C140 40 152 54 150 85 Z" fill="#e8c06a" />
+      <path d="M92 64 Q120 58 148 64 M91 50 Q120 44 149 50" stroke="#c4913c" stroke-width="2" fill="none" />
+      <path d="M120 41 L120 50" stroke="#c4913c" stroke-width="3" stroke-linecap="round" />
+      <path d="M90 72 Q120 67 150 72 L150 84 Q120 79 90 84 Z" fill="#7a4a2c" />
+      <path d="M136 79 L152 50" stroke="#c99a2e" stroke-width="2" stroke-linecap="round" />
+      ${[0, 1, 2, 3].map((k) => `<ellipse cx="${148 - k * 2.6}" cy="${57 + k * 5}" rx="2.4" ry="4" fill="#e0b048" transform="rotate(30 ${148 - k * 2.6} ${57 + k * 5})" />`).join("")}
+      ${[0, 1, 2].map((k) => `<ellipse cx="${154 - k * 2.6}" cy="${60 + k * 5}" rx="2.4" ry="4" fill="#d4a03c" transform="rotate(-30 ${154 - k * 2.6} ${60 + k * 5})" />`).join("")}`,
   };
 
   // Extras encima de la cabeza (después del gorro)
@@ -188,13 +189,11 @@
     // Patita de cuy con almohadillas rosadas
     paw: (p) => `<circle cx="40" cy="84" r="14" fill="url(#${p}-mitten)" />
       <circle cx="31" cy="74" r="3.2" fill="#f0a39a" /><circle cx="40" cy="71" r="3.2" fill="#f0a39a" /><circle cx="49" cy="74" r="3.2" fill="#f0a39a" />`,
-    // Choclo con sus pancas verdes
-    choclo: () => `<path d="M40 78 C26 68 22 48 28 30 C32 50 36 62 40 72 Z" fill="#7fb04e" />
-      <ellipse cx="40" cy="48" rx="10.5" ry="24" fill="#f2d066" />
-      ${[30, 37, 44, 51, 58, 65].map((y, i) => [-5, 0, 5].map((d) => `<circle cx="${40 + d + (i % 2 ? 1.5 : -1.5) * (d === 0 ? 0 : 0.4)}" cy="${y}" r="2.4" fill="#f8e290" />`).join("")).join("")}
-      <path d="M40 78 C54 68 58 50 52 34 C50 52 46 64 40 72 Z" fill="#94c45e" />
-      <path d="M40 80 C34 70 32 60 33 52 C37 62 39 70 41 78 Z" fill="#6a9a40" />
-      ${fist(40, 88)}`,
+    // Horquilla de campo con mango de madera
+    pitchfork: () => `<path d="M42 118 L38 10" stroke="#a8743f" stroke-width="5.5" stroke-linecap="round" />
+      <path d="M38 22 L38 12" stroke="#8a909c" stroke-width="6" stroke-linecap="round" />
+      <path d="M24 -10 L24 4 Q24 14 38 14 Q52 14 52 4 L52 -10 M38 14 L38 -12" stroke="#9aa0ad" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      ${fist(40, 86)}`,
   };
 
   // ---------- Mano apoyada (brazo derecho) y lo que sostiene ----------
@@ -225,15 +224,16 @@
       <ellipse cx="212" cy="226" rx="11" ry="4" fill="#3c9a4e" transform="rotate(30 212 226)" />
       <path d="M134 220 C150 213 180 210 196 213 C202 215 202 225 196 227 C180 230 150 227 134 220 Z" fill="#f08a2c" />
       <path d="M176 214 L178 218 M186 222 L188 226 M164 219 L166 223" stroke="#c8641a" stroke-width="1.6" stroke-linecap="round" /></g>` },
-    // Canasta de mimbre llena de papas
-    basket: { under: true, svg:() => `<path d="M150 208 C152 178 194 178 196 208" stroke="#a8743f" stroke-width="4.5" fill="none" />
-      <ellipse cx="158" cy="205" rx="9" ry="7.5" fill="#b07a45" /><ellipse cx="186" cy="205" rx="9" ry="7.5" fill="#9c6a3a" />
-      <ellipse cx="172" cy="200" rx="10" ry="8.5" fill="#c08850" /><ellipse cx="166" cy="208" rx="8" ry="6.5" fill="#a87240" />
-      <circle cx="170" cy="198" r="1" fill="#6b4226" /><circle cx="176" cy="203" r="1" fill="#6b4226" /><circle cx="155" cy="203" r="1" fill="#6b4226" /><circle cx="188" cy="204" r="1" fill="#6b4226" />
-      <path d="M144 210 L202 210 L195 246 Q173 252 151 246 Z" fill="#c8915a" />
-      <path d="M146 220 L200 220 M148 230 L198 230 M150 240 L196 240" stroke="#a8743f" stroke-width="2" />
-      <path d="M158 210 L160 248 M173 210 L173 250 M188 210 L186 248" stroke="#a8743f" stroke-width="1.6" opacity="0.7" />
-      <rect x="142" y="205" width="62" height="8" rx="4" fill="#a8743f" />` },
+    // Caja de madera con verduras de la cosecha
+    crate: { under: true, svg: () => `<path d="M156 204 C150 190 154 180 160 176 C162 186 162 196 160 204 Z" fill="#3c9a4e" />
+      <path d="M162 204 C164 188 172 182 178 182 C174 192 170 198 166 204 Z" fill="#2f8a43" />
+      <path d="M156 212 L162 194 L168 212 Z" fill="#f08a2c" />
+      <circle cx="180" cy="202" r="9" fill="#e01f3d" /><circle cx="192" cy="206" r="7.5" fill="#d4132f" />
+      <path d="M177 194 l3 2 l3 -2" stroke="#2f8a43" stroke-width="2" fill="none" stroke-linecap="round" />
+      <ellipse cx="170" cy="206" rx="10" ry="8" fill="#7fb04e" /><path d="M166 202 Q170 208 174 202" stroke="#5f8f36" stroke-width="1.5" fill="none" />
+      <rect x="144" y="208" width="58" height="40" rx="3" fill="#c8915a" />
+      <path d="M144 221 L202 221 M144 235 L202 235" stroke="#a8743f" stroke-width="2.5" />
+      <path d="M150 208 L150 248 M196 208 L196 248" stroke="#a8743f" stroke-width="3" />` },
   };
 
   // ---------- Objetos delante del cuerpo (detrás de la mano apoyada) ----------
@@ -295,10 +295,6 @@
     // Patitas de cuy
     paws: () => [90, 150].map((x) => `<ellipse cx="${x}" cy="269" rx="22" ry="10" fill="#6b4026" />
       ${[-10, 0, 10].map((d) => `<ellipse cx="${x + d}" cy="275" rx="4" ry="3" fill="#f0a39a" />`).join("")}`).join(""),
-    // Ojotas (sandalias de llanta); cada pie va en su grupo para el zapateo
-    ojotas: () => [["l", 90], ["r", 150]].map(([s, x]) => `<g class="foot foot--${s}">
-      <ellipse cx="${x}" cy="274" rx="24" ry="7" fill="#1f1f24" /><ellipse cx="${x}" cy="269" rx="21" ry="8" fill="${SKIN}" />
-      <path d="M${x - 11} 264 L${x + 5} 273 M${x + 11} 264 L${x - 5} 273" stroke="#1f1f24" stroke-width="3.5" stroke-linecap="round" /></g>`).join(""),
   };
 
   // ---------- Ropa (dentro del cuerpo, recortada a su forma) ----------
@@ -321,7 +317,7 @@
     // Cuy tricolor: manchas naranjas y panza blanca
     if (pat === "cuy") s += `<ellipse cx="58" cy="168" rx="44" ry="34" fill="#d98a3e" /><ellipse cx="196" cy="240" rx="40" ry="34" fill="#d98a3e" />
         <ellipse cx="120" cy="226" rx="50" ry="48" fill="#f6ecdf" />`;
-    // Campesino: camisa blanca con chaleco negro de bordes bordados
+    // Chaleco (vaquero)
     if (pat === "vest") s += [[-1, 104], [1, 136]].map(([sd, x]) => `<path d="M${x} 118 L${x + 8 * -sd} 292 L${120 + 110 * sd} 292 L${120 + 110 * sd} 118 Z" fill="${t.vestColor || "#26262e"}" />${t.vestTrim === false ? "" : `
         <path d="M${x} 118 L${x + 8 * -sd} 292" stroke="#c8102e" stroke-width="4" />
         <path d="M${x + 5 * sd} 118 L${x + 8 * -sd + 5 * sd} 292" stroke="#f2c14e" stroke-width="2.5" stroke-dasharray="5 4" />
@@ -335,12 +331,8 @@
     if (t.bottom === "fur") s += `<g fill="url(#${p}-fur)"><rect x="30" y="248" width="180" height="40" />
         ${[40, 54, 68, 82, 96, 144, 158, 172, 186, 200].map((x) => `<circle cx="${x}" cy="${248 - Math.min(4, Math.min(x - 30, 210 - x) / 14)}" r="8" />`).join("")}</g>`;
     if (t.bottom === "hem") s += `<rect x="30" y="250" width="180" height="40" fill="${t.hemColor || "#0b0b0e"}" />`;
-    // Chumpi: faja tejida andina de colores
-    if (t.belt === "chumpi") s += `<rect x="30" y="198" width="180" height="22" fill="#c8102e" />
-        <rect x="30" y="200" width="180" height="3" fill="#2a8a5a" /><rect x="30" y="215" width="180" height="3" fill="#2a8a5a" />
-        ${Array.from({ length: 16 }, (_, i) => `<path d="M${34 + i * 12} 209 l5 -5 l5 5 l-5 5 Z" fill="#f2c14e" /><circle cx="${39 + i * 12}" cy="209" r="1.4" fill="#ffffff" />`).join("")}`;
     if (t.bottom === "shorts") s += `<rect x="30" y="238" width="180" height="50" fill="${t.shortsColor || "#2a78b8"}" /><rect x="30" y="238" width="180" height="4" fill="#fff" opacity="0.6" />`;
-    if (t.belt && t.belt !== "chumpi") s += `<rect x="30" y="198" width="180" height="22" fill="${t.beltColor || "#1f1f24"}" /><rect x="30" y="200" width="180" height="3" fill="#fff" opacity="0.12" />` +
+    if (t.belt) s += `<rect x="30" y="198" width="180" height="22" fill="${t.beltColor || "#1f1f24"}" /><rect x="30" y="200" width="180" height="3" fill="#fff" opacity="0.12" />` +
       (t.belt === "studs" ? Array.from({ length: 15 }, (_, i) => `<circle cx="${38 + i * 12}" cy="209" r="2.6" fill="#d7dbe3" />`).join("") : "");
     return s;
   }
@@ -566,6 +558,13 @@
         <path d="M74 214 L86 214 M80 208 L80 220" stroke="#e01f3d" stroke-width="4" />`;
     if (pat === "tunic") s += `${star(68, 178, 11, "#f2c14e")}` + [104, 136].map((x) => [234, 254].map((y) => `<circle cx="${x}" cy="${y}" r="4" fill="#f2c14e" />`).join("")).join("");
     if (t.badge === "sheriff") s += `${star(68, 178, 12, "#f2c14e")}<circle cx="68" cy="178" r="4" fill="#c99a2e" />`;
+    // Overol de jean (agricultor): peto con bolsillo, tirantes con botones y costuras
+    if (t.overalls) s += `<path d="M78 120 L96 178 M162 120 L144 178" stroke="#2f5f9a" stroke-width="12" />
+        <path d="M90 176 L150 176 L150 214 L210 214 L210 292 L30 292 L30 214 L90 214 Z" fill="#3a6fb0" />
+        <path d="M94 180 L146 180 L146 214 M94 180 L94 214 M30 218 L210 218" stroke="#f2c14e" stroke-width="1.6" stroke-dasharray="4 3" fill="none" opacity="0.8" />
+        <rect x="106" y="188" width="28" height="20" rx="3" fill="#2f5f9a" />
+        <path d="M120 218 L120 292" stroke="#2f5f9a" stroke-width="2.5" />
+        ${[97, 143].map((x) => `<circle cx="${x}" cy="182" r="4.5" fill="#f2c14e" /><circle cx="${x}" cy="182" r="1.6" fill="#c99a2e" />`).join("")}`;
     if (t.frontStrip === "pompoms") s += ["#e01f3d", "#3a8ee6", "#2a8a5a"].map((c, i) => `<circle cx="120" cy="${200 + i * 26}" r="8" fill="${c}" />`).join("");
     return s;
   }
@@ -596,8 +595,8 @@
       feet: "boots", hat: "toque", eyes: "open", raised: "spoon", rest: "skin", restProp: "panettone" },
     cuy: { name: "Cuy", coat: ["#b07a4f", "#7a4a2c", "#4f2d18"], mitten: ["#9a6440", "#5a341d"], sleeve: "coat", pattern: "cuy",
       feet: "paws", hat: "cuy", eyes: "open", raised: "paw", rest: "paw", restProp: "carrot" },
-    campesino: { name: "Campesino", coat: WHITE, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "vest", belt: "chumpi", bottom: "hem", hemColor: "#3a2a22",
-      feet: "ojotas", hat: "felt", eyes: "open", raised: "choclo", rest: "skin", restProp: "basket" },
+    agricultor: { name: "Agricultor", coat: RED, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "plaid", overalls: true,
+      feet: "boots", bootColor: "#5a3a22", hat: "farmhat", eyes: "open", raised: "pitchfork", rest: "skin", restProp: "crate" },
     vampiro: { name: "Vampiro", coat: ["#3a3a46", "#1f1f24", "#0b0b0e"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "vamp", bottom: "hem",
       face: ["#f4f5f9", "#cdd3e0"], skin: ["#e6e9f0", "#c9cfdc"], mouth: "fangs",
       feet: "boots", hat: "vamphair", eyes: "open", raised: "bat", rest: "skin", back: "vampcape" },
@@ -675,7 +674,7 @@
       <path d="M120 133 C112 125 97 125 90 132 C86 138 91 143 98 141 C105 139 112 140 120 137 Z" />
       <path d="M120 133 C128 125 143 125 150 132 C154 138 149 143 142 141 C135 139 128 140 120 137 Z" /></g>`;
     const restProp = t.restProp ? REST_PROPS[t.restProp] : null;
-    const buckle = t.belt && t.belt !== "chumpi" ?`<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
+    const buckle = t.belt ?`<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
       <rect x="106" y="196" width="10" height="3" rx="1.5" fill="#fff3c4" opacity="0.8" />` : "";
 
     const viewBox = head ? "44 -12 196 204" : "0 0 240 285";

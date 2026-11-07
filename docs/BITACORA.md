@@ -72,3 +72,11 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
   - Selector: 4 columnas y scroll si no entra en pantalla. Probado en celular sin errores de consola.
   - Peso total ~130 KB (~37 KB comprimido): no hay riesgo de que la página no cargue.
 - El usuario aprobó: `santas-nuevos` fusionada en `main` y subida (Vercel publica solo).
+
+## 2026-11-07 — Campesino → Agricultor
+- A pedido del usuario (se veía muy estereotípico), el Santa **campesino** pasó a ser **agricultor** (id `agricultor`):
+  sombrero de paja de ala ancha con cinta café y espiga de trigo, camisa a cuadros rojos, overol de jean con tirantes,
+  botas cafés, horquilla en alto y caja de madera con verduras (zanahoria, tomates, lechuga).
+- Animación nueva: clava la horquilla (`dig`) y asiente. Se quitaron las piezas que ya no usaba nadie (sombrero de
+  fieltro, choclo, canasta, ojotas, chumpi y sus animaciones de zapateo).
+- Quien tenía guardado "campesino" en el navegador pasa solo al agricultor (`js/santa.js`).

@@ -18,7 +18,11 @@
   const modalSanta = document.getElementById("modal-santa");
   const themes = Object.keys(window.SANTA_THEMES);
   let current = "clasico";
-  try { if (themes.includes(localStorage.getItem(STORE_KEY))) current = localStorage.getItem(STORE_KEY); } catch (e) {}
+  try {
+    let saved = localStorage.getItem(STORE_KEY);
+    if (saved === "campesino") saved = "agricultor"; // nombre antiguo
+    if (themes.includes(saved)) current = saved;
+  } catch (e) {}
 
   function render(id, animate) {
     current = id;

@@ -29,7 +29,7 @@ Página web estática para compartir con una persona mediante un único link (si
   GitHub Desktop. Hacer push solo si el usuario lo pide.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
 - 22 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
-  en pijama, chef, cuy, campesino, vampiro, vaquero, detective, vikingo, payaso, pirata, motociclista, bombero,
+  en pijama, chef, cuy, agricultor, vampiro, vaquero, detective, vikingo, payaso, pirata, motociclista, bombero,
   doctor, comunista y gruñón verde, cada uno con su propia animación (`css/santas.css`). Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
   Galería de todos en `preview/santas.html`.
 - 25 actividades reales cargadas (`js/activities.js`).

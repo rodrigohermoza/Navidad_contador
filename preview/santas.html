@@ -61,7 +61,7 @@
       doctor: "Espejo en la frente, bata blanca, estetoscopio y termómetro que sacude.",
       comunista: "Ushanka con estrella roja, abrigo rojo con botones dorados y bandera ondeando. Marcha.",
       grinch: "Gruñón verde vestido de Santa, con una esfera robada y su saco de regalos. Camina de puntitas.",
-      campesino: "Sombrero de fieltro con cinta tejida, chaleco bordado, chumpi, ojotas, choclo y canasta de papas.",
+      agricultor: "Sombrero de paja con espiga, camisa a cuadros, overol de jean, botas, horquilla y caja de verduras.",
     };
     document.getElementById("grid").innerHTML = Object.keys(SANTA_THEMES).map((id) => `
       <div class="card"><span class="tag">${SANTA_THEMES[id].name}</span>${santaSVG(id, { cls: "santa-anim" })}<p class="desc">${DESC[id] || ""}</p></div>`).join("");

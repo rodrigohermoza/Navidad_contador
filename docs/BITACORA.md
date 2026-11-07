@@ -49,3 +49,7 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
   navegador; por defecto "clasico". La tarjeta muestra la cabeza del Santa elegido (recortada y con los
   hombros desvanecidos). Probado en computadora y celular.
 - Link oficial confirmado: https://navidad-contador.vercel.app (los links con letras raras son de cada despliegue y piden login).
+
+## 2026-11-07
+- Se revisó la conexión: `gh` logueado como `rodrigohermoza`; el usuario sube con `git push` desde la terminal.
+- Docs actualizados antes de compactar la conversación.

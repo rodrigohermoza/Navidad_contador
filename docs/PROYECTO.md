@@ -21,10 +21,12 @@ Página web estática para compartir con una persona mediante un único link (si
   página de preview) y esperar su aprobación antes de aplicarlo.
 - Las decoraciones deben ser fáciles de prender/apagar (`js/config.js`).
 
-## Estado actual (2026-11-06)
+## Estado actual (2026-11-07)
 - Todo lo de la rama `decoraciones` ya está fusionado en `main` y subido a GitHub.
 - Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
-  cada push a `main` publica automáticamente. El usuario hace commit/push con **GitHub Desktop**.
+  cada push a `main` publica automáticamente. Subir: `git push` desde la terminal (la cuenta de GitHub
+  `rodrigohermoza` está conectada con `gh`; si pidiera contraseña, correr `gh auth setup-git`). También sirve
+  GitHub Desktop. Hacer push solo si el usuario lo pide.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
 - 9 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
   en pijama y chef. Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
@@ -41,3 +43,11 @@ Página web estática para compartir con una persona mediante un único link (si
 - "Privado" = link no listado: cualquiera con el link puede entrar (no hay login).
 - La actividad del día depende del reloj del dispositivo.
 - Guardar progreso solo sería posible en `localStorage` (por navegador).
+
+## Cómo trabajamos (flujo)
+1. Leer `docs/` al retomar. Cambios visuales dudosos → vista previa primero (`preview/` o rama aparte).
+2. Probar en local: `python3 servir.py` (si el puerto 5173 está ocupado, el usuario ya tiene uno: reutilizarlo)
+   y revisar con el navegador de Claude en computadora (1440×900) y celular (375×812), sin errores de consola.
+3. Commit tras cada cambio, **sin** línea de co-autor (autor git: Rodrigo Hermoza).
+4. Añadir entrada en `BITACORA.md` y actualizar `PROYECTO.md` / `PENDIENTES.md` / `ARQUITECTURA.md`.
+5. Al terminar: apagar servidores propios, decir qué se probó y recordar que falta `git push` si aplica.

@@ -39,3 +39,8 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
   amarilla, mano 🤘), **Veraniego** (camisa hawaiana, short, sandalias, sombrero de paja, coco, tabla de
   surf), **Andino** (chullo con orejeras y pompones, poncho con grecas, taza de chocolatada). Aún no
   están en la página real: falta que el usuario elija cuáles y cómo se alternan.
+- El usuario pidió más ideas de Santas y eligió 5: **futbolero, DJ, mago, en pijama, chef**. `js/santas.js`
+  reorganizado en piezas (HATS, HEAD_EXTRAS, EYES, RAISED, REST_HANDS, REST_PROPS, PROPS, BACKS, FEET,
+  clothes) y 9 temas en la galería: futbolero (camiseta de Perú, chimpunes, pelota), DJ (traje verde,
+  audífonos con luces, consola), mago (sombrero morado, capa, varita), pijama (cuadros, gorro de dormir,
+  pantuflas de reno, vela, almohada, Zzz), chef (gorro con acebo, mandil rojo, cuchara, panetón).

@@ -15,7 +15,7 @@ HTML/CSS/JS puro, sin frameworks ni build. Todo vectorial (SVG/CSS) salvo fuente
 | `js/lights.js` | Guirnalda SVG: borde superior + costados (`sideLength`), bombillas que titilan en 3 grupos |
 | `js/decorations.js` | Bolas colgantes (esquivan la tarjeta), colinas con pinos iluminados, destellos, copos grandes, regalos (apagados) |
 | `js/reindeer.js` | Cada 18–35 s cruzan 9 renos: Rudolph (nariz roja) adelante + 8 en parejas |
-| `js/santas.js` | Santas temáticos: `window.santaSVG(id)` y `window.SANTA_THEMES`. Base común + piezas (gorros, lentes, manos, ropa, accesorios). Aún solo lo usa `preview/santas.html` |
+| `js/santas.js` | Santas temáticos: `window.santaSVG(id)` y `window.SANTA_THEMES`. Base común + piezas por grupo (HATS, HEAD_EXTRAS, EYES, RAISED, REST_HANDS, REST_PROPS, PROPS, BACKS, FEET, `clothes()`); cada tema en `THEMES` combina piezas. Animables por CSS: `.arm--left` (girar con `transform-box: view-box; transform-origin: 62px 168px`), `.steam`, `.led`, `.neon`, `.flame`, `.glow`, `.sparkles`, `.zzz`. Aún solo lo usa `preview/santas.html` |
 | `js/snow.js` | Nieve en `<canvas>`, 3 capas de profundidad |
 | `servir.py` | Servidor local sin caché: `python3 servir.py` → http://localhost:5173 |
 | `preview/` | Páginas de vista previa para que el usuario apruebe diseños antes de aplicarlos |

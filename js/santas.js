@@ -44,8 +44,8 @@
         <path d="M${x - 8 * s} 84 L${x - 6 * s} 132 Q${x + 4 * s} 144 ${x + 14 * s} 132 L${x + 18 * s} 90 Z" fill="#c8102e" />
         <path d="M${x - 6 * s} 104 L${x} 112 L${x + 6 * s} 104 L${x + 12 * s} 112 L${x + 16 * s} 106" stroke="#fff" stroke-width="2.5" fill="none" />
         <path d="M${x - 6 * s} 120 L${x + 15 * s} 120" stroke="#f2c14e" stroke-width="4" />
-        <path d="M${x + 4 * s} 140 Q${x + 2 * s} 160 ${x + 6 * s} 178" stroke="#f2c14e" stroke-width="3" fill="none" />
-        <circle cx="${x + 6 * s}" cy="182" r="7" fill="#2a8a5a" /><circle cx="${x + 4 * s}" cy="180" r="2.5" fill="#fff" opacity="0.5" />`).join("")}
+        <g class="tassel"><path d="M${x + 4 * s} 140 Q${x + 2 * s} 160 ${x + 6 * s} 178" stroke="#f2c14e" stroke-width="3" fill="none" />
+        <circle cx="${x + 6 * s}" cy="182" r="7" fill="#2a8a5a" /><circle cx="${x + 4 * s}" cy="180" r="2.5" fill="#fff" opacity="0.5" /></g>`).join("")}
       <path d="M78 92 C78 54 98 34 120 34 C142 34 162 54 162 92 Z" fill="#c8102e" />
       <g clip-path="url(#${p}-dome)">
         <rect x="70" y="80" width="100" height="14" fill="#1f6b45" />
@@ -84,6 +84,40 @@
       <ellipse cx="148" cy="78" rx="7" ry="3.5" fill="#1f6b45" transform="rotate(-25 148 78)" />
       <ellipse cx="156" cy="77" rx="7" ry="3.5" fill="#2a8a5a" transform="rotate(25 156 77)" />
       <circle cx="152" cy="82" r="2.6" fill="#e01f3d" />`,
+
+    // Capucha de cuy (tipo pijama de animal): orejitas, carita con bigotes, mechón blanco y un gorrito navideño
+    cuy: (p) => {
+      const side = (s) => { const X = (x) => (s < 0 ? x : 240 - x);
+        return `<path d="M${X(80)} 84 C${X(60)} 96 ${X(55)} 124 ${X(63)} 146 C${X(71)} 155 ${X(88)} 153 ${X(95)} 142 C${X(90)} 122 ${X(90)} 102 ${X(96)} 90 Z" fill="#7a4a2c" />`; };
+      const ear = (s) => `<g class="ear ear--${s < 0 ? "l" : "r"}"><ellipse cx="${120 + 36 * s}" cy="46" rx="14" ry="17" fill="#6b4026" transform="rotate(${-28 * s} ${120 + 36 * s} 46)" />
+        <ellipse cx="${120 + 36 * s}" cy="47" rx="8" ry="10" fill="#f0a39a" transform="rotate(${-28 * s} ${120 + 36 * s} 47)" /></g>`;
+      return `<defs><radialGradient id="${p}-cuyhood" cx="0.4" cy="0.3" r="0.8"><stop offset="0" stop-color="#b07a4f" /><stop offset="1" stop-color="#6b4026" /></radialGradient>
+        <clipPath id="${p}-hood"><path d="M76 92 C74 56 96 32 120 32 C144 32 166 56 164 92 Z" /></clipPath></defs>
+      ${ear(-1)}${ear(1)}${side(-1)}${side(1)}
+      <path d="M76 92 C74 56 96 32 120 32 C144 32 166 56 164 92 Z" fill="url(#${p}-cuyhood)" />
+      <g clip-path="url(#${p}-hood)"><ellipse cx="150" cy="44" rx="22" ry="16" fill="#d98a3e" />
+        <path d="M112 30 C116 46 114 64 108 80 L132 80 C126 64 124 46 128 30 Z" fill="#f6ecdf" /></g>
+      <rect x="74" y="82" width="92" height="14" rx="7" fill="#f6ecdf" />
+      <circle cx="104" cy="60" r="4.5" fill="#1a0f08" /><circle cx="136" cy="60" r="4.5" fill="#1a0f08" />
+      <circle cx="105.5" cy="58.5" r="1.5" fill="#fff" /><circle cx="137.5" cy="58.5" r="1.5" fill="#fff" />
+      <path d="M115 68 L125 68 L120 74 Z" fill="#e88b8b" stroke="#e88b8b" stroke-width="2" stroke-linejoin="round" />
+      <path d="M120 74 L120 77 M114 78 Q117 81 120 77 Q123 81 126 78" stroke="#4f2d18" stroke-width="1.8" fill="none" stroke-linecap="round" />
+      <g class="whiskers" stroke="#4f2d18" stroke-width="1.3" stroke-linecap="round" opacity="0.8">
+        <path d="M110 72 L92 68 M110 75 L92 77 M130 72 L148 68 M130 75 L148 77" /></g>
+      <g transform="rotate(16 120 34)"><path d="M104 36 C106 20 118 10 134 4 C136 16 137 26 136 36 Z" fill="#d4132f" />
+        <rect x="100" y="31" width="40" height="9" rx="4.5" fill="url(#${p}-fur)" /><circle cx="135" cy="4" r="5.5" fill="url(#${p}-fur)" /></g>`;
+    },
+
+    // Sombrero campesino de fieltro, copa alta y cinta tejida de colores con una florcita
+    felt: () => `
+      <ellipse cx="120" cy="88" rx="66" ry="13" fill="#4a2f1c" /><ellipse cx="120" cy="85" rx="64" ry="11" fill="#5f3d25" />
+      <path d="M89 86 L94 46 C96 36 144 36 146 46 L151 86 Z" fill="#6b4528" />
+      <path d="M100 44 Q120 54 140 44" stroke="#4a2f1c" stroke-width="3" fill="none" stroke-linecap="round" />
+      <path d="M126 42 L131 84 L151 84 L146 46 C145 42 138 40 126 42 Z" fill="#000" opacity="0.12" />
+      <path d="M91 70 L149 70 L150.2 76 L89.8 76 Z" fill="#c8102e" /><path d="M89.8 76 L150.2 76 L150.8 80 L89.2 80 Z" fill="#f2c14e" />
+      <path d="M89.2 80 L150.8 80 L151 84 L89 84 Z" fill="#2a8a5a" />
+      ${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="140" cy="71" rx="2.6" ry="4.6" fill="#ff7aa8" transform="rotate(${a} 140 75)" />`).join("")}
+      <circle cx="140" cy="75" r="2.4" fill="#f2c14e" />`,
   };
 
   // Extras encima de la cabeza (después del gorro)
@@ -95,7 +129,7 @@
       <rect x="160" y="98" width="22" height="38" rx="10" fill="#26262b" /><rect x="166" y="104" width="12" height="26" rx="6" fill="#3fd47f" class="neon" />`,
     // Zzz de sueño
     zzz: () => `<g class="zzz" fill="#ffffff" font-family="Fraunces, Georgia, serif" font-weight="700">
-      <text x="200" y="66" font-size="16">z</text><text x="212" y="46" font-size="22">z</text><text x="224" y="22" font-size="28">Z</text></g>`,
+      <text x="198" y="66" font-size="16">z</text><text x="209" y="46" font-size="22">z</text><text x="219" y="22" font-size="28">Z</text></g>`,
   };
 
   // ---------- Ojos ----------
@@ -151,12 +185,23 @@
     // Cuchara de palo
     spoon: () => `<path d="M40 84 L30 32" stroke="#c8915a" stroke-width="6" stroke-linecap="round" />
       <ellipse cx="28" cy="22" rx="10" ry="13" fill="#c8915a" /><ellipse cx="28" cy="22" rx="6" ry="8" fill="#a8743f" />${fist()}`,
+    // Patita de cuy con almohadillas rosadas
+    paw: (p) => `<circle cx="40" cy="84" r="14" fill="url(#${p}-mitten)" />
+      <circle cx="31" cy="74" r="3.2" fill="#f0a39a" /><circle cx="40" cy="71" r="3.2" fill="#f0a39a" /><circle cx="49" cy="74" r="3.2" fill="#f0a39a" />`,
+    // Choclo con sus pancas verdes
+    choclo: () => `<path d="M40 78 C26 68 22 48 28 30 C32 50 36 62 40 72 Z" fill="#7fb04e" />
+      <ellipse cx="40" cy="48" rx="10.5" ry="24" fill="#f2d066" />
+      ${[30, 37, 44, 51, 58, 65].map((y, i) => [-5, 0, 5].map((d) => `<circle cx="${40 + d + (i % 2 ? 1.5 : -1.5) * (d === 0 ? 0 : 0.4)}" cy="${y}" r="2.4" fill="#f8e290" />`).join("")).join("")}
+      <path d="M40 78 C54 68 58 50 52 34 C50 52 46 64 40 72 Z" fill="#94c45e" />
+      <path d="M40 80 C34 70 32 60 33 52 C37 62 39 70 41 78 Z" fill="#6a9a40" />
+      ${fist(40, 88)}`,
   };
 
   // ---------- Mano apoyada (brazo derecho) y lo que sostiene ----------
   const REST_HANDS = {
     mitten: (p) => `<circle cx="157" cy="217" r="14" fill="url(#${p}-mitten)" />`,
     skin: () => `<circle cx="157" cy="217" r="12" fill="${SKIN}" />`,
+    paw: (p) => `<circle cx="157" cy="217" r="13" fill="url(#${p}-mitten)" /><circle cx="150" cy="225" r="2.6" fill="#f0a39a" /><circle cx="158" cy="228" r="2.6" fill="#f0a39a" />`,
   };
   const REST_PROPS = {
     // Pelota bajo la mano (se dibuja antes que la mano)
@@ -173,6 +218,22 @@
       <path d="M148 198 C148 172 198 172 198 198 Z" fill="#b5651d" />
       <ellipse cx="173" cy="182" rx="16" ry="5" fill="#8a4a16" />
       <circle cx="160" cy="190" r="2.5" fill="#e01f3d" /><circle cx="174" cy="192" r="2.5" fill="#2a8a5a" /><circle cx="186" cy="188" r="2.5" fill="#e01f3d" /><circle cx="168" cy="186" r="2" fill="#f2c14e" /></g>` },
+    // Zanahoria bajo la patita del cuy
+    carrot: { under: true, svg: () => `<g transform="rotate(-35 170 220)">
+      <ellipse cx="212" cy="214" rx="11" ry="4" fill="#3c9a4e" transform="rotate(-30 212 214)" />
+      <ellipse cx="214" cy="220" rx="12" ry="4" fill="#2f8a43" />
+      <ellipse cx="212" cy="226" rx="11" ry="4" fill="#3c9a4e" transform="rotate(30 212 226)" />
+      <path d="M134 220 C150 213 180 210 196 213 C202 215 202 225 196 227 C180 230 150 227 134 220 Z" fill="#f08a2c" />
+      <path d="M176 214 L178 218 M186 222 L188 226 M164 219 L166 223" stroke="#c8641a" stroke-width="1.6" stroke-linecap="round" /></g>` },
+    // Canasta de mimbre llena de papas
+    basket: { under: true, svg:() => `<path d="M150 208 C152 178 194 178 196 208" stroke="#a8743f" stroke-width="4.5" fill="none" />
+      <ellipse cx="158" cy="205" rx="9" ry="7.5" fill="#b07a45" /><ellipse cx="186" cy="205" rx="9" ry="7.5" fill="#9c6a3a" />
+      <ellipse cx="172" cy="200" rx="10" ry="8.5" fill="#c08850" /><ellipse cx="166" cy="208" rx="8" ry="6.5" fill="#a87240" />
+      <circle cx="170" cy="198" r="1" fill="#6b4226" /><circle cx="176" cy="203" r="1" fill="#6b4226" /><circle cx="155" cy="203" r="1" fill="#6b4226" /><circle cx="188" cy="204" r="1" fill="#6b4226" />
+      <path d="M144 210 L202 210 L195 246 Q173 252 151 246 Z" fill="#c8915a" />
+      <path d="M146 220 L200 220 M148 230 L198 230 M150 240 L196 240" stroke="#a8743f" stroke-width="2" />
+      <path d="M158 210 L160 248 M173 210 L173 250 M188 210 L186 248" stroke="#a8743f" stroke-width="1.6" opacity="0.7" />
+      <rect x="142" y="205" width="62" height="8" rx="4" fill="#a8743f" />` },
   };
 
   // ---------- Objetos delante del cuerpo (detrás de la mano apoyada) ----------
@@ -200,8 +261,16 @@
 
   // ---------- Detrás del Santa ----------
   const BACKS = {
-    surfboard: () => `<g transform="rotate(14 200 160)"><ellipse cx="200" cy="160" rx="20" ry="88" fill="#fff" />
-      <rect x="196" y="74" width="8" height="172" fill="#c8102e" /><rect x="189" y="74" width="3" height="172" fill="#2a8a5a" /><rect x="208" y="74" width="3" height="172" fill="#2a8a5a" /></g>`,
+    // Tabla de surf con punta; las rayas van recortadas a la forma de la tabla para que no se salgan
+    surfboard: (p) => {
+      const board = "M200 70 C214 96 221 146 218 198 C216 230 209 250 200 250 C191 250 184 230 182 198 C179 146 186 96 200 70 Z";
+      return `<g transform="rotate(14 200 160)"><defs><clipPath id="${p}-board"><path d="${board}" /></clipPath></defs>
+      <path d="${board}" fill="#ffffff" />
+      <g clip-path="url(#${p}-board)"><rect x="196" y="60" width="8" height="200" fill="#c8102e" />
+        <rect x="189" y="60" width="3" height="200" fill="#2a8a5a" /><rect x="208" y="60" width="3" height="200" fill="#2a8a5a" />
+        <path d="M214 90 C220 140 220 200 214 240 L224 240 L224 90 Z" fill="#000" opacity="0.08" /></g>
+      <path d="${board}" fill="none" stroke="#dfe5ee" stroke-width="1.5" /></g>`;
+    },
     // Capa de mago con borde dorado y estrellitas
     cape: () => `<path d="M64 130 C24 196 22 252 30 278 L210 278 C218 252 216 196 176 130 Z" fill="#4b2a7b" />
       <path d="M30 278 L210 278" stroke="#f2c14e" stroke-width="5" stroke-linecap="round" />
@@ -223,6 +292,13 @@
       <ellipse cx="${x}" cy="268" rx="25" ry="11" fill="#8b5a3c" />
       <circle cx="${x - 6}" cy="264" r="2" fill="#1a0f08" /><circle cx="${x + 6}" cy="264" r="2" fill="#1a0f08" />
       <circle cx="${x}" cy="272" r="5" fill="#e01f3d" />`).join(""),
+    // Patitas de cuy
+    paws: () => [90, 150].map((x) => `<ellipse cx="${x}" cy="269" rx="22" ry="10" fill="#6b4026" />
+      ${[-10, 0, 10].map((d) => `<ellipse cx="${x + d}" cy="275" rx="4" ry="3" fill="#f0a39a" />`).join("")}`).join(""),
+    // Ojotas (sandalias de llanta); cada pie va en su grupo para el zapateo
+    ojotas: () => [["l", 90], ["r", 150]].map(([s, x]) => `<g class="foot foot--${s}">
+      <ellipse cx="${x}" cy="274" rx="24" ry="7" fill="#1f1f24" /><ellipse cx="${x}" cy="269" rx="21" ry="8" fill="${SKIN}" />
+      <path d="M${x - 11} 264 L${x + 5} 273 M${x + 11} 264 L${x - 5} 273" stroke="#1f1f24" stroke-width="3.5" stroke-linecap="round" /></g>`).join(""),
   };
 
   // ---------- Ropa (dentro del cuerpo, recortada a su forma) ----------
@@ -242,6 +318,15 @@
     if (pat === "apron") s += `<rect x="30" y="186" width="180" height="110" fill="#c8102e" /><rect x="30" y="186" width="180" height="4" fill="#ffffff" opacity="0.35" />
         <rect x="98" y="222" width="44" height="22" rx="4" fill="#a50d26" /><path d="M98 226 L142 226" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6" />`;
 
+    // Cuy tricolor: manchas naranjas y panza blanca
+    if (pat === "cuy") s += `<ellipse cx="58" cy="168" rx="44" ry="34" fill="#d98a3e" /><ellipse cx="196" cy="240" rx="40" ry="34" fill="#d98a3e" />
+        <ellipse cx="120" cy="226" rx="50" ry="48" fill="#f6ecdf" />`;
+    // Campesino: camisa blanca con chaleco negro de bordes bordados
+    if (pat === "vest") s += [[-1, 104], [1, 136]].map(([sd, x]) => `<path d="M${x} 118 L${x + 8 * -sd} 292 L${120 + 110 * sd} 292 L${120 + 110 * sd} 118 Z" fill="${t.vestColor || "#26262e"}" />${t.vestTrim === false ? "" : `
+        <path d="M${x} 118 L${x + 8 * -sd} 292" stroke="#c8102e" stroke-width="4" />
+        <path d="M${x + 5 * sd} 118 L${x + 8 * -sd + 5 * sd} 292" stroke="#f2c14e" stroke-width="2.5" stroke-dasharray="5 4" />
+        <path d="M${x + 10 * sd} 118 L${x + 8 * -sd + 10 * sd} 292" stroke="#2a8a5a" stroke-width="2" />`}`).join("");
+    s += clothesExtra(p, t);
     if (t.frontStrip === "fur") s += `<rect x="107" y="120" width="26" height="160" fill="url(#${p}-fur)" />`;
     if (t.frontStrip === "tee") s += `<rect x="104" y="120" width="32" height="160" fill="#c8102e" />
         <rect x="100" y="130" width="3" height="140" fill="#b8bcc6" /><rect x="137" y="130" width="3" height="140" fill="#b8bcc6" />`;
@@ -249,10 +334,239 @@
 
     if (t.bottom === "fur") s += `<g fill="url(#${p}-fur)"><rect x="30" y="248" width="180" height="40" />
         ${[40, 54, 68, 82, 96, 144, 158, 172, 186, 200].map((x) => `<circle cx="${x}" cy="${248 - Math.min(4, Math.min(x - 30, 210 - x) / 14)}" r="8" />`).join("")}</g>`;
-    if (t.bottom === "hem") s += `<rect x="30" y="250" width="180" height="40" fill="#0b0b0e" />`;
+    if (t.bottom === "hem") s += `<rect x="30" y="250" width="180" height="40" fill="${t.hemColor || "#0b0b0e"}" />`;
+    // Chumpi: faja tejida andina de colores
+    if (t.belt === "chumpi") s += `<rect x="30" y="198" width="180" height="22" fill="#c8102e" />
+        <rect x="30" y="200" width="180" height="3" fill="#2a8a5a" /><rect x="30" y="215" width="180" height="3" fill="#2a8a5a" />
+        ${Array.from({ length: 16 }, (_, i) => `<path d="M${34 + i * 12} 209 l5 -5 l5 5 l-5 5 Z" fill="#f2c14e" /><circle cx="${39 + i * 12}" cy="209" r="1.4" fill="#ffffff" />`).join("")}`;
     if (t.bottom === "shorts") s += `<rect x="30" y="238" width="180" height="50" fill="${t.shortsColor || "#2a78b8"}" /><rect x="30" y="238" width="180" height="4" fill="#fff" opacity="0.6" />`;
-    if (t.belt) s += `<rect x="30" y="198" width="180" height="22" fill="#1f1f24" /><rect x="30" y="200" width="180" height="3" fill="#fff" opacity="0.12" />` +
+    if (t.belt && t.belt !== "chumpi") s += `<rect x="30" y="198" width="180" height="22" fill="${t.beltColor || "#1f1f24"}" /><rect x="30" y="200" width="180" height="3" fill="#fff" opacity="0.12" />` +
       (t.belt === "studs" ? Array.from({ length: 15 }, (_, i) => `<circle cx="${38 + i * 12}" cy="209" r="2.6" fill="#d7dbe3" />`).join("") : "");
+    return s;
+  }
+
+  // =====================================================================================
+  // ---------- Piezas de la segunda tanda (vampiro, vaquero, detective, vikingo, payaso, pirata,
+  //            motociclista, bombero, doctor, comunista y gruñón verde) ----------
+  // =====================================================================================
+  const mirrorX = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${240 - +x} ${y}`);
+
+  Object.assign(HATS, {
+    // Sombrero de vaquero con el ala curvada
+    cowboy: () => `
+      <path d="M52 84 C60 98 86 98 120 95 C154 98 180 98 188 84 C192 76 186 72 180 78 C170 88 150 86 120 86 C90 86 70 88 60 78 C54 72 48 76 52 84 Z" fill="#7a4a2c" />
+      <path d="M86 87 C84 60 92 40 104 38 C112 37 116 45 120 45 C124 45 128 37 136 38 C148 40 156 60 154 87 Z" fill="#a8703f" />
+      <path d="M134 40 C148 44 154 62 154 87 L140 87 C142 64 140 50 134 40 Z" fill="#000" opacity="0.12" />
+      <path d="M86 77 L154 77 L154 87 L86 87 Z" fill="#4a2f1c" />${star(120, 82, 4.5, "#f2c14e")}`,
+
+    // Gorro de detective a cuadros con visera y lacito arriba
+    deerstalker: (p) => `<defs><pattern id="${p}-check" width="12" height="12" patternUnits="userSpaceOnUse">
+        <rect width="12" height="12" fill="#c9a86a" /><rect width="12" height="4" fill="#7a5a2c" opacity="0.45" /><rect width="4" height="12" fill="#7a5a2c" opacity="0.45" /></pattern></defs>
+      <path d="M78 92 C76 56 98 36 120 36 C142 36 164 56 162 92 Z" fill="url(#${p}-check)" />
+      <path d="M120 38 C108 24 98 32 112 40 Z M120 38 C132 24 142 32 128 40 Z" fill="#7a5a2c" /><circle cx="120" cy="38" r="3" fill="#5a4020" />
+      <path d="M80 88 C96 99 144 99 160 88 L163 95 C146 106 94 106 77 95 Z" fill="#a88a55" />`,
+
+    // Casco vikingo con cuernos
+    viking: (p) => `<defs><linearGradient id="${p}-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3e7ee" /><stop offset="1" stop-color="#8a909c" /></linearGradient></defs>
+      <path d="M84 74 C62 72 48 54 50 28 C60 46 72 54 90 58 Z" fill="#f4ead8" stroke="#cdbb95" stroke-width="2" />
+      <path d="${mirrorX("M84 74 C62 72 48 54 50 28 C60 46 72 54 90 58 Z")}" fill="#f4ead8" stroke="#cdbb95" stroke-width="2" />
+      <path d="M78 90 C76 56 98 38 120 38 C142 38 164 56 162 90 Z" fill="url(#${p}-steel)" />
+      <rect x="116" y="39" width="8" height="44" fill="#b8bec9" />
+      <rect x="75" y="80" width="90" height="14" rx="5" fill="#8a6a3a" />
+      ${[86, 100, 140, 154].map((x) => `<circle cx="${x}" cy="87" r="2.4" fill="#e3e7ee" />`).join("")}`,
+
+    // Gorrito de payaso + pelo de colores a los lados
+    clownhat: () => `${[[80, 84, "#ff4f7b"], [70, 100, "#3a8ee6"], [160, 84, "#3fd47f"], [170, 100, "#f2c14e"]].map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="15" fill="${c}" />`).join("")}
+      <g transform="rotate(-10 120 74)"><path d="M98 78 L120 18 L142 78 Z" fill="#3a8ee6" />
+        <path d="M106 58 L134 58 L131 66 L109 66 Z M114 38 L126 38 L124 45 L116 45 Z" fill="#f2c14e" />
+        <circle cx="120" cy="16" r="7" fill="#ff4f7b" /><rect x="94" y="72" width="52" height="9" rx="4.5" fill="#ffffff" /></g>`,
+
+    // Sombrero pirata de tres picos con calavera
+    tricorn: () => `
+      <path d="M58 82 C66 54 96 62 120 46 C144 62 174 54 182 82 C170 98 150 92 120 98 C90 92 70 98 58 82 Z" fill="#1f1f24" />
+      <path d="M61 82 C72 93 92 89 120 95 C148 89 168 93 179 82" stroke="#f2c14e" stroke-width="3" fill="none" />
+      <circle cx="120" cy="68" r="8" fill="#fff" /><rect x="115.5" y="72" width="9" height="6" rx="1.5" fill="#fff" />
+      <circle cx="117" cy="67" r="2" fill="#1f1f24" /><circle cx="123" cy="67" r="2" fill="#1f1f24" />
+      <path d="M108 80 L132 88 M132 80 L108 88" stroke="#fff" stroke-width="3" stroke-linecap="round" />`,
+
+    // Casco de moto abierto con lentes en la frente
+    moto: (p) => `
+      <path d="M72 106 C68 56 96 30 120 30 C144 30 172 56 168 106 L156 106 C156 82 146 72 120 72 C94 72 84 82 84 106 Z" fill="url(#${p}-hat)" />
+      <path d="M113 31 L127 31 L127 72 L113 72 Z" fill="#ffffff" />
+      <path d="M150 40 C160 52 164 64 166 80" stroke="#fff" stroke-width="4" opacity="0.4" fill="none" stroke-linecap="round" />
+      <rect x="78" y="72" width="84" height="8" fill="#26262b" />
+      <circle cx="104" cy="77" r="11" fill="#7fd0ff" stroke="#9aa0ad" stroke-width="3.5" /><circle cx="136" cy="77" r="11" fill="#7fd0ff" stroke="#9aa0ad" stroke-width="3.5" />
+      <path d="M99 73 Q102 70 106 70 M131 73 Q134 70 138 70" stroke="#fff" stroke-width="2" fill="none" />`,
+
+    // Casco de bombero con placa dorada
+    firehelmet: (p) => `
+      <path d="M56 92 C58 80 80 76 120 76 C160 76 182 80 184 92 C172 102 68 102 56 92 Z" fill="#8f0b20" />
+      <path d="M80 88 C78 54 98 36 120 36 C142 36 162 54 160 88 Z" fill="url(#${p}-hat)" />
+      <path d="M120 37 L120 88" stroke="#8f0b20" stroke-width="7" />
+      <path d="M102 50 L138 50 L134 76 L120 84 L106 76 Z" fill="#f2c14e" stroke="#c99a2e" stroke-width="2.5" />
+      ${star(120, 64, 8, "#c8102e")}`,
+
+    // Pelo blanco con el espejo de doctor
+    doctor: () => `<g fill="#ffffff">${[[88, 84, 14], [102, 75, 14], [120, 71, 15], [138, 75, 14], [152, 84, 14]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" />`).join("")}</g>
+      <path d="M80 94 C90 80 150 80 160 94" stroke="#26262b" stroke-width="5" fill="none" />
+      <circle cx="120" cy="78" r="13" fill="#d7dbe3" stroke="#9aa0ad" stroke-width="3" /><circle cx="120" cy="78" r="4" fill="#26262b" />
+      <path d="M112 72 Q115 69 119 69" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" />`,
+
+    // Ushanka (gorro ruso de piel) con estrella roja
+    ushanka: () => `
+      <rect x="68" y="76" width="24" height="44" rx="11" fill="#8a5a3b" /><rect x="148" y="76" width="24" height="44" rx="11" fill="#8a5a3b" />
+      <path d="M80 84 C78 50 98 36 120 36 C142 36 162 50 160 84 Z" fill="#6b4026" />
+      <rect x="72" y="64" width="96" height="28" rx="13" fill="#a8805a" />
+      <path d="M80 70 Q120 62 160 70" stroke="#c9a37a" stroke-width="3" fill="none" />
+      ${star(120, 78, 10, "#d4132f")}`,
+
+    // Pelo blanco peinado hacia atrás (pico de vampiro) y gorrito navideño negro
+    vamphair: (p) => `
+      <path d="M76 102 C72 62 96 44 120 44 C144 44 168 62 164 102 C158 86 142 80 130 82 L120 96 L110 82 C98 80 82 86 76 102 Z" fill="#f4f6fa" />
+      <path d="M96 60 Q112 52 128 54 M100 70 Q114 62 126 64" stroke="#d9e0ea" stroke-width="2" fill="none" />
+      <g transform="rotate(18 124 46)"><path d="M106 48 C108 30 120 18 138 10 C140 24 141 36 140 48 Z" fill="#1f1f24" />
+        <rect x="102" y="43" width="42" height="9" rx="4.5" fill="#c8102e" /><circle cx="139" cy="10" r="6" fill="#c8102e" /></g>`,
+  });
+
+  Object.assign(HEAD_EXTRAS, {
+    // Lorito pirata en el hombro, con gorrito navideño
+    parrot: (p) => `<g class="parrot">
+      <path d="M194 156 L204 186 L190 166 Z" fill="#3a8ee6" />
+      <ellipse cx="192" cy="146" rx="11" ry="17" fill="#2fae5c" /><path d="M186 140 C182 150 184 158 190 162" stroke="#1f8a45" stroke-width="3" fill="none" />
+      <circle cx="194" cy="126" r="10" fill="#e01f3d" />
+      <path d="M202 124 C210 124 212 132 206 136 L202 130 Z" fill="#f2c14e" />
+      <circle cx="197" cy="123" r="2.6" fill="#fff" /><circle cx="197.6" cy="123" r="1.3" fill="#1f1f24" />
+      <g transform="rotate(-20 192 116)"><path d="M184 118 C186 108 192 102 200 100 C201 108 201 113 200 118 Z" fill="#d4132f" />
+        <rect x="182" y="115" width="20" height="5" rx="2.5" fill="url(#${p}-fur)" /><circle cx="200" cy="100" r="3" fill="url(#${p}-fur)" /></g></g>`,
+  });
+
+  Object.assign(EYES, {
+    // Parche de pirata en el ojo derecho
+    patch: () => `<ellipse cx="106" cy="108" rx="4.6" ry="5.8" fill="#2b1d16" /><circle cx="107.6" cy="105.8" r="1.7" fill="#fff" />
+      <path d="M80 92 L166 118" stroke="#1f1f24" stroke-width="3" />
+      <ellipse cx="135" cy="109" rx="11" ry="9" fill="#1f1f24" />`,
+    // Ojos amarillos y cejas de gruñón
+    grump: () => `<ellipse cx="104" cy="108" rx="9" ry="7" fill="#f2e86a" /><ellipse cx="136" cy="108" rx="9" ry="7" fill="#f2e86a" />
+      <circle cx="107" cy="109" r="3.4" fill="#c8102e" /><circle cx="139" cy="109" r="3.4" fill="#c8102e" />
+      <path d="M95 104 Q104 98 113 104 L113 101 Q104 94 95 101 Z M127 104 Q136 98 145 104 L145 101 Q136 94 127 101 Z" fill="#6d9332" />
+      <path d="M90 96 L116 102 M150 96 L124 102" stroke="#3f5a1a" stroke-width="5" stroke-linecap="round" />`,
+  });
+
+  const glove = (p, x = 40, y = 86) => `<circle cx="${x}" cy="${y}" r="12.5" fill="url(#${p}-mitten)" />`;
+  Object.assign(RAISED, {
+    // Murcielaguito volando sobre la mano
+    bat: () => `<g class="bat"><g class="wing wing--l"><path d="M38 44 C32 34 20 32 8 36 C14 40 16 46 14 52 C20 48 28 50 34 54 Z" fill="#26262b" /></g>
+        <g class="wing wing--r"><path d="M46 44 C52 34 64 32 76 36 C70 40 68 46 70 52 C64 48 56 50 50 54 Z" fill="#26262b" /></g>
+        <ellipse cx="42" cy="47" rx="7" ry="9" fill="#33333b" /><path d="M37 40 L37 33 L41 38 Z M47 40 L47 33 L43 38 Z" fill="#33333b" />
+        <circle cx="39.5" cy="45" r="1.5" fill="#ff4f5e" /><circle cx="44.5" cy="45" r="1.5" fill="#ff4f5e" /></g>${fist()}`,
+    // Lazo de vaquero girando
+    lasso: () => `<path d="M40 82 C34 70 38 60 44 52" stroke="#c8915a" stroke-width="3.5" fill="none" />
+      <g class="lasso"><ellipse cx="44" cy="40" rx="30" ry="9" fill="none" stroke="#c8915a" stroke-width="4" /></g>${fist()}`,
+    // Lupa de detective
+    magnifier: () => `<path d="M40 84 L33 64" stroke="#6b4226" stroke-width="7" stroke-linecap="round" />
+      <circle cx="29" cy="47" r="17" fill="#bfe6ff" fill-opacity="0.45" stroke="#c99a2e" stroke-width="5" />
+      <path d="M20 41 Q24 35 31 35" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" />${fist()}`,
+    // Hacha vikinga (de juguete)
+    axe: (p) => `<path d="M40 96 L40 22" stroke="#8a5a34" stroke-width="7" stroke-linecap="round" />
+      <path d="M42 26 C58 20 70 32 68 52 C60 44 52 44 42 46 Z" fill="#d7dbe3" stroke="#9aa0ad" stroke-width="2" />
+      <path d="M38 26 C28 24 22 30 22 38 C28 34 32 34 38 36 Z" fill="#d7dbe3" stroke="#9aa0ad" stroke-width="2" />${glove(p)}`,
+    // Globos de colores
+    balloons: (p, t) => `<g class="balloons"><path d="M40 80 L22 36 M40 80 L44 26 M40 80 L62 40" stroke="#ffffff" stroke-width="1.3" opacity="0.8" />
+      <ellipse cx="22" cy="26" rx="12" ry="14" fill="#e01f3d" /><ellipse cx="44" cy="14" rx="13" ry="15" fill="#3fd47f" /><ellipse cx="64" cy="30" rx="11" ry="13" fill="#f2c14e" />
+      <path d="M17 20 Q19 16 23 15 M39 8 Q41 4 45 3 M60 24 Q62 20 65 20" stroke="#fff" stroke-width="2" fill="none" opacity="0.7" /></g>${mitten(p, t)}`,
+    // Garfio de pirata
+    hook: () => `<path d="M40 84 L40 64 C40 48 24 46 22 60" stroke="#c9ced8" stroke-width="5" fill="none" stroke-linecap="round" />
+      <ellipse cx="40" cy="88" rx="14" ry="8" fill="#6b4226" />`,
+    // Pulgar arriba con guante
+    thumb: (p) => `<rect x="44" y="60" width="10" height="22" rx="5" fill="url(#${p}-mitten)" />${glove(p)}`,
+    // Manguera con chorrito de agua
+    nozzle: (p) => `<path d="M40 86 L31 58" stroke="#c9ced8" stroke-width="10" stroke-linecap="round" />
+      <path d="M31 60 L25 42" stroke="#f2c14e" stroke-width="7" stroke-linecap="round" />
+      <g class="water" fill="#9fdcff">${[[22, 30, 3.5], [18, 20, 3], [26, 16, 2.6], [14, 9, 2.4], [24, 4, 2]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" />`).join("")}</g>${glove(p)}`,
+    // Termómetro
+    thermometer: () => `<rect x="35" y="40" width="9" height="38" rx="4.5" fill="#fff" stroke="#c9ced8" stroke-width="1.5" />
+      <rect x="38" y="52" width="3" height="24" fill="#e01f3d" /><circle cx="39.5" cy="76" r="5" fill="#e01f3d" />${fist(40, 88)}`,
+    // Bandera roja con estrella
+    flag: (p, t) => `<path d="M40 98 L40 4" stroke="#c99a2e" stroke-width="4" stroke-linecap="round" /><circle cx="40" cy="4" r="3.5" fill="#f2c14e" />
+      <g class="flag"><path d="M42 8 C56 2 66 14 84 8 L84 40 C66 46 56 34 42 40 Z" fill="#d4132f" />${star(58, 23, 7, "#f2c14e")}</g>${mitten(p, t)}`,
+    // Esfera navideña "prestada" del árbol
+    bauble: () => `<path d="M40 76 L40 64" stroke="#c99a2e" stroke-width="2" />
+      <circle cx="40" cy="50" r="14" fill="#3a8ee6" /><rect x="35" y="34" width="10" height="6" rx="1.5" fill="#c99a2e" />
+      <path d="M30 46 Q33 40 39 39" stroke="#fff" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round" />${fist()}`,
+  });
+
+  Object.assign(REST_PROPS, {
+    // Bocina de payaso
+    horn: { under: true, svg: () => `<path d="M162 212 L186 202 C194 200 198 212 196 222 C194 230 188 230 162 224 Z" fill="#f2c14e" />
+      <ellipse cx="194" cy="216" rx="4" ry="11" fill="#c99a2e" /><circle cx="150" cy="216" r="11" fill="#e01f3d" />` },
+    // Saco lleno de regalos (¡robados!)
+    sack: { under: true, svg: () => `<rect x="160" y="182" width="20" height="18" rx="2" fill="#3fd47f" /><rect x="168" y="182" width="4" height="18" fill="#f2c14e" />
+      <rect x="180" y="188" width="16" height="14" rx="2" fill="#3a8ee6" /><rect x="186" y="188" width="4" height="14" fill="#fff" />
+      <path d="M152 212 C140 236 148 266 176 270 C206 272 220 246 208 218 C204 206 196 200 186 200 L162 200 C156 202 154 206 152 212 Z" fill="#8a6a3a" />
+      <path d="M160 204 C172 210 190 210 204 204" stroke="#5a4020" stroke-width="3" fill="none" />
+      <path d="M170 240 Q180 236 190 242" stroke="#6b4e2a" stroke-width="2" fill="none" />` },
+  });
+
+  Object.assign(PROPS, {
+    // Manubrio de moto con faro
+    handlebar: () => `<path d="M48 214 C70 228 92 232 120 232 C148 232 170 228 192 214" stroke="#3a3a46" stroke-width="7" fill="none" stroke-linecap="round" />
+      <rect x="36" y="206" width="22" height="12" rx="6" fill="#141418" transform="rotate(25 47 212)" />
+      <rect x="182" y="206" width="22" height="12" rx="6" fill="#141418" transform="rotate(-25 193 212)" />
+      <circle cx="120" cy="246" r="17" fill="#c9ced8" /><circle cx="120" cy="246" r="12" fill="#fff6c8" class="led" /><circle cx="116" cy="242" r="3.5" fill="#fff" />`,
+  });
+
+  Object.assign(BACKS, {
+    // Capa de vampiro negra por fuera, roja por dentro, con cuello alto
+    vampcape: () => `<path d="M58 128 C22 196 20 254 28 280 L212 280 C220 254 218 196 182 128 Z" fill="#141418" />
+      <path d="M58 128 C30 190 28 240 34 270 L46 270 C42 236 46 190 70 140 Z" fill="#a50d26" />
+      <path d="${mirrorX("M58 128 C30 190 28 240 34 270 L46 270 C42 236 46 190 70 140 Z")}" fill="#a50d26" />
+      <path d="M74 146 C58 116 60 86 70 66 C82 94 96 112 112 122 Z" fill="#c8102e" stroke="#141418" stroke-width="4" stroke-linejoin="round" />
+      <path d="${mirrorX("M74 146 C58 116 60 86 70 66 C82 94 96 112 112 122 Z")}" fill="#c8102e" stroke="#141418" stroke-width="4" stroke-linejoin="round" />`,
+    // Escudo vikingo redondo
+    shield: (p) => `<defs><clipPath id="${p}-shield"><circle cx="196" cy="196" r="38" /></clipPath></defs>
+      <circle cx="196" cy="196" r="38" fill="#8a5a34" />
+      <path d="M196 150 L196 242 M150 196 L242 196" stroke="#c8102e" stroke-width="10" clip-path="url(#${p}-shield)" />
+      <circle cx="196" cy="196" r="38" fill="none" stroke="#9aa0ad" stroke-width="5" />
+      <circle cx="196" cy="196" r="9" fill="#c9ced8" stroke="#8a909c" stroke-width="2" />`,
+  });
+
+  Object.assign(FEET, {
+    // Botas con espuelas
+    spurs: (t) => FEET.boots(t) + [64, 176].map((x) => `${star(x, 266, 6, "#c9ced8")}`).join(""),
+    // Zapatos gigantes de payaso
+    clown: () => [[82, "l"], [158, "r"]].map(([x]) => `<ellipse cx="${x}" cy="268" rx="32" ry="12" fill="#e01f3d" />
+      <ellipse cx="${x - 8}" cy="263" rx="10" ry="3.5" fill="#fff" opacity="0.35" />`).join(""),
+  });
+
+  // Ropa extra (se llama desde clothes)
+  function clothesExtra(p, t) {
+    const pat = t.pattern;
+    let s = "";
+    if (pat === "vamp") s += `<path d="M96 120 L120 222 L144 120 Z" fill="#f4f6fa" />
+        <circle cx="120" cy="206" r="8" fill="#c8102e" stroke="#f2c14e" stroke-width="3" />`;
+    if (pat === "trench") s += `<path d="M98 120 L118 206 L104 206 L78 132 Z" fill="#a88a55" /><path d="M142 120 L122 206 L136 206 L162 132 Z" fill="#a88a55" />
+        ${[104, 136].map((x) => [234, 254].map((y) => `<circle cx="${x}" cy="${y}" r="4" fill="#5a4020" />`).join("")).join("")}`;
+    if (pat === "viking") s += `<path d="M30 150 L210 250" stroke="#4a2f1c" stroke-width="12" />
+        <path d="M30 140 C80 124 160 124 210 140 L210 168 C160 150 80 150 30 168 Z" fill="#c9ced8" />
+        ${[50, 74, 98, 122, 146, 170, 194].map((x) => `<circle cx="${x}" cy="${160 - Math.abs(120 - x) / 12}" r="9" fill="#e3e7ee" />`).join("")}`;
+    if (pat === "dots") s += Array.from({ length: 7 }, (_, r) => Array.from({ length: 8 }, (_, c) =>
+        `<circle cx="${36 + c * 24 + (r % 2) * 12}" cy="${132 + r * 24}" r="6" fill="${["#e01f3d", "#3a8ee6", "#2a8a5a", "#ff7aa8"][(r + c) % 4]}" />`).join("")).join("");
+    if (pat === "stripes") s += Array.from({ length: 11 }, (_, i) => `<rect x="30" y="${124 + i * 16}" width="180" height="8" fill="#c8102e" />`).join("");
+    if (pat === "biker") s += `<path d="M98 120 L114 210 L96 214 L76 134 Z" fill="#2a1a12" /><path d="M142 120 L126 210 L144 214 L164 134 Z" fill="#2a1a12" />
+        <path d="M128 186 L140 290" stroke="#c9ced8" stroke-width="3" stroke-dasharray="3 2" />
+        ${[[70, 236], [172, 236]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3" fill="#c9ced8" />`).join("")}`;
+    if (pat === "reflective") s += [204, 244].map((y) => `<rect x="30" y="${y}" width="180" height="14" fill="#f2c14e" /><rect x="30" y="${y + 5}" width="180" height="4" fill="#e3e7ee" />`).join("") +
+        [186, 228, 268].map((y) => `<rect x="112" y="${y}" width="16" height="7" rx="2" fill="#c9ced8" />`).join("");
+    if (pat === "labcoat") s += `<path d="M98 120 L120 212 L142 120" stroke="#c9d0db" stroke-width="3" fill="none" /><path d="M120 212 L120 290" stroke="#c9d0db" stroke-width="2.5" />
+        ${[232, 256].map((y) => `<circle cx="128" cy="${y}" r="3" fill="#c9d0db" />`).join("")}
+        <rect x="146" y="214" width="28" height="24" rx="3" fill="none" stroke="#c9d0db" stroke-width="2.5" />
+        <rect x="152" y="204" width="4" height="16" rx="2" fill="#3a8ee6" /><rect x="160" y="206" width="4" height="14" rx="2" fill="#e01f3d" />
+        <path d="M92 178 C86 214 106 238 122 238" stroke="#3a3f4a" stroke-width="4" fill="none" /><path d="M148 178 C154 200 148 214 136 222" stroke="#3a3f4a" stroke-width="4" fill="none" />
+        <circle cx="126" cy="238" r="7" fill="#d7dbe3" stroke="#8a909c" stroke-width="2.5" />
+        <path d="M74 214 L86 214 M80 208 L80 220" stroke="#e01f3d" stroke-width="4" />`;
+    if (pat === "tunic") s += `${star(68, 178, 11, "#f2c14e")}` + [104, 136].map((x) => [234, 254].map((y) => `<circle cx="${x}" cy="${y}" r="4" fill="#f2c14e" />`).join("")).join("");
+    if (t.badge === "sheriff") s += `${star(68, 178, 12, "#f2c14e")}<circle cx="68" cy="178" r="4" fill="#c99a2e" />`;
+    if (t.frontStrip === "pompoms") s += ["#e01f3d", "#3a8ee6", "#2a8a5a"].map((c, i) => `<circle cx="120" cy="${200 + i * 26}" r="8" fill="${c}" />`).join("");
     return s;
   }
 
@@ -280,6 +594,36 @@
       feet: "slippers", hat: "nightcap", headExtra: "zzz", eyes: "sleepy", raised: "candle", rest: "skin", restProp: "pillow" },
     chef: { name: "Chef", coat: WHITE, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "apron",
       feet: "boots", hat: "toque", eyes: "open", raised: "spoon", rest: "skin", restProp: "panettone" },
+    cuy: { name: "Cuy", coat: ["#b07a4f", "#7a4a2c", "#4f2d18"], mitten: ["#9a6440", "#5a341d"], sleeve: "coat", pattern: "cuy",
+      feet: "paws", hat: "cuy", eyes: "open", raised: "paw", rest: "paw", restProp: "carrot" },
+    campesino: { name: "Campesino", coat: WHITE, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "vest", belt: "chumpi", bottom: "hem", hemColor: "#3a2a22",
+      feet: "ojotas", hat: "felt", eyes: "open", raised: "choclo", rest: "skin", restProp: "basket" },
+    vampiro: { name: "Vampiro", coat: ["#3a3a46", "#1f1f24", "#0b0b0e"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "vamp", bottom: "hem",
+      face: ["#f4f5f9", "#cdd3e0"], skin: ["#e6e9f0", "#c9cfdc"], mouth: "fangs",
+      feet: "boots", hat: "vamphair", eyes: "open", raised: "bat", rest: "skin", back: "vampcape" },
+    vaquero: { name: "Vaquero", coat: ["#e5404f", "#b5182c", "#7a0d1d"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "vest", vestColor: "#8a5a34", vestTrim: false,
+      badge: "sheriff", belt: "classic", bottom: "hem", hemColor: "#2a5a9a",
+      feet: "spurs", bootColor: "#6b4226", hat: "cowboy", eyes: "open", raised: "lasso", rest: "skin" },
+    detective: { name: "Detective", coat: ["#e3cc9c", "#c4a56b", "#8a6f3e"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "trench", belt: "classic", beltColor: "#8a6f3e",
+      feet: "boots", bootColor: "#4a2c1d", hat: "deerstalker", eyes: "open", raised: "magnifier", rest: "skin" },
+    vikingo: { name: "Vikingo", coat: ["#b07a4f", "#7a4a2c", "#4f2d18"], mitten: ["#8a5a3b", "#4f2d18"], sleeve: "coat", pattern: "viking", belt: "classic", bottom: "hem", hemColor: "#3a2a22",
+      feet: "boots", bootColor: "#4a2c1d", hat: "viking", eyes: "open", raised: "axe", rest: "mitten", back: "shield" },
+    payaso: { name: "Payaso", coat: ["#fff1a8", "#f2c14e", "#c99a2e"], mitten: ["#ffffff", "#d7dbe3"], sleeve: "coat", pattern: "dots", frontStrip: "pompoms",
+      hair: ["#ff4f7b", "#3a8ee6", "#f2c14e", "#3fd47f", "#ff9a3c", "#ff4f7b"], nose: "#e01f3d",
+      feet: "clown", hat: "clownhat", eyes: "open", raised: "balloons", rest: "mitten", restProp: "horn" },
+    pirata: { name: "Pirata", coat: WHITE, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "stripes", belt: "classic", bottom: "hem", hemColor: "#1f1f24",
+      feet: "boots", hat: "tricorn", eyes: "patch", raised: "hook", rest: "skin", headExtra: "parrot" },
+    motociclista: { name: "Motociclista", coat: ["#7a5644", "#4a2f22", "#2a1a12"], hatColors: RED, mitten: ["#3a3a46", "#111114"], sleeve: "coat", pattern: "biker", belt: "studs", bottom: "hem",
+      feet: "boots", hat: "moto", eyes: "open", raised: "thumb", rest: "mitten", prop: "handlebar" },
+    bombero: { name: "Bombero", coat: ["#4a505c", "#2c313b", "#15171c"], hatColors: RED, mitten: ["#f2c14e", "#c99a2e"], sleeve: "coat", pattern: "reflective",
+      feet: "boots", hat: "firehelmet", eyes: "open", raised: "nozzle", rest: "mitten" },
+    doctor: { name: "Doctor", coat: WHITE, mitten: GREEN_MITTEN, sleeve: "coat", pattern: "labcoat",
+      feet: "boots", hat: "doctor", eyes: "open", raised: "thermometer", rest: "skin" },
+    comunista: { name: "Comunista", coat: RED, mitten: ["#8a5a3b", "#4f2d18"], sleeve: "coat", cuffs: true, pattern: "tunic", belt: "classic", beltColor: "#4a2f1c", bottom: "hem", hemColor: "#3a2a22",
+      feet: "boots", bootColor: "#3a2a22", hat: "ushanka", eyes: "open", raised: "flag", rest: "mitten" },
+    grinch: { name: "Gruñón verde", coat: RED, mitten: GREEN_MITTEN, sleeve: "coat", cuffs: true, frontStrip: "fur", bottom: "fur", belt: "classic",
+      faceStyle: "grump", face: ["#b8d96a", "#86ad40"], skin: ["#9cc450", "#6d9332"],
+      feet: "boots", hat: "classic", eyes: "grump", raised: "bauble", rest: "skin", restProp: "sack" },
   };
 
   function santaSVG(id, opts = {}) {
@@ -289,16 +633,27 @@
     const head = !!opts.head;
     const hat = t.hatColors || t.coat;
     const sleeve = `url(#${p}-coat)`;
-    const arm = (d, which) => t.sleeve === "short"
-      ? `<path d="${d}" stroke="${SKIN}" stroke-width="26" stroke-linecap="round" fill="none" />` +
-        (which === "left" ? `<path d="M62 168 C52 160 46 150 43 140" stroke="${sleeve}" stroke-width="32" stroke-linecap="round" fill="none" />`
-                          : `<path d="M186 160 C194 172 196 182 196 190" stroke="${sleeve}" stroke-width="32" stroke-linecap="round" fill="none" />`)
-      : `<path d="${d}" stroke="${sleeve}" stroke-width="30" stroke-linecap="round" fill="none" />`;
+    // Manga corta: tramo inicial exacto del brazo (curva cortada al 40 %), con borde recto y dobladillo;
+    // lleva el mismo estampado de la camisa. El hombro derecho se redondea porque queda encima del cuerpo.
+    const SHORT = {
+      left: { d: "M62 168 C53.2 160.8 46.6 152 42.5 142.5", hem: "M44.1 146.2 L42.5 142.5" },
+      right: { d: "M186 160 C193.2 169.6 196.2 179.2 195.5 187.8", hem: "M195.8 183.8 L195.5 187.8", shoulder: [186, 160] },
+    };
+    const sleevePattern = t.pattern === "hibiscus" ? `url(#${p}-hib)` : t.pattern === "plaid" ? `url(#${p}-plaid)` : null;
+    const arm = (d, which) => {
+      if (t.sleeve !== "short") return `<path d="${d}" stroke="${sleeve}" stroke-width="30" stroke-linecap="round" fill="none" />`;
+      const s = SHORT[which];
+      const tube = (stroke) => `<path d="${s.d}" stroke="${stroke}" stroke-width="34" fill="none" />` +
+        (s.shoulder ? `<circle cx="${s.shoulder[0]}" cy="${s.shoulder[1]}" r="17" fill="${stroke}" />` : "");
+      return `<path d="${d}" stroke="${SKIN}" stroke-width="26" stroke-linecap="round" fill="none" />` +
+        tube(t.coat[1]) + (sleevePattern ? tube(sleevePattern) : "") +
+        `<path d="${s.hem}" stroke="${t.coat[2]}" stroke-width="34" fill="none" opacity="0.7" />`;
+    };
     const grad = (name, c) => `<radialGradient id="${p}-${name}" cx="0.38" cy="0.3" r="0.8"><stop offset="0" stop-color="${c[0]}" /><stop offset="0.55" stop-color="${c[1]}" /><stop offset="1" stop-color="${c[2]}" /></radialGradient>`;
 
     const defs = `<defs>
       ${grad("coat", t.coat)}${grad("hat", hat)}
-      <radialGradient id="${p}-face" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#fde0c8" /><stop offset="1" stop-color="#efb994" /></radialGradient>
+      <radialGradient id="${p}-face" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="${(t.face || [])[0] || "#fde0c8"}" /><stop offset="1" stop-color="${(t.face || [])[1] || "#efb994"}" /></radialGradient>
       <linearGradient id="${p}-fur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#e3e9f1" /></linearGradient>
       <radialGradient id="${p}-mitten" cx="0.35" cy="0.35" r="0.7"><stop offset="0" stop-color="${t.mitten[0]}" /><stop offset="1" stop-color="${t.mitten[1]}" /></radialGradient>
       <clipPath id="${p}-body"><ellipse cx="120" cy="198" rx="80" ry="70" /></clipPath>
@@ -320,15 +675,16 @@
       <path d="M120 133 C112 125 97 125 90 132 C86 138 91 143 98 141 C105 139 112 140 120 137 Z" />
       <path d="M120 133 C128 125 143 125 150 132 C154 138 149 143 142 141 C135 139 128 140 120 137 Z" /></g>`;
     const restProp = t.restProp ? REST_PROPS[t.restProp] : null;
-    const buckle = t.belt ? `<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
+    const buckle = t.belt && t.belt !== "chumpi" ?`<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
       <rect x="106" y="196" width="10" height="3" rx="1.5" fill="#fff3c4" opacity="0.8" />` : "";
 
-    const viewBox = head ? "50 -12 190 204" : "0 0 240 285";
-    return `<svg class="santa-svg santa--${id} ${opts.cls || ""}" viewBox="${viewBox}" role="img" aria-label="Santa ${t.name}">
+    const viewBox = head ? "44 -12 196 204" : "0 0 240 285";
+    const svg = `<svg class="santa-svg santa--${id} ${opts.cls || ""}" viewBox="${viewBox}" role="img" aria-label="Santa ${t.name}">
       ${defs}
-      ${head ? "" : `<ellipse cx="120" cy="278" rx="84" ry="7" fill="rgba(40,0,8,0.28)" />
-      ${t.back ? BACKS[t.back]() : ""}
-      ${FEET[t.feet](t)}
+      ${head ? "" : `<ellipse class="shadow" cx="120" cy="278" rx="84" ry="7" fill="rgba(40,0,8,0.28)" />`}
+      <g class="figure">
+      ${head ? "" : `${t.back ? `<g class="back">${BACKS[t.back](p)}</g>` : ""}
+      <g class="feet">${FEET[t.feet](t)}</g>
       <g class="arm arm--left">${arm("M62 168 C40 150 32 122 40 98", "left")}${RAISED[t.raised](p, t)}</g>`}
       <g class="belly">
         <ellipse cx="120" cy="198" rx="80" ry="70" fill="url(#${p}-coat)" />
@@ -336,13 +692,23 @@
         <ellipse cx="90" cy="168" rx="26" ry="15" fill="#fff" opacity="0.13" transform="rotate(-20 90 168)" />
         ${buckle}
       </g>
-      ${head ? "" : `${t.prop ? PROPS[t.prop]() : ""}
+      ${head ? "" : `${t.prop ? `<g class="prop">${PROPS[t.prop]()}</g>` : ""}
       <g class="arm arm--right">${arm("M186 160 C204 184 196 208 168 216", "right")}
         ${t.cuffs ? `<ellipse cx="172" cy="214" rx="9" ry="15" fill="url(#${p}-fur)" transform="rotate(-70 172 214)" />` : ""}
-        ${restProp && restProp.under ? restProp.svg() : ""}${REST_HANDS[t.rest](p, t)}${restProp && !restProp.under ? restProp.svg() : ""}</g>`}
+        ${restProp && restProp.under ? `<g class="rest-prop">${restProp.svg()}</g>` : ""}${REST_HANDS[t.rest](p, t)}${restProp && !restProp.under ? `<g class="rest-prop">${restProp.svg()}</g>` : ""}</g>`}
       <g class="head">
-        <g fill="#ffffff"><circle cx="80" cy="110" r="14" /><circle cx="75" cy="126" r="13" /><circle cx="81" cy="140" r="12" />
-          <circle cx="160" cy="110" r="14" /><circle cx="165" cy="126" r="13" /><circle cx="159" cy="140" r="12" /></g>
+        ${t.faceStyle === "grump" ? `
+        <path d="M84 96 L62 92 L78 106 L58 114 L78 120 L60 134 L84 132 Z" fill="#6d9332" />
+        <path d="${mirrorX("M84 96 L62 92 L78 106 L58 114 L78 120 L60 134 L84 132 Z")}" fill="#6d9332" />
+        <circle cx="120" cy="112" r="42" fill="url(#${p}-face)" />
+        <path d="M84 140 L92 150 L98 142 L106 154 L112 146 L120 158 L128 146 L134 154 L142 142 L148 150 L156 140 C150 152 136 160 120 160 C104 160 90 152 84 140 Z" fill="#7da33a" />
+        ${EYES[t.eyes](p)}
+        <ellipse cx="120" cy="122" rx="6" ry="4" fill="#4f6f22" />
+        <path d="M90 128 Q120 154 152 126 Q122 142 90 128 Z" fill="#3a1a12" />
+        <path d="M100 133 L104 138 L108 135 M132 134 L136 137 L140 132" stroke="#f4f0e0" stroke-width="2" fill="none" />
+        <path d="M88 126 Q86 122 90 120 M152 124 Q156 120 152 118" stroke="#3f5a1a" stroke-width="2.5" fill="none" stroke-linecap="round" />` : `
+        <g>${[[80, 110, 14], [75, 126, 13], [81, 140, 12], [160, 110, 14], [165, 126, 13], [159, 140, 12]].map(([x, y, r], i) =>
+          `<circle cx="${x}" cy="${y}" r="${r}" fill="${t.hair ? t.hair[i % t.hair.length] : "#ffffff"}" />`).join("")}</g>
         <circle cx="120" cy="112" r="42" fill="url(#${p}-face)" />
         <ellipse cx="95" cy="124" rx="10" ry="7" fill="#f2797f" opacity="0.45" />
         <ellipse cx="145" cy="124" rx="10" ry="7" fill="#f2797f" opacity="0.45" />
@@ -351,12 +717,16 @@
         ${EYES[t.eyes](p)}
         ${beard("#d9e0ea", 3)}${beard("#ffffff", 0)}
         <path d="M109 142 Q120 156 131 142 Z" fill="#8a2430" /><ellipse cx="120" cy="148" rx="5" ry="2.6" fill="#ec6f80" />
+        ${t.mouth === "fangs" ? `<path d="M111 142 L114 151 L117 142 Z M123 142 L126 151 L129 142 Z" fill="#ffffff" />` : ""}
         ${mustache("#d9e0ea", 2)}${mustache("#ffffff", 0)}
-        <circle cx="120" cy="126" r="9" fill="#ec9580" /><circle cx="117" cy="123" r="3" fill="#fff" opacity="0.55" />
-        ${HATS[t.hat](p)}
+        <circle cx="120" cy="126" r="9" fill="${t.nose || "#ec9580"}" /><circle cx="117" cy="123" r="3" fill="#fff" opacity="0.55" />`}
+        <g class="hat">${HATS[t.hat](p)}</g>
         ${t.headExtra ? HEAD_EXTRAS[t.headExtra](p) : ""}
       </g>
+      </g>
     </svg>`;
+    // Piel de otro color (manos y brazos): se cambian los tonos de piel por defecto
+    return t.skin ? svg.split(SKIN).join(t.skin[0]).split(SKIN_DARK).join(t.skin[1]) : svg;
   }
 
   window.SANTA_THEMES = THEMES;

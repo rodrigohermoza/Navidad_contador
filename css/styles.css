@@ -204,26 +204,7 @@ body {
   transform-origin: 50% 100%;
   animation: breathe 2.8s ease-in-out infinite;
 }
-/* Brazos: giran desde el hombro (coordenadas del dibujo en js/santas.js) */
-.big-santa .arm { transform-box: view-box; }
-.big-santa .arm--left { transform-origin: 62px 168px; animation: wave 1.6s ease-in-out infinite; }
-.big-santa .arm--right { transform-origin: 186px 160px; animation: wave-r 2.8s ease-in-out infinite; }
-
-/* Detalles animados de los Santas temáticos */
-.santa-svg .steam path { animation: steam 2s ease-in-out infinite; }
-.santa-svg .steam path:nth-child(2) { animation-delay: -1s; }
-.santa-svg .led { animation: led 0.9s ease-in-out infinite; }
-.santa-svg .neon { animation: led 1.4s ease-in-out infinite; }
-.santa-svg .flame, .santa-svg .glow { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 0.6s ease-in-out infinite alternate; }
-.santa-svg .sparkles { animation: twinkle 1.2s ease-in-out infinite; }
-.santa-svg .zzz text { animation: zzz 2.4s ease-in-out infinite; }
-.santa-svg .zzz text:nth-child(2) { animation-delay: 0.4s; }
-.santa-svg .zzz text:nth-child(3) { animation-delay: 0.8s; }
-@keyframes steam { 0%, 100% { opacity: 0.2; transform: translateY(2px); } 50% { opacity: 0.9; transform: translateY(-3px); } }
-@keyframes led { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-@keyframes flicker { from { transform: scale(1, 1); } to { transform: scale(0.9, 1.08); } }
-@keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-@keyframes zzz { 0%, 100% { opacity: 0.25; transform: translateY(2px); } 50% { opacity: 1; transform: translateY(-3px); } }
+/* Animaciones propias de cada Santa: css/santas.css */
 .big-santa:hover .big-santa-svg { animation: jiggle 0.5s ease-in-out infinite; }
 
 /* Se infla con un bamboleo... */
@@ -234,8 +215,6 @@ body {
 .big-santa.is-back .big-santa-svg { animation: come-back 0.7s cubic-bezier(.3,1.6,.5,1); }
 
 @keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.03, 0.97); } }
-@keyframes wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
-@keyframes wave-r { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-4deg); } }
 @keyframes jiggle { 0%, 100% { transform: scale(1, 1); } 30% { transform: scale(1.07, 0.93); } 60% { transform: scale(0.96, 1.04); } }
 @keyframes inflate {
   0%   { transform: scale(1, 1); }
@@ -336,7 +315,10 @@ body {
 .picker-panel {
   position: fixed;               /* anclado a la pantalla para que nunca se salga por los lados */
   top: 74px; right: 16px;
-  width: min(340px, calc(100vw - 32px));
+  width: min(400px, calc(100vw - 32px));
+  max-height: calc(100vh - 90px); max-height: calc(100dvh - 90px);
+  overflow-y: auto;                /* con 22 Santas el panel puede ser más alto que la pantalla */
+  overscroll-behavior: contain;
   padding: 14px;
   border-radius: 20px;
   background: rgba(70, 6, 20, 0.94);
@@ -348,10 +330,10 @@ body {
 }
 .picker-panel[hidden] { display: none; }
 .picker-title { font-family: var(--font-display); font-size: 1.15rem; text-align: center; margin-bottom: 10px; }
-.picker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.picker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .picker-option {
   display: flex; flex-direction: column; align-items: center; gap: 4px;
-  padding: 8px 4px 6px;
+  padding: 6px 2px 6px;
   border-radius: 14px;
   border: 2px solid transparent;
   background: rgba(255, 255, 255, 0.08);
@@ -359,7 +341,8 @@ body {
   font: 600 0.72rem var(--font-body);
   cursor: pointer;
 }
-.picker-option svg { width: 64px; height: auto; }
+.picker-option svg { width: min(60px, 100%); height: auto; }
+.picker-option span { text-align: center; line-height: 1.15; }
 .picker-option:hover { background: rgba(255, 255, 255, 0.16); }
 .picker-option[aria-pressed="true"] { border-color: var(--gold); background: rgba(255, 210, 122, 0.18); }
 .picker-option:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
@@ -389,7 +372,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lights .bulb, .big-santa-svg, .big-santa .arm,
+  .lights .bulb, .big-santa-svg,
   .big-flake > g, .sparkle, .tree-light, .ornament,
   .santa-svg *, .picker-panel { animation: none !important; }
 }

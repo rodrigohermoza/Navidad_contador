@@ -53,3 +53,21 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
 ## 2026-11-07
 - Se revisó la conexión: `gh` logueado como `rodrigohermoza`; el usuario sube con `git push` desde la terminal.
 - Docs actualizados antes de compactar la conversación.
+- Rama `santas-nuevos`:
+  - Arreglos de bordes: la tabla de surf tenía las rayas fuera de la tabla (ahora tiene punta y las rayas van recortadas a
+    su forma); las mangas cortas (veraniego, futbolero) eran "salchichas" sueltas: ahora siguen el brazo, con borde recto,
+    dobladillo y el estampado de la camisa. Chequeo automático de piezas fuera del marco en los 22 Santas (cuerpo y
+    cabeza): se corrigieron la "Z" del pijama y el ala del sombrero de paja en el selector (viewBox de cabeza
+    `44 -12 196 204`) y el escudo vikingo.
+  - Nuevos: **cuy** (disfraz de cuy tricolor con capucha, orejitas, bigotes, gorrito navideño, zanahoria) y **campesino**
+    (sombrero de fieltro con cinta tejida, chaleco bordado, chumpi, ojotas, choclo y canasta de papas). Se hicieron como
+    dos Santas distintos.
+  - Después el usuario pidió 11 más: vampiro, vaquero, detective, vikingo, payaso, pirata, motociclista, bombero, doctor,
+    comunista y "el Grinch vestido de Santa" → hecho como **gruñón verde** (diseño propio inspirado, no copia del personaje).
+  - **Animaciones distintas por Santa** en `css/santas.css` (clásico se ríe jo-jo-jo, rockero headbanging, veraniego
+    baila hula, andino mueve los pompones, futbolero salta, DJ cabecea, mago hace hechizos, pijama cabecea de sueño,
+    chef revuelve, cuy da saltitos, campesino zapatea huayno, vampiro flota, vaquero cabalga con lazo, detective busca
+    pistas, vikingo grita, payaso rebota, pirata se balancea, moto vibra, bombero echa agua, doctor sacude el
+    termómetro, comunista marcha con bandera, gruñón camina de puntitas).
+  - Selector: 4 columnas y scroll si no entra en pantalla. Probado en celular sin errores de consola.
+  - Peso total ~130 KB (~37 KB comprimido): no hay riesgo de que la página no cargue.

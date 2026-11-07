@@ -27,28 +27,14 @@
          border-radius: 999px; background: #1f6b45; border: 1px solid rgba(120,230,170,0.5); }
   .santa-svg { height: 260px; width: auto; overflow: visible; filter: drop-shadow(0 10px 24px rgba(40,0,8,0.4));
                transform-origin: 50% 100%; animation: breathe 2.8s ease-in-out infinite; }
-  .arm--left { transform-box: view-box; transform-origin: 62px 168px; animation: wave 1.6s ease-in-out infinite; }
-  .steam path { animation: steam 2s ease-in-out infinite; }
-  .steam path:nth-child(2) { animation-delay: -1s; }
   @keyframes breathe { 0%,100% { transform: scale(1,1); } 50% { transform: scale(1.03,0.97); } }
-  @keyframes wave { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
-  @keyframes steam { 0%,100% { opacity: 0.2; transform: translateY(2px); } 50% { opacity: 0.9; transform: translateY(-3px); } }
-  .led { animation: led 0.9s ease-in-out infinite; }
-  .flame, .glow { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 0.6s ease-in-out infinite alternate; }
-  .sparkles { animation: twinkle 1.2s ease-in-out infinite; }
-  .zzz text { animation: zzz 2.4s ease-in-out infinite; }
-  .zzz text:nth-child(2) { animation-delay: 0.4s; } .zzz text:nth-child(3) { animation-delay: 0.8s; }
-  .neon { animation: led 1.4s ease-in-out infinite; }
-  @keyframes led { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  @keyframes flicker { from { transform: scale(1, 1); } to { transform: scale(0.9, 1.08); } }
-  @keyframes twinkle { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-  @keyframes zzz { 0%,100% { opacity: 0.25; transform: translateY(2px); } 50% { opacity: 1; transform: translateY(-3px); } }
   .desc { font-size: 0.88rem; line-height: 1.5; opacity: 0.9; text-align: center; max-width: 240px; }
 </style>
+<link rel="stylesheet" href="../css/santas.css" />
 </head>
 <body>
   <h1>Santas temáticos</h1>
-  <p class="sub">Vista previa. Todos comparten la misma base; cambian gorro, ropa, lentes y accesorios.</p>
+  <p class="sub">Vista previa. Cada Santa tiene su propia animación.</p>
   <div class="grid" id="grid"></div>
 
   <script src="../js/santas.js"></script>
@@ -63,9 +49,22 @@
       mago: "Sombrero de mago morado con estrellas y luna, capa con borde dorado y varita con chispitas.",
       pijama: "Pijama a cuadros, gorro de dormir largo a rayas, pantuflas de reno, vela, almohada y Zzz.",
       chef: "Gorro de chef con acebo, chaqueta blanca, mandil rojo, cuchara de palo y un panetón.",
+      cuy: "Disfraz de cuy tricolor con orejitas, bigotes y gorrito navideño; trae su zanahoria.",
+      vampiro: "Pálido, con colmillitos, capa negra y roja de cuello alto y un murcielaguito. Flota en el aire.",
+      vaquero: "Sombrero vaquero, chaleco con estrella de sheriff, jean, botas con espuelas y lazo girando.",
+      detective: "Gorro a cuadros, gabardina, lupa. Mira a un lado y al otro buscando pistas.",
+      vikingo: "Casco con cuernos, cuello de piel, escudo redondo y hacha de juguete. Grito de guerra.",
+      payaso: "Pelo de colores, nariz roja, gorrito, traje de lunares, zapatos gigantes, globos y bocina.",
+      pirata: "Sombrero con calavera, parche, polo a rayas, garfio y un lorito con gorrito navideño. Se balancea como en barco.",
+      motociclista: "Casco con lentes, casaca de cuero, cinturón con tachas, manubrio con faro y pulgar arriba. El motor vibra.",
+      bombero: "Casco rojo con placa, traje con franjas reflectivas, manguera echando agua.",
+      doctor: "Espejo en la frente, bata blanca, estetoscopio y termómetro que sacude.",
+      comunista: "Ushanka con estrella roja, abrigo rojo con botones dorados y bandera ondeando. Marcha.",
+      grinch: "Gruñón verde vestido de Santa, con una esfera robada y su saco de regalos. Camina de puntitas.",
+      campesino: "Sombrero de fieltro con cinta tejida, chaleco bordado, chumpi, ojotas, choclo y canasta de papas.",
     };
     document.getElementById("grid").innerHTML = Object.keys(SANTA_THEMES).map((id) => `
-      <div class="card"><span class="tag">${SANTA_THEMES[id].name}</span>${santaSVG(id)}<p class="desc">${DESC[id] || ""}</p></div>`).join("");
+      <div class="card"><span class="tag">${SANTA_THEMES[id].name}</span>${santaSVG(id, { cls: "santa-anim" })}<p class="desc">${DESC[id] || ""}</p></div>`).join("");
   </script>
 </body>
 </html>

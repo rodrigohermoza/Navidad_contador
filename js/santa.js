@@ -22,7 +22,7 @@
 
   function render(id, animate) {
     current = id;
-    santa.innerHTML = window.santaSVG(id, { prefix: "big", cls: "big-santa-svg" });
+    santa.innerHTML = window.santaSVG(id, { prefix: "big", cls: "big-santa-svg santa-anim" });
     modalSanta.innerHTML = window.santaSVG(id, { prefix: "modal", head: true });
     document.getElementById("picker-face").innerHTML = window.santaSVG(id, { prefix: "btn", head: true });
     pickerGrid.querySelectorAll("[data-santa]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.santa === id));

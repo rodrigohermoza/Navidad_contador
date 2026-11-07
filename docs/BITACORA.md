@@ -32,4 +32,10 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
 - Docs reorganizados en `docs/` (README índice, PROYECTO, ARQUITECTURA, BITACORA, PENDIENTES).
 - Pedido: varios Santas para hacerlo más divertido (rockero, veraniego, con chullo andino…). Primero
   **rediseñar el Santa actual** ("se ve medio feo") y mostrar una vista previa antes de aplicarlo →
-  `preview/santa.html` (actual vs. nuevo). Pendiente de aprobación.
+  `preview/santa.html` (actual vs. nuevo). El usuario **aprobó** el nuevo diseño (ojos abiertos, barba
+  esponjosa, saluda con la mano, guantes verdes).
+- Pedido: opciones de Santas y diseñar los que mencionó → `js/santas.js` (base común + piezas por tema) y
+  galería `preview/santas.html` con 4: **Clásico**, **Rockero** (cuero negro, gorro negro, lentes, guitarra
+  amarilla, mano 🤘), **Veraniego** (camisa hawaiana, short, sandalias, sombrero de paja, coco, tabla de
+  surf), **Andino** (chullo con orejeras y pompones, poncho con grecas, taza de chocolatada). Aún no
+  están en la página real: falta que el usuario elija cuáles y cómo se alternan.

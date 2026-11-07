@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Vista previa: Santas</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,500&family=Inter:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Página solo para comparar los Santas temáticos. No forma parte del sitio. */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 50% 30%, rgba(255, 90, 100, 0.35), transparent 60%),
+                linear-gradient(180deg, #a3101f 0%, #8a0c1b 55%, #5e0914 100%);
+    color: #fff; font-family: Inter, system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; padding: 32px 16px;
+  }
+  h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(1.6rem, 4vw, 2.4rem); margin-bottom: 6px; }
+  p.sub { opacity: 0.8; margin-bottom: 28px; text-align: center; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; width: min(1100px, 100%); }
+  .card {
+    display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px 12px;
+    border-radius: 24px; background: rgba(60, 4, 16, 0.32); border: 1px solid rgba(255,255,255,0.25);
+  }
+  .tag { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px;
+         border-radius: 999px; background: #1f6b45; border: 1px solid rgba(120,230,170,0.5); }
+  .santa-svg { height: 260px; width: auto; overflow: visible; filter: drop-shadow(0 10px 24px rgba(40,0,8,0.4));
+               transform-origin: 50% 100%; animation: breathe 2.8s ease-in-out infinite; }
+  .arm--left { transform-box: view-box; transform-origin: 62px 168px; animation: wave 1.6s ease-in-out infinite; }
+  .steam path { animation: steam 2s ease-in-out infinite; }
+  .steam path:nth-child(2) { animation-delay: -1s; }
+  @keyframes breathe { 0%,100% { transform: scale(1,1); } 50% { transform: scale(1.03,0.97); } }
+  @keyframes wave { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
+  @keyframes steam { 0%,100% { opacity: 0.2; transform: translateY(2px); } 50% { opacity: 0.9; transform: translateY(-3px); } }
+  .desc { font-size: 0.88rem; line-height: 1.5; opacity: 0.9; text-align: center; max-width: 240px; }
+</style>
+</head>
+<body>
+  <h1>Santas temáticos</h1>
+  <p class="sub">Vista previa. Todos comparten la misma base; cambian gorro, ropa, lentes y accesorios.</p>
+  <div class="grid" id="grid"></div>
+
+  <script src="../js/santas.js"></script>
+  <script>
+    const DESC = {
+      clasico: "El de siempre, rediseñado: guantes verdes y saludando.",
+      rockero: "Chaqueta de cuero, polo rojo, cinturón con tachas, lentes oscuros, guitarra y la mano 🤘.",
+      veraniego: "Camisa hawaiana roja con flores, short, sandalias, sombrero de paja, lentes de colores, coco y tabla de surf.",
+      andino: "Chullo tejido con orejeras y pompones, poncho con grecas y una taza de chocolatada calientita.",
+    };
+    document.getElementById("grid").innerHTML = Object.keys(SANTA_THEMES).map((id) => `
+      <div class="card"><span class="tag">${SANTA_THEMES[id].name}</span>${santaSVG(id)}<p class="desc">${DESC[id] || ""}</p></div>`).join("");
+  </script>
+</body>
+</html>

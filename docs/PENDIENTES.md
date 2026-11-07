@@ -1,10 +1,7 @@
 # Pendientes e ideas
 
-## Por aprobar
-- Rama `santas-nuevos`: revisar en local (`/` y `/preview/santas.html`) y, si gusta, fusionar en `main` y hacer push.
-
 ## Hecho recientemente
-- 9 Santas integrados con selector arriba a la derecha (ver BITACORA 2026-11-06).
+- 22 Santas con animación propia, selector de 4 columnas (ver BITACORA 2026-11-07).
 
 ## Ideas
 - Opcional: que el Santa cambie solo según el día o la actividad (hoy se elige a mano).

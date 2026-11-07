@@ -22,17 +22,15 @@ Página web estática para compartir con una persona mediante un único link (si
 - Las decoraciones deben ser fáciles de prender/apagar (`js/config.js`).
 
 ## Estado actual (2026-11-07)
-- Rama de trabajo actual: `santas-nuevos` (13 Santas nuevos, animaciones por Santa y arreglos de bordes). Falta que el
-  usuario la revise en local y la apruebe para fusionarla en `main`.
+- Todo está en `main` y subido (la rama `santas-nuevos` ya se fusionó).
 - Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
   cada push a `main` publica automáticamente. Subir: `git push` desde la terminal (la cuenta de GitHub
   `rodrigohermoza` está conectada con `gh`; si pidiera contraseña, correr `gh auth setup-git`). También sirve
   GitHub Desktop. Hacer push solo si el usuario lo pide.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
-- 9 Santas temáticos en la página publicada (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ,
-  mago, en pijama y chef. En la rama `santas-nuevos` (pendiente de aprobación) hay 22: + cuy, campesino, vampiro,
-  vaquero, detective, vikingo, payaso, pirata, motociclista, bombero, doctor, comunista y gruñón verde, cada uno con
-  su propia animación (`css/santas.css`). Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
+- 22 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
+  en pijama, chef, cuy, campesino, vampiro, vaquero, detective, vikingo, payaso, pirata, motociclista, bombero,
+  doctor, comunista y gruñón verde, cada uno con su propia animación (`css/santas.css`). Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
   Galería de todos en `preview/santas.html`.
 - 25 actividades reales cargadas (`js/activities.js`).
 - Peso: toda la página pesa ~130 KB (~37 KB comprimida), sin imágenes; carga sin problema aunque se agreguen más Santas.

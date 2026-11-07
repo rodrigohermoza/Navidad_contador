@@ -71,3 +71,4 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
     termómetro, comunista marcha con bandera, gruñón camina de puntitas).
   - Selector: 4 columnas y scroll si no entra en pantalla. Probado en celular sin errores de consola.
   - Peso total ~130 KB (~37 KB comprimido): no hay riesgo de que la página no cargue.
+- El usuario aprobó: `santas-nuevos` fusionada en `main` y subida (Vercel publica solo).

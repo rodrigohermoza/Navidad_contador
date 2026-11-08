@@ -138,6 +138,25 @@
 .santa-anim.santa--grinch .head { animation: tilt 2s ease-in-out infinite; }
 .santa-anim.santa--grinch .arm--left { animation: wave-r 2s ease-in-out infinite; }
 
+/* --- Boxeador: salta en la punta de los pies y lanza jab con la izquierda y gancho con la derecha --- */
+.santa-anim.santa--boxeador .figure { animation: boxer-bob 1.2s ease-in-out infinite; }
+.santa-anim.santa--boxeador .shadow { animation: shadow-bounce 0.6s ease-in-out infinite; }
+.santa-anim.santa--boxeador .arm--left { animation: jab 1.2s ease-in-out infinite; }
+.santa-anim.santa--boxeador .arm--right { animation: hook 1.2s ease-in-out infinite; }
+
+/* --- Hippie: se mece tranquilo, cabeza ladeada, paz y amor y la margarita gira --- */
+.santa-anim.santa--hippie .figure { animation: hula 3.6s ease-in-out infinite; }
+.santa-anim.santa--hippie .head { animation: tilt 3.6s ease-in-out infinite reverse; }
+.santa-anim.santa--hippie .arm--left { animation: wave 1.8s ease-in-out infinite; }
+.santa-anim .spin { transform-box: fill-box; transform-origin: 50% 50%; animation: spin 6s linear infinite; }
+
+/* --- Disco: el paso clásico (dedo arriba, dedo abajo), cadera que se mueve y la bola brilla --- */
+.santa-anim.santa--disco .figure { animation: disco-hips 1s ease-in-out infinite; }
+.santa-anim.santa--disco .arm--left { animation: disco-point 2s ease-in-out infinite; }
+.santa-anim.santa--disco .head { animation: nod 0.5s ease-in-out infinite; }
+.santa-svg .glints, .santa-svg .facets { animation: twinkle 0.8s ease-in-out infinite; }
+.santa-svg .sequins circle { animation: led 1s ease-in-out infinite; }
+
 @keyframes wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
 @keyframes wave-r { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-4deg); } }
 @keyframes steam { 0%, 100% { opacity: 0.2; transform: translateY(2px); } 50% { opacity: 0.9; transform: translateY(-3px); } }
@@ -219,6 +238,13 @@
 @keyframes march { 0%, 50%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-5px) rotate(-1.5deg); } 75% { transform: translateY(-5px) rotate(1.5deg); } }
 @keyframes flag { from { transform: skewY(-6deg) scaleX(1); } to { transform: skewY(5deg) scaleX(0.9); } }
 @keyframes sneak { 0%, 100% { transform: translateX(-4px) rotate(-3deg); } 25% { transform: translateX(0) translateY(-5px) rotate(0); } 50% { transform: translateX(4px) rotate(3deg); } 75% { transform: translateX(0) translateY(-5px) rotate(0); } }
+
+@keyframes boxer-bob { 0%, 50%, 100% { transform: translateY(0); } 25%, 75% { transform: translateY(-6px); } }
+@keyframes jab { 0%, 40%, 100% { transform: rotate(0); } 15% { transform: rotate(-14deg) translate(-4px, -4px); } }
+@keyframes hook { 0%, 45%, 85%, 100% { transform: rotate(0); } 65% { transform: rotate(24deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes disco-hips { 0%, 100% { transform: translateX(-3px) rotate(-2deg); } 50% { transform: translateX(3px) rotate(2deg); } }
+@keyframes disco-point { 0%, 40%, 100% { transform: rotate(0); } 50%, 90% { transform: rotate(-60deg); } }
 
 @media (prefers-reduced-motion: reduce) {
   .santa-svg, .santa-svg * { animation: none !important; }

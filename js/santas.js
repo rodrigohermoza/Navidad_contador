@@ -530,6 +530,96 @@
       <ellipse cx="${x - 8}" cy="263" rx="10" ry="3.5" fill="#fff" opacity="0.35" />`).join(""),
   });
 
+  // =====================================================================================
+  // ---------- Tercera tanda: boxeador, hippie y disco ----------
+  // =====================================================================================
+  const daisy = (x, y, r = 5, c = "#ffffff", mid = "#f2c14e") => `<g>${[0, 60, 120, 180, 240, 300].map((a) =>
+    `<ellipse cx="${x}" cy="${y - r}" rx="${r * 0.5}" ry="${r * 0.85}" fill="${c}" transform="rotate(${a} ${x} ${y})" />`).join("")}
+    <circle cx="${x}" cy="${y}" r="${r * 0.55}" fill="${mid}" /></g>`;
+
+  Object.assign(HATS, {
+    // Pelo largo hippie con vincha de cuero y florcitas
+    flowers: () => {
+      const side = "M80 92 C64 112 62 150 68 184 C72 196 86 194 90 184 C84 152 84 120 92 100 Z";
+      return `<g fill="#ffffff" stroke="#d9e0ea" stroke-width="1.5"><path d="${side}" /><path d="${mirrorX(side)}" />
+        <path d="M78 98 C74 60 98 42 120 42 C142 42 166 60 162 98 C150 82 136 78 120 80 C104 78 90 82 78 98 Z" /></g>
+      <path d="M72 158 C70 168 72 176 76 182 M168 158 C170 168 168 176 164 182" stroke="#d9e0ea" stroke-width="2" fill="none" />
+      <path d="M78 84 Q120 68 162 84" stroke="#7a4a2c" stroke-width="6" fill="none" stroke-linecap="round" />
+      ${daisy(88, 79, 6, "#ffffff")}${daisy(104, 74, 6, "#ff7aa8")}${daisy(120, 72.5, 7, "#f2c14e", "#ff7a1a")}${daisy(136, 74, 6, "#7fd0ff")}${daisy(152, 79, 6, "#ffffff")}`;
+    },
+
+    // Afro blanco gigante con un gorrito navideño chiquito encima
+    afro: (p) => `<g fill="#ffffff">${[[70, 98, 17], [64, 74, 20], [74, 50, 22], [96, 32, 24], [120, 26, 26], [144, 32, 24], [166, 50, 22], [176, 74, 20], [170, 98, 17]]
+        .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" />`).join("")}<ellipse cx="120" cy="58" rx="54" ry="30" /></g>
+      <g fill="#e3e9f1">${[[70, 80], [86, 48], [112, 34], [140, 42], [164, 64], [172, 92], [98, 62], [146, 68]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.5" />`).join("")}</g>
+      <g transform="rotate(18 136 12)"><path d="M120 14 C122 2 132 -4 144 -8 C146 2 147 8 146 14 Z" fill="url(#${p}-hat)" />
+        <rect x="116" y="11" width="34" height="7" rx="3.5" fill="url(#${p}-fur)" /><circle cx="144" cy="-8" r="4" fill="url(#${p}-fur)" /></g>`,
+  });
+
+  Object.assign(HEAD_EXTRAS, {
+    // Curita en el cachete (gajes del oficio)
+    bandaid: () => `<g transform="rotate(-25 92 116)"><rect x="82" y="112" width="20" height="8" rx="4" fill="#f0c890" />
+      <rect x="89" y="112" width="6" height="8" fill="#e2b072" /><circle cx="85.5" cy="116" r="0.9" fill="#c9965a" /><circle cx="98.5" cy="116" r="0.9" fill="#c9965a" /></g>`,
+  });
+
+  Object.assign(EYES, {
+    // Lentes disco: marco dorado y lunas moradas
+    disco: () => {
+      const lens = "M88 100 L117 100 L115 113 Q104 121 92 114 Z";
+      return `<path d="${lens}" fill="#7b2fa8" stroke="#f2c14e" stroke-width="3" stroke-linejoin="round" />
+      <path d="${mirrorX(lens)}" fill="#7b2fa8" stroke="#f2c14e" stroke-width="3" stroke-linejoin="round" />
+      <path d="M117 103 Q120 100 123 103" stroke="#f2c14e" stroke-width="3" fill="none" />
+      <path d="M93 104 L101 104 M127 104 L135 104" stroke="#fff" stroke-width="2" opacity="0.6" stroke-linecap="round" />`;
+    },
+  });
+
+  Object.assign(RAISED, {
+    // Guante de box en alto
+    boxglove: () => `<path d="M24 86 C16 66 28 50 44 52 C60 54 64 72 58 88 C54 98 30 98 24 86 Z" fill="#d4132f" />
+      <ellipse cx="24" cy="78" rx="7" ry="11" fill="#b00f28" transform="rotate(18 24 78)" />
+      <path d="M33 61 Q42 56 51 63" stroke="#fff" stroke-width="3" opacity="0.4" fill="none" stroke-linecap="round" />
+      <rect x="29" y="92" width="24" height="13" rx="4" fill="#ffffff" transform="rotate(-6 41 98)" />`,
+    // Señal de paz y amor (dedos en V)
+    peace: () => `<rect x="28" y="54" width="8" height="28" rx="4" fill="${SKIN}" transform="rotate(-14 32 80)" />
+      <rect x="42" y="54" width="8" height="28" rx="4" fill="${SKIN}" transform="rotate(14 46 80)" />${fist()}`,
+  });
+
+  Object.assign(REST_HANDS, {
+    boxglove: () => `<rect x="160" y="205" width="13" height="24" rx="4" fill="#ffffff" transform="rotate(-25 166 217)" />
+      <path d="M136 220 C134 204 146 200 156 202 C168 204 170 222 162 232 C154 240 138 236 136 220 Z" fill="#d4132f" />
+      <ellipse cx="144" cy="206" rx="8" ry="6" fill="#b00f28" />
+      <path d="M142 214 Q150 208 158 212" stroke="#fff" stroke-width="2.5" opacity="0.4" fill="none" stroke-linecap="round" />`,
+  });
+
+  Object.assign(REST_PROPS, {
+    // Margarita en la mano
+    daisy: { under: false, svg: () => `<path d="M158 214 C164 196 170 184 180 172" stroke="#2f8a43" stroke-width="3" fill="none" stroke-linecap="round" />
+      <ellipse cx="168" cy="192" rx="7" ry="3" fill="#3c9a4e" transform="rotate(-40 168 192)" />
+      <g class="spin">${daisy(181, 168, 9, "#ffffff")}</g>` },
+  });
+
+  Object.assign(BACKS, {
+    // Bola disco colgando con destellos
+    discoball: (p) => `<path d="M204 -20 L204 14" stroke="#c9ced8" stroke-width="1.5" />
+      <defs><clipPath id="${p}-ball"><circle cx="204" cy="34" r="20" /></clipPath></defs>
+      <circle cx="204" cy="34" r="20" fill="#9aa0ad" />
+      <g clip-path="url(#${p}-ball)" class="facets">${Array.from({ length: 6 }, (_, r) => Array.from({ length: 6 }, (_, c) =>
+        `<rect x="${184 + c * 7}" y="${14 + r * 7}" width="6" height="6" fill="${["#e3e7ee", "#c9ced8", "#ffffff", "#b8bec9", "#d7dbe3"][(r * 2 + c) % 5]}" />`).join("")).join("")}</g>
+      <circle cx="204" cy="34" r="20" fill="none" stroke="#8a909c" stroke-width="1.5" />
+      <g class="glints">${star(196, 26, 5, "#ffffff")}${star(214, 42, 3.5, "#fff6c8")}${star(222, 14, 4, "#ffffff")}</g>`,
+  });
+
+  Object.assign(FEET, {
+    // Botas de boxeo blancas con pasadores rojos
+    boxboots: () => [90, 150].map((x) => `<rect x="${x - 15}" y="244" width="30" height="24" rx="6" fill="#f4f6fa" />
+      <ellipse cx="${x}" cy="269" rx="24" ry="10" fill="#f4f6fa" stroke="#c9d0db" stroke-width="1.5" />
+      <path d="M${x - 6} 250 l12 4 M${x - 6} 256 l12 4 M${x - 6} 262 l12 4" stroke="#d4132f" stroke-width="2" stroke-linecap="round" />`).join(""),
+    // Zapatos de plataforma dorados
+    platforms: () => [90, 150].map((x) => `<ellipse cx="${x}" cy="262" rx="23" ry="9" fill="#f2c14e" />
+      <rect x="${x - 21}" y="262" width="42" height="14" rx="5" fill="#c99a2e" />
+      <path d="M${x - 14} 266 l4 0 M${x} 270 l4 0 M${x + 10} 266 l4 0" stroke="#fff6c8" stroke-width="2" stroke-linecap="round" />`).join(""),
+  });
+
   // Ropa extra (se llama desde clothes)
   function clothesExtra(p, t) {
     const pat = t.pattern;
@@ -565,6 +655,29 @@
         <rect x="106" y="188" width="28" height="20" rx="3" fill="#2f5f9a" />
         <path d="M120 218 L120 292" stroke="#2f5f9a" stroke-width="2.5" />
         ${[97, 143].map((x) => `<circle cx="${x}" cy="182" r="4.5" fill="#f2c14e" /><circle cx="${x}" cy="182" r="1.6" fill="#c99a2e" />`).join("")}`;
+    // Boxeador: short blanco con franjas y cinturón de campeón
+    if (pat === "boxer") s += `<rect x="30" y="214" width="180" height="80" fill="#ffffff" />
+        <path d="M56 214 L48 292 M184 214 L192 292" stroke="#d4132f" stroke-width="8" />
+        <rect x="30" y="204" width="180" height="22" fill="#f2c14e" /><rect x="30" y="207" width="180" height="2.5" fill="#fff" opacity="0.5" />
+        ${[66, 174].map((x) => `<circle cx="${x}" cy="215" r="4.5" fill="#d4132f" stroke="#fff3c4" stroke-width="1.5" />`).join("")}
+        <ellipse cx="120" cy="215" rx="28" ry="19" fill="#f2c14e" stroke="#c99a2e" stroke-width="3" />
+        <ellipse cx="120" cy="215" rx="20" ry="13" fill="none" stroke="#c99a2e" stroke-width="1.5" />${star(120, 215, 10, "#d4132f")}`;
+    // Hippie: polo teñido (tie-dye) y collar de paz y amor
+    if (pat === "tiedye") s += ["#ff4f7b", "#ff9a3c", "#f2c14e", "#3fd47f", "#3a8ee6", "#8e5ad6", "#ff7aa8"].map((c, i) =>
+        `<circle cx="${120 + (i % 2 ? 4 : -4)}" cy="${206 + (i % 2 ? -3 : 3)}" r="${116 - i * 15}" fill="${c}" />`).join("") +
+        `<g stroke="#ffffff" stroke-width="3" fill="none" opacity="0.25"><path d="M60 170 Q90 150 120 176 T180 170" /><path d="M50 230 Q86 206 120 236 T194 226" /></g>
+        <path d="M94 124 Q120 222 146 124" stroke="#7a4a2c" stroke-width="2" fill="none" />
+        <circle cx="120" cy="202" r="11" fill="none" stroke="#e3e7ee" stroke-width="3" />
+        <path d="M120 191 L120 213 M120 202 L112.5 209.5 M120 202 L127.5 209.5" stroke="#e3e7ee" stroke-width="2.5" />`;
+    // Disco: camisa con cuello gigante, pecho abierto con cadena de oro y lentejuelas
+    if (pat === "disco") {
+      const collar = "M104 120 L56 130 L86 172 L112 150 Z";
+      s += `<path d="M96 120 L120 214 L144 120 Z" fill="${SKIN}" />
+        <path d="${collar}" fill="#ffffff" /><path d="${mirrorX(collar)}" fill="#ffffff" />
+        <path d="M100 150 Q120 210 140 150" stroke="#f2c14e" stroke-width="3" fill="none" />
+        <circle cx="120" cy="198" r="8" fill="#f2c14e" stroke="#c99a2e" stroke-width="2" />${star(120, 198, 4.5, "#c99a2e")}
+        <g class="sequins">${Array.from({ length: 22 }, (_, i) => `<circle cx="${40 + ((i * 53) % 160)}" cy="${150 + ((i * 37) % 120)}" r="2" fill="#fff" opacity="0.75" style="animation-delay:${-(i % 5) * 0.2}s" />`).join("")}</g>`;
+    }
     if (t.frontStrip === "pompoms") s += ["#e01f3d", "#3a8ee6", "#2a8a5a"].map((c, i) => `<circle cx="120" cy="${200 + i * 26}" r="8" fill="${c}" />`).join("");
     return s;
   }
@@ -623,6 +736,12 @@
     grinch: { name: "Gruñón verde", coat: RED, mitten: GREEN_MITTEN, sleeve: "coat", cuffs: true, frontStrip: "fur", bottom: "fur", belt: "classic",
       faceStyle: "grump", face: ["#b8d96a", "#86ad40"], skin: ["#9cc450", "#6d9332"],
       feet: "boots", hat: "classic", eyes: "grump", raised: "bauble", rest: "skin", restProp: "sack" },
+    boxeador: { name: "Boxeador", coat: RED, mitten: GREEN_MITTEN, sleeve: "short", pattern: "boxer",
+      feet: "boxboots", hat: "classic", headExtra: "bandaid", eyes: "open", raised: "boxglove", rest: "boxglove" },
+    hippie: { name: "Hippie", coat: ["#a77de6", "#7b4fc4", "#4f2d8a"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "tiedye", bottom: "hem", hemColor: "#3a6fb0",
+      feet: "sandals", hat: "flowers", eyes: "round", raised: "peace", rest: "skin", restProp: "daisy" },
+    disco: { name: "Disco", coat: ["#d07ef0", "#9a2fc8", "#5a1678"], mitten: GREEN_MITTEN, sleeve: "coat", pattern: "disco",
+      feet: "platforms", hat: "afro", eyes: "disco", raised: "finger", rest: "skin", back: "discoball" },
   };
 
   function santaSVG(id, opts = {}) {

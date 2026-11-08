@@ -62,6 +62,9 @@
       comunista: "Ushanka con estrella roja, abrigo rojo con botones dorados y bandera ondeando. Marcha.",
       grinch: "Gruñón verde vestido de Santa, con una esfera robada y su saco de regalos. Camina de puntitas.",
       agricultor: "Sombrero de paja con espiga, camisa a cuadros, overol de jean, botas, horquilla y caja de verduras.",
+      boxeador: "Guantes de box, short blanco con cinturón de campeón, botas de boxeo y una curita. Salta y lanza golpes.",
+      hippie: "Pelo largo con vincha de flores, lentes redondos, polo tie-dye, collar de paz y amor y una margarita. Se mece tranquilo.",
+      disco: "Afro blanco con gorrito, lentes dorados, camisa de cuello gigante, cadena de oro, plataformas y bola disco. Hace el paso clásico.",
     };
     document.getElementById("grid").innerHTML = Object.keys(SANTA_THEMES).map((id) => `
       <div class="card"><span class="tag">${SANTA_THEMES[id].name}</span>${santaSVG(id, { cls: "santa-anim" })}<p class="desc">${DESC[id] || ""}</p></div>`).join("");

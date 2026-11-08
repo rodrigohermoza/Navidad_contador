@@ -181,11 +181,14 @@ body {
 
 /* ===== Santa gordito ===== */
 /* Santa ocupa el espacio libre bajo la tarjeta (hasta 300px de alto), así siempre cabe en pantalla */
-.santa-stage { position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-bottom: 12px; }
+.santa-stage { position: relative; width: 100%; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-bottom: 12px; }
 .big-santa {
   flex: 1 1 auto;
   min-height: 120px;
   max-height: 300px;
+  width: 100%;              /* ancho completo: el dibujo se centra solo dentro del SVG (antes se descentraba en iPhone) */
+  max-width: 340px;
+  padding: 0;
   display: flex;
   justify-content: center;
   background: none;
@@ -198,7 +201,7 @@ body {
 .big-santa-svg {
   display: block;
   height: 100%;
-  width: auto;
+  width: 100%;
   overflow: visible;
   filter: drop-shadow(0 10px 24px rgba(40, 0, 8, 0.4));
   transform-origin: 50% 100%;

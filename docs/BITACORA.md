@@ -2,6 +2,7 @@
 
 Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nuevo al final.
 
+
 ## 2026-09-26
 - Pedido inicial: contador a Navidad con paisaje nevado, 28 actividades (luego fueron 25), caja de regalo →
   Santa, reno de vez en cuando, colores rojo/blanco/verde. → Página estática con paisaje SVG (luna, montañas,
@@ -80,3 +81,15 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
 - Animación nueva: clava la horquilla (`dig`) y asiente. Se quitaron las piezas que ya no usaba nadie (sombrero de
   fieltro, choclo, canasta, ojotas, chumpi y sus animaciones de zapateo).
 - Quien tenía guardado "campesino" en el navegador pasa solo al agricultor (`js/santa.js`).
+
+## 2026-11-08 — Boxeador, Hippie, Disco y Santa centrado en celular
+- **Boxeador**: guantes de box (en alto y apoyado), short blanco con cinturón de campeón, botas de boxeo y curita.
+  Animación: salta en puntitas, jab con la izquierda y gancho con la derecha.
+- **Hippie**: pelo largo con vincha de flores, lentes redondos, polo tie-dye, collar de paz y amor, jean, sandalias y
+  margarita que gira. Animación: se mece tranquilo y hace la V.
+- **Disco**: afro blanco con gorrito, lentes dorados, camisa de cuello grande con cadena de oro y lentejuelas,
+  plataformas doradas y bola disco brillando. Animación: paso clásico (dedo arriba/abajo) y cadera.
+- Piezas nuevas en `js/santas.js` (bloque "Tercera tanda"), animaciones en `css/santas.css`, descripciones en `preview/santas.html`.
+- **Centrado en celular**: `.santa-stage` y `.big-santa` ahora ocupan el ancho completo (máx. 340px) y el SVG usa `width:100%`;
+  antes la caja medía lo que el texto "Toca a Santa" (~150px) y el dibujo se desbordaba, lo que en iPhone lo corría de lado.
+- Probado en 375×812 y computadora, sin errores de consola.

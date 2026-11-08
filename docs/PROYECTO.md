@@ -22,15 +22,15 @@ Página web estática para compartir con una persona mediante un único link (si
 - Las decoraciones deben ser fáciles de prender/apagar (`js/config.js`).
 
 ## Estado actual (2026-11-07)
-- Todo está en `main`. El último commit (agricultor) puede estar sin subir: revisar con `git status`.
+- Todo está en `main`. El último commit (boxeador, hippie, disco + centrado en celular) puede estar sin subir: revisar con `git status`.
 - Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
   cada push a `main` publica automáticamente. Subir: `git push` desde la terminal (la cuenta de GitHub
   `rodrigohermoza` está conectada con `gh`; si pidiera contraseña, correr `gh auth setup-git`). También sirve
   GitHub Desktop. Hacer push solo si el usuario lo pide.
 - Fondo rojo (sin video ni paisaje; están en el historial de git si se quieren recuperar).
-- 22 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
+- 25 Santas temáticos en la página (`js/santas.js`): clásico, rockero, veraniego, andino, futbolero, DJ, mago,
   en pijama, chef, cuy, agricultor, vampiro, vaquero, detective, vikingo, payaso, pirata, motociclista, bombero,
-  doctor, comunista y gruñón verde, cada uno con su propia animación (`css/santas.css`). Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
+  doctor, comunista, gruñón verde, boxeador, hippie y disco, cada uno con su propia animación (`css/santas.css`). Se elige con el **selector arriba a la derecha**; se recuerda por navegador (localStorage).
   Galería de todos en `preview/santas.html`.
 - 25 actividades reales cargadas (`js/activities.js`).
 - Peso: toda la página pesa ~130 KB (~37 KB comprimida), sin imágenes; carga sin problema aunque se agreguen más Santas.

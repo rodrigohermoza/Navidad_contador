@@ -21,8 +21,8 @@ Página web estática para compartir con una persona mediante un único link (si
   página de preview) y esperar su aprobación antes de aplicarlo.
 - Las decoraciones deben ser fáciles de prender/apagar (`js/config.js`).
 
-## Estado actual (2026-11-07)
-- Todo está en `main`. El último commit (boxeador, hippie, disco + centrado en celular) puede estar sin subir: revisar con `git status`.
+## Estado actual (2026-11-08)
+- Todo está en `main` y subido (último: caritas de Santa centradas en tarjeta y selector).
 - Desplegado en **Vercel**: **https://navidad-contador.vercel.app** (proyecto `navidad-contador`, cuenta `rempenow`), conectado al repo:
   cada push a `main` publica automáticamente. Subir: `git push` desde la terminal (la cuenta de GitHub
   `rodrigohermoza` está conectada con `gh`; si pidiera contraseña, correr `gh auth setup-git`). También sirve

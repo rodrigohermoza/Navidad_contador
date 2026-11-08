@@ -40,7 +40,10 @@
   const pickerBtn = document.getElementById("picker-btn");
   const pickerPanel = document.getElementById("picker-panel");
   const pickerGrid = document.getElementById("picker-grid");
-  pickerGrid.innerHTML = themes.map((id) => `
+  // En el selector se muestran en orden alfabético (por nombre visible)
+  const byName = [...themes].sort((a, b) =>
+    window.SANTA_THEMES[a].name.localeCompare(window.SANTA_THEMES[b].name, "es", { sensitivity: "base" }));
+  pickerGrid.innerHTML = byName.map((id) => `
     <button class="picker-option" type="button" data-santa="${id}" aria-pressed="false">
       ${window.santaSVG(id, { prefix: "opt", head: true })}<span>${window.SANTA_THEMES[id].name}</span>
     </button>`).join("");

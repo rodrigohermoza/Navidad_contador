@@ -99,3 +99,8 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
 - Causa: el recuadro de "solo cabeza" (`viewBox` en `santaSVG` con `head: true`) iba de x=44 a x=240, pero la cara está en x=120.
 - Arreglo: recuadro `22 -12 196 204`, centrado en la cara. Los "zzz" del Santa en pijama se corren un poco a la izquierda en
   ese modo para que no se corten. Afecta a la tarjeta, al botón del selector y a las opciones del selector.
+
+## 2026-11-08 — Selector de Santas en orden alfabético
+- Pedido: ordenar los Santas alfabéticamente en el selector (arriba a la derecha).
+- `js/santa.js` ordena las opciones por su nombre visible (`localeCompare` en español, sin distinguir tildes/mayúsculas):
+  Agricultor, Andino, Bombero, Boxeador, Chef, Clásico… Vikingo. El orden en `SANTA_THEMES` (y en la galería) no cambia.

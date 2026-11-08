@@ -2,6 +2,7 @@
 
 ## Hecho recientemente
 - 25 Santas con animación propia, selector de 4 columnas (ver BITACORA 2026-11-07 y 2026-11-08).
+- Selector de Santas en orden alfabético.
 - Campesino reemplazado por Agricultor (menos estereotípico).
 - Nuevos: Boxeador, Hippie y Disco (25 Santas). Santa centrado en celular y caritas centradas en la tarjeta y el selector.
 

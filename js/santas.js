@@ -796,7 +796,8 @@
     const buckle = t.belt ?`<rect x="103" y="193" width="34" height="32" rx="6" fill="none" stroke="${t.belt === "studs" ? "#c9ced8" : "#f2c14e"}" stroke-width="6" />
       <rect x="106" y="196" width="10" height="3" rx="1.5" fill="#fff3c4" opacity="0.8" />` : "";
 
-    const viewBox = head ? "44 -12 196 204" : "0 0 240 285";
+    // Solo cabeza: el recuadro va centrado en la cara (x = 120) para que no se vea chueco en la tarjeta ni en el selector
+    const viewBox = head ? "22 -12 196 204" : "0 0 240 285";
     const svg = `<svg class="santa-svg santa--${id} ${opts.cls || ""}" viewBox="${viewBox}" role="img" aria-label="Santa ${t.name}">
       ${defs}
       ${head ? "" : `<ellipse class="shadow" cx="120" cy="278" rx="84" ry="7" fill="rgba(40,0,8,0.28)" />`}
@@ -839,7 +840,7 @@
         ${mustache("#d9e0ea", 2)}${mustache("#ffffff", 0)}
         <circle cx="120" cy="126" r="9" fill="${t.nose || "#ec9580"}" /><circle cx="117" cy="123" r="3" fill="#fff" opacity="0.55" />`}
         <g class="hat">${HATS[t.hat](p)}</g>
-        ${t.headExtra ? HEAD_EXTRAS[t.headExtra](p) : ""}
+        ${t.headExtra ? (head && t.headExtra === "zzz" ? `<g transform="translate(-22 8)">${HEAD_EXTRAS.zzz(p)}</g>` : HEAD_EXTRAS[t.headExtra](p)) : ""}
       </g>
       </g>
     </svg>`;

@@ -93,3 +93,9 @@ Formato: fecha — pedido del usuario → qué se hizo (decisiones). Lo más nue
 - **Centrado en celular**: `.santa-stage` y `.big-santa` ahora ocupan el ancho completo (máx. 340px) y el SVG usa `width:100%`;
   antes la caja medía lo que el texto "Toca a Santa" (~150px) y el dibujo se desbordaba, lo que en iPhone lo corría de lado.
 - Probado en 375×812 y computadora, sin errores de consola.
+
+## 2026-11-08 — Caritas de Santa centradas (tarjeta y selector)
+- Pedido: en el celular la cabeza de Santa sobre la tarjeta de la actividad se veía chueca (corrida a la izquierda).
+- Causa: el recuadro de "solo cabeza" (`viewBox` en `santaSVG` con `head: true`) iba de x=44 a x=240, pero la cara está en x=120.
+- Arreglo: recuadro `22 -12 196 204`, centrado en la cara. Los "zzz" del Santa en pijama se corren un poco a la izquierda en
+  ese modo para que no se corten. Afecta a la tarjeta, al botón del selector y a las opciones del selector.
